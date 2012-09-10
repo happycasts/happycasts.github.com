@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[Goodcat]]></title>
   <link href="http://happycasts.github.com/atom.xml" rel="self"/>
   <link href="http://happycasts.github.com/"/>
-  <updated>2012-09-10T11:03:12+08:00</updated>
+  <updated>2012-09-10T12:12:57+08:00</updated>
   <id>http://happycasts.github.com/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Peter Wang]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
