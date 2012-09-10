@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Goodcat]]></title>
-  <link href="http://happycasts.github.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: git | Goodcat]]></title>
+  <link href="http://happycasts.github.com/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://happycasts.github.com/"/>
   <updated>2012-09-10T12:23:07+08:00</updated>
   <id>http://happycasts.github.com/</id>
