@@ -27,7 +27,7 @@
         </h1>
 
         <div class="when">
-          {{ page.date }}
+          {{ page.date | date_to_string }}
         </div>
       </div>
       {{ content }}
