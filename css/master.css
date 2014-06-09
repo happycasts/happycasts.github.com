@@ -287,7 +287,7 @@ h1 {
   box-shadow: inset 0 0 15px rgba(0,0,0,.5);
   padding: 25px;
 }
-  .twitter-follow {
+  .weibo-follow {
     color: rgba(0,0,0,.8);
     font-family: 'Avenir Next LT W01 Bold';
     font-weight: normal;
@@ -299,7 +299,7 @@ h1 {
     padding: 3px 7px;
     box-shadow: 0 0 5px rgba(0,0,0,.3);
   }
-    .twitter-follow:hover {
+    .weibo-follow:hover {
       box-shadow: 0 0 10px rgba(0,0,0,.5);
       transition: all 0.15s ease-in;
       -webkit-transition: all 0.15s ease-in;
