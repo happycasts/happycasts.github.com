@@ -10,7 +10,7 @@ font-family:'AvenirNextLTW01-BoldIta';
 body {
   margin: 0;
   padding: 0;
-  font-family: 'AvenirNextLTW01-Regular', Helvetica, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
 }
 
@@ -178,8 +178,8 @@ h1 {
     font-style: normal;
   }
   .content p {
-    font-size: 20px;
-    line-height: 160%;
+    line-height: 1.75;
+    color: #595959;
     margin: 25px 0;
   }
   .content img:not(.emoji), .content video {
