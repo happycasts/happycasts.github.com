@@ -11,6 +11,15 @@ title: 实时之王 Socket.io
 puts 'hello'
 ~~~
 
+
+{% highlight ruby %}
+def foo
+  puts 'foo'
+end
+{% endhighlight %}
+
+
+
 >nice
 
 __bold__
