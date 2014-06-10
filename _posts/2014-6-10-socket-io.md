@@ -10,3 +10,8 @@ title: 实时之王 Socket.io
 ~~~
 puts 'hello'
 ~~~
+
+
+可以先到 socket.io 的官网上看一下：
+
+![](http://happycasts.qiniudn.com/socketio.png)
