@@ -196,8 +196,9 @@ h1 {
   }
   .content pre {
     padding: 10px 20px;
-    margin: 0 50px;
     background-color: #fbfbfb;
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,.05);
     border-radius: 5px;
   }
   .content p code {
