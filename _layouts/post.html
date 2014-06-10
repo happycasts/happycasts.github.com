@@ -1,25 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="/css/master.css" type="text/css" media="screen" charset="utf-8"/>
-    <link rel="shortcut icon" href="/favicon.png">
+    {% include head.html %}
   </head>
   <body>
-    <div class="header">
-      <div class="container">
-        <ul class="menu">
-          <li><a href="/about">About</a></li>
-          <li><a href="/blog">Blog</a></li>
-        </ul>
-
-        <section class="name">
-          <a href="/">HAPPY<b>CASTS</b></a>
-        </section>
-      </div>
-    </div>
-    <div class="hero" style="background-image: url(http://peterpic.qiniudn.com/catie.jpg);"></div>
+    {% include header.html %}
     <section class="container content">
       <div class="title">
         <h1>
@@ -32,13 +17,6 @@
       </div>
       {{ content }}
     </section>
-    <div class="footer" style="background-image: url(http://peterpic.qiniudn.com/catie.jpg);">
-      <div class="container">
-        <a href="http://weibo.com/happycasts" class="weibo-follow">
-          Follow @happycasts on Weibo
-        </a>
-        <div style="clear: both"></div>
-      </div>
-    </div>
+    {% include footer.html %}
   </body>
 </html>
