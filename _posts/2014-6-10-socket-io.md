@@ -12,7 +12,7 @@ title: 实时之王 Socket.io
 ~~~
 $ node -v
 $ 0.10.28
-~~
+~~~
 
 
 
