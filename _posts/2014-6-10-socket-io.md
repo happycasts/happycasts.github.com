@@ -5,7 +5,11 @@ title: 实时之王 Socket.io
 
 好的，我是一个 Rails 程序员，但是 Nodejs 的世界里确实有我们值得学习的地方。
 
-如果你想要一个简单易用，同时有跨浏览器兼容非常好的的文字聊天功能，那么 socket.io 应该是当下最流行的解决方案。我自己用了一下，确实有眼前一亮，相见恨晚的感觉。眼见为实，一起动手搭建一下。要用到的技术主要就是跑在 nodejs 之上的 socket.io，数据存储咱们用 Redis，然后在咱们给的例子里面在稍微看一下，nodejs 如何和 Rails 协同工作。
+如果你想要一个简单易用，同时有跨浏览器兼容非常好的的文字聊天功能，那么 socket.io 应该是当下最流行的解决方案。socket.io 可以支持双向通信，这就意味着服务器不再是被动的去相应请求，而是可以主动的去给浏览器发送信息了，并且是基于事件的，是实时的。我自己用了一下，确实有眼前一亮，相见恨晚的感觉。眼见为实，一起动手搭建一下。要用到的技术主要就是跑在 nodejs 之上的 socket.io，数据存储咱们用 Redis，然后在咱们给的例子里面在稍微看一下，nodejs 如何和 Rails 协同工作。
+
+说一句跨平台兼容。就像在官网上我们看到的 “It works on every platform, browser or device, focusing equally on reliability and speed.”，在支持 html5 的浏览器上，socket.io 使用 websocket 能够获得最好的体验。到比较老的浏览器上也会有 fallback 机制，所以大家不必为此担心。
+
+<http://socket.io/get-started/chat/> 介绍了如果基于 nodejs 自己的 express 框架来搭建一个聊天室应用，代码非常的简约，最终的效果也是非常的惊艳，强烈建议初学者跟着弄一遍。	不过今天的例子咱们基于 Rails 来作。
 
 ### 第一步，nodejs
 
@@ -53,3 +57,5 @@ npm install -g nodemon
 
 
 Redis 的数据组织可是跟 SQL 的数据库差别很大，参考 http://redis.io/topics/twitter-clone 。
+
+
