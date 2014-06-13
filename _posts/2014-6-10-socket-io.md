@@ -72,7 +72,7 @@ npm install --save socket.io
 
 `--save` 可以把 socket.io 写入 package.json 的包依赖中，以后项目要部署就直接用 `npm install` 直接装了。
 
-
+为了开发的方面，我们还会安装 nodemon，具体它的作用我们稍后就会看到。
 ~~~
 npm install -g nodemon
 ~~~
@@ -89,9 +89,32 @@ npm install -g nodemon
 
 ~~~
 //= require socket.io
-~~
+~~~
+
+现在，我打开 `app/views/room/show.html.erb`，添加这些内容
+
+~~~
+<script>
+	var socket = io.connect("0.0.0.0:5001");
+</script>
+~~~
+
+这里的 `0.0.0.0:5001` 就是 socket.io 服务器的地址，好，现在咱们就可以搭建 socket.io 服务器了。
+
+### 搭建 socket.io 服务器
+
+~~~
+var io = require('socket.io').listen(5001);
 
 
+io.on('connection', function(socket){
+  console.log("user connected");
+  socket.on('disconnect', function () {
+    console.log("user left");
+  });
+
+});
+~~~
 ### Redis
 
 
