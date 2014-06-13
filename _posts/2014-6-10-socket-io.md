@@ -55,9 +55,11 @@ rails g controller chatroom show
 
 来到 <http://socket.io/docs/> ，安装就是简单地 `$ npm install socket.io` 就可以了，不过咱们不这么弄，先新建个 Nodejs 的项目，然后在项目的 package.json 文件中去指定更方便。
 
-我们来创建一个项目目录叫做 chatroom ，跳转到目录之中，然后运行：
+进入 chatroom ，然后运行：
 
 ~~~
+mkdir realtime
+cd realtime
 npm init
 ~~~
 
@@ -70,9 +72,6 @@ npm install --save socket.io
 
 `--save` 可以把 socket.io 写入 package.json 的包依赖中，以后项目要部署就直接用 `npm install` 直接装了。
 
-这里我们可以看到，其实所谓的 socket.io 到底是啥？两个部分：一个是运行在服务器上的代码，另一部分是运行到用户浏览器上的代码。这两部分遥相呼应，我们的这个浏览器到服务器的双向信息高速公路就开通了。
-
-客户端代码 `socket.io.js` 要放到 `lib/assets/javascripts`
 
 ~~~
 npm install -g nodemon
@@ -80,6 +79,17 @@ npm install -g nodemon
 
 `-g` 的意思是全局安装，如果一个包里面有可执行的系统命令，就应该用这个参数来安装。
 
+
+### Rails 项目中安装 socket.io 的客户端
+
+其实所谓的 socket.io 到底是啥？两个部分：一个是运行在服务器上的代码，另一部分是运行到用户浏览器上的代码。这两部分遥相呼应，我们的这个浏览器到服务器的双向信息高速公路就开通了。
+
+
+这个安装客户端的过程其实非常简单，就是在页面中添加一个 js 文件就可以了，所以我们可以来到 `realtime/node_modules/socket.io/node_modules/socket.io-client/` 目录中，找到客户端代码 `socket.io.js` ，然后放到我们的 rails 项目中的合适位置，也就是 `chatroom/lib/assets/javascripts/` 目录下。然后可别忘了到 `application.js` 文件中添加这一行
+
+~~~
+//= require socket.io
+~~
 
 
 ### Redis
