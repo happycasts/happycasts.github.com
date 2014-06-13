@@ -30,13 +30,13 @@ $ rails new chatroom -d mysql
 
 在我们去生成 rails 的 controller 代码的时候，不要忘了在 application.rb 中添加	
 
-```
+~~~
 config.generators do |g|
   g.assets false
   g.helper false
   g.test_framework false
 end
-```
+~~~
 
 这样可以避免 Rails 自作聪明的帮我们生成一些我们暂时用不到的文件。现在运行
 
@@ -115,6 +115,7 @@ io.on('connection', function(socket){
 
 });
 ~~~
+
 ### Redis
 
 
