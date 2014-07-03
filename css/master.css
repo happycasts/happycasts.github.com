@@ -206,12 +206,19 @@ h1 {
     max-width: 100%;
     overflow: auto;
   }
-  .content p code {
+  .content pre code {
     color: rgb(119, 119, 119);
     background-color: #eee;
     font: 15px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
     font-weight: lighter;
     font-size: 12px;
+  }
+
+  code {
+    font-size: 11px;
+    padding: 3px 5px;
+    background: #eee;
+    color: #666;
   }
   .content .when + p:first-of-type {
     display: inline;
