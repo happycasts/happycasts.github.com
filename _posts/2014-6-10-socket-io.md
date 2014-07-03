@@ -2,6 +2,7 @@
 layout: post
 title: 基于 socket.io 实现协作编辑功能
 ---
+
 今天要跟大家一起实现的功能很厉害，是一款协作编辑的实时性应用。我们同时打开两个浏览器，这样如果我在一个浏览器中去输入文本，会看到另外一个浏览器页面上也会实时的显示这样的修改，当然，如果我们把这个应用真正部署到服务器上，那么一个人去编辑，其他所有打开这个页面的人就都可以实时看到修改内容了，并且可以参与进来一起进行编辑，很多用过
 google doc
 的人对这个功能可能似曾相识，今天这期节目，咱们就一起动手来实现以下这个效果，主要用到了跑在
@@ -20,27 +21,27 @@ nodejs 之上的，大名鼎鼎的 socket.io，另外还引入了网页编辑器
 
 首先要在自己的机器上安装 nodejs，我这里使用的是 Mac，打开终端，执行
 
-``
+~~~
 $ node -v
 v0.10.28
-``
+~~~
 
 表示 nodejs 已经装好了。下面来新建一个 nodejs 的项目
 
-``
+~~~
 mkdir coedit
 cd coedit
 npm init
-``
+~~~
 
 这里要回答几个问题，基本都直接敲 Enter
 保留默认值就可以了。具体每一个参数都是啥作用，可以参考：<https://www.npmjs.org/doc/json.html>
 
 下面就安装 socket.io
 
-``
+~~~
 npm install --save socket.io
-``
+~~~
 
 这样，当前目录下会出现一个 `node_modules` 目录 socket.io
 就装在这里了，`--save` 把 socket.io 的信息保存在了 `package.json`
@@ -53,13 +54,13 @@ npm install --save socket.io
 服务器的基本框架我们用 nodejs 当下最流行的框架 express 来搭建，所以首先安装
 express
 
-``
+~~~
 npm install --save express
-``
+~~~
 
 接下来创建 index.js 文件，先写入下面这些内容
 
-``
+~~~
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
@@ -73,13 +74,13 @@ server.listen(port, function () {
 app.get('/', function(req, res){
   res.send('<h1>Hello world</h1>');
 });
-``
+~~~
 
 这样，我们启动这个 express 应用，首先全局安装 nodemon
 
-``
+~~~
 npm install -g nodemon
-``
+~~~
 
 然后 `nodemon index.js` 这样就可以用流量器打开 `localhost:3000` 看到输出了。
 
@@ -91,7 +92,7 @@ socket.io 其实可以分为两部分，一部分是 socket.io
 
 
 添加这些内容到 index.js 就好了
-``
+~~~
 var io = require('socket.io')(server);
 
 io.on('connection', function(socket){
@@ -100,36 +101,36 @@ io.on('connection', function(socket){
       console.log("user left");
     });
 });
-``
+~~~
 
 下面准备添加客户端代码，所以我们首先需要添加页面模板进来，现在 index.js
 添加这两行
 
-``
+~~~
 app.set('views','./views/pages');
 app.set('view engine','jade');
-``
+~~~
 需要安装 jade
 
-``
+~~~
 cd coedit/
 npm install --save jade
-``
+~~~
 
 然后更改原有的 `/` 路由代码
 
-``
+~~~
 app.get('/',function(req,res){
   res.render('index',{
       title: 'coedit'
     });
 });
-``
+~~~
 
 
 views/pages/index.jade 中内容：
 
-``
+~~~
 doctype
 head
   meta(charset="utf-8")
@@ -141,24 +142,24 @@ body
   h1 Socket.io is Here
   script.
     var socket = io("localhost:3000");
-``
+~~~
 
 下面看看如果从服务器发送信息到各个客户端：
 
 服务器端代码：
 
-``
+~~~
 var body = "type in text";
 socket.emit('refresh', {body: body});
-``
+~~~
 
 浏览器端，也就是 index.jade 中要添加的响应代码是
 
-``
+~~~
     socket.on('refresh', function (data) {
       $('h1').text(data.body);
     });
-``
+~~~
 
 那么如果我们希望在客户端发信息给服务器怎么操作呢
 如果我们采用 textarea 或者其他基本的 html
@@ -170,7 +171,7 @@ codemirror
 
 需要在 index.jade 中的 `head` 标签下，添加如下的内容
 
-``
+~~~
   // codemirror begin
   link(rel='stylesheet', href='http://codemirror.net/lib/codemirror.css')
   link(rel='stylesheet', href='http://codemirror.net/theme/ambiance.css')
@@ -178,11 +179,11 @@ codemirror
   script(src='http://codemirror.net/addon/mode/overlay.js')
   script(src='http://codemirror.net/mode/markdown/markdown.js')
   //  codemirror end
-``
+~~~
 
 body 标签下添加
 
-``
+~~~
   textarea#textbox
 
   script.
@@ -191,7 +192,7 @@ body 标签下添加
       lineNumbers: true,
       theme: "ambiance"
     });
-``
+~~~
 上面的代码把页面上的编辑器设置为 markdown
 模式，打开页面我们操作一下，发现可以对 markdown
 的各种语法要素给予不同的字体颜色的（这里颜色主题设置为 "ambiance"，codemirror
@@ -203,29 +204,29 @@ body 标签下添加
 另外 codemirror 编辑器默认状态下就有很多快捷键的，例如 `Ctrl/Cmd-x`
 去删除一行文本。但是对于我们这样应用来说这个不是最重要的，下面我们来添加这些代码
 
-``
+~~~
 script.
     editor.on('change', function (i, op) {
       console.log(op);
       socket.emit('change', op);
     });
-``
+~~~
 
 如果我们在浏览器中删除一个，做一下修改，那么 `console.log(op)`
 就可以帮我们打印出 `op` 的具体内容
 
-``
+~~~
 { from: { line: 0, ch: 2 },
   to: { line: 0, ch: 3 },
   text: [ '' ],
   removed: [ 'p' ],
   origin: '+delete' }
-``
+~~~
 
 然后，`socket.emit('change', op);` 可以把这些内容发送到服务器上，那么在
 index.js 中，我们添加如下代码来接收这些数据：
 
-``
+~~~
   socket.on('change', function (op) {
      console.log(op);
      if (op.origin == '+input' || op.origin == 'paste' || op.origin ==
@@ -233,7 +234,7 @@ index.js 中，我们添加如下代码来接收这些数据：
        socket.broadcast.emit('change', op);
      };
    });
-``
+~~~
 
 这里，服务器把我做的修改拿到，然后 `broadcast`
 到了其他所有人，那么大家的浏览器拿到 `op`
