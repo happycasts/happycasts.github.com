@@ -240,12 +240,12 @@ index.js 中，我们添加如下代码来接收这些数据：
 的这些修改信息，就需要对页面做相应的更新，这样才能看到我的修改，具体代码就是要在
 index.jade 中添加
 
-```
+~~~
     socket.on('change', function (data) {
       console.log(data);
       editor.replaceRange(data.text, data.from, data.to);
     });
-```
+~~~
 
 这样，我们要达成的协同编辑功能就完成了。
 
