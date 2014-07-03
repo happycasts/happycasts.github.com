@@ -210,6 +210,7 @@ h1 {
     background: none;
     font-weight: lighter;
     font-size: 14px;
+    padding: 0;
   }
 
   code {
