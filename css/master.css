@@ -182,17 +182,13 @@ h1 {
     color: #595959;
     margin: 25px 0;
   }
-  .content img:not(.emoji), .content video {
-    margin: 10px -60px;
-    max-width: 770px;
-    border-radius: 4px;
+  .content img:not(.emoji) {
+    display: block;
+    margin: 25px auto;
+    max-width: 500px;
   }
   .content li {
     margin-bottom: 20px;
-  }
-  .content li img {
-    margin: 15px 0 !important;
-    width: 100%;
   }
 
   pre {
@@ -388,10 +384,6 @@ h1 {
   .about-other p {
     font-size: 20px;
     line-height: 30px;
-  }
-  .about-avatar img {
-    padding: 7px 10px 10px 0;
-    width: 110px;
   }
 .about-other .back-to-blog {
   margin-top: 50px;
