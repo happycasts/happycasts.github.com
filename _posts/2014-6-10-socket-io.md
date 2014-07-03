@@ -2,9 +2,7 @@
 layout: post
 title: 基于 socket.io 实现协作编辑功能
 ---
-
-
-今天要跟大家一起时间的功能很厉害，是一款协作编辑的实时性应用。我们同时打开两个浏览器，这样如果我在一个浏览器中去输入文本，会看到另外一个浏览器页面上也会实时的显示这样的修改，当然，如果我们把这个应用真正部署到服务器上，那么一个人去编辑，其他所有打开这个页面的人就都可以实时看到修改内容了，并且可以参与进来一起进行编辑，很多用过
+今天要跟大家一起实现的功能很厉害，是一款协作编辑的实时性应用。我们同时打开两个浏览器，这样如果我在一个浏览器中去输入文本，会看到另外一个浏览器页面上也会实时的显示这样的修改，当然，如果我们把这个应用真正部署到服务器上，那么一个人去编辑，其他所有打开这个页面的人就都可以实时看到修改内容了，并且可以参与进来一起进行编辑，很多用过
 google doc
 的人对这个功能可能似曾相识，今天这期节目，咱们就一起动手来实现以下这个效果，主要用到了跑在
 nodejs 之上的，大名鼎鼎的 socket.io，另外还引入了网页编辑器 codemirror 。
@@ -145,12 +143,111 @@ body
     var socket = io("localhost:3000");
 ``
 
+下面看看如果从服务器发送信息到各个客户端：
+
+服务器端代码：
+
+``
+var body = "type in text";
+socket.emit('refresh', {body: body});
+``
+
+浏览器端，也就是 index.jade 中要添加的响应代码是
+
+``
+    socket.on('refresh', function (data) {
+      $('h1').text(data.body);
+    });
+``
+
+那么如果我们希望在客户端发信息给服务器怎么操作呢
+如果我们采用 textarea 或者其他基本的 html
+元素来做代码编辑器，那么其实要确认编辑内容有修改，需要考虑很多种不同的情况，所以是比较麻烦的，所以这个时候咱们可以引入浏览器中得编辑器
+codemirror
+
+
 ### codemirror
 
+需要在 index.jade 中的 `head` 标签下，添加如下的内容
 
-codemirror 编辑器默认状态下就有很多快捷键的
+``
+  // codemirror begin
+  link(rel='stylesheet', href='http://codemirror.net/lib/codemirror.css')
+  link(rel='stylesheet', href='http://codemirror.net/theme/ambiance.css')
+  script(src='http://codemirror.net/lib/codemirror.js')
+  script(src='http://codemirror.net/addon/mode/overlay.js')
+  script(src='http://codemirror.net/mode/markdown/markdown.js')
+  //  codemirror end
+``
 
-`Ctrl/Cmd-x` 去删除一行
+body 标签下添加
+
+``
+  textarea#textbox
+
+  script.
+    var editor = CodeMirror.fromTextArea(document.getElementById("textbox"), {
+      mode: 'markdown',
+      lineNumbers: true,
+      theme: "ambiance"
+    });
+``
+上面的代码把页面上的编辑器设置为 markdown
+模式，打开页面我们操作一下，发现可以对 markdown
+的各种语法要素给予不同的字体颜色的（这里颜色主题设置为 "ambiance"，codemirror
+网站上还有很多很好看的主题可以选用）。
+
+这样，我们前面的 `$('h1').text(data.body);` 这条语句就可以改为
+`editor.setValue(data.body);` 相应的那个 `h1` 标签就可以删掉了。
+
+另外 codemirror 编辑器默认状态下就有很多快捷键的，例如 `Ctrl/Cmd-x`
+去删除一行文本。但是对于我们这样应用来说这个不是最重要的，下面我们来添加这些代码
+
+``
+script.
+    editor.on('change', function (i, op) {
+      console.log(op);
+      socket.emit('change', op);
+    });
+``
+
+如果我们在浏览器中删除一个，做一下修改，那么 `console.log(op)`
+就可以帮我们打印出 `op` 的具体内容
+
+``
+{ from: { line: 0, ch: 2 },
+  to: { line: 0, ch: 3 },
+  text: [ '' ],
+  removed: [ 'p' ],
+  origin: '+delete' }
+``
+
+然后，`socket.emit('change', op);` 可以把这些内容发送到服务器上，那么在
+index.js 中，我们添加如下代码来接收这些数据：
+
+``
+  socket.on('change', function (op) {
+     console.log(op);
+     if (op.origin == '+input' || op.origin == 'paste' || op.origin ==
+'+delete') {
+       socket.broadcast.emit('change', op);
+     };
+   });
+``
+
+这里，服务器把我做的修改拿到，然后 `broadcast`
+到了其他所有人，那么大家的浏览器拿到 `op`
+的这些修改信息，就需要对页面做相应的更新，这样才能看到我的修改，具体代码就是要在
+index.jade 中添加
+
+```
+    socket.on('change', function (data) {
+      console.log(data);
+      editor.replaceRange(data.text, data.from, data.to);
+    });
+```
+
+这样，我们要达成的协同编辑功能就完成了。
 
 
 ### 欢迎大家参与开发
@@ -160,5 +257,3 @@ codemirror 编辑器默认状态下就有很多快捷键的
 repo
 <https://github.com/happypeter/happyedit>，这个欢迎大家参与到开发，不断丰富一些功能进来。<https://github.com/happypeter/happyedit/graphs/contributors>
 目前是我们三个都贡献了一些代码进来。
-
-
