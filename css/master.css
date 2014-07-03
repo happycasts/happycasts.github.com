@@ -194,7 +194,8 @@ h1 {
     margin: 15px 0 !important;
     width: 100%;
   }
-  .content pre {
+
+  pre {
     padding: 0.3em;
     padding-left: 0.8em;
     border-left: 0.5em solid #D8D8D8;
@@ -206,7 +207,8 @@ h1 {
     max-width: 100%;
     overflow: auto;
   }
-  .content pre code {
+
+  pre code {
     color: rgb(119, 119, 119);
     background-color: #eee;
     font: 15px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
@@ -220,6 +222,7 @@ h1 {
     background: #eee;
     color: #666;
   }
+
   .content .when + p:first-of-type {
     display: inline;
   }
