@@ -185,7 +185,7 @@ h1 {
   .content img:not(.emoji) {
     display: block;
     margin: 25px auto;
-    max-width: 500px;
+    max-width: 580px;
   }
   .content li {
     margin-bottom: 20px;
