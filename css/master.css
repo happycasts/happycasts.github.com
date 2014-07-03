@@ -213,11 +213,11 @@ h1 {
     font: 15px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
     background: none;
     font-weight: lighter;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   code {
-    font-size: 11px;
+    font-size: 13px;
     padding: 3px 5px;
     background: #eee;
     color: #666;
