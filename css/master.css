@@ -206,15 +206,14 @@ h1 {
 
   pre code {
     color: rgb(119, 119, 119);
-    font: 15px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+    font: 16px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
     background: none;
     font-weight: lighter;
-    font-size: 14px;
     padding: 0;
   }
 
   code {
-    font-size: 13px;
+    font-size: 15px;
     padding: 3px 5px;
     background: #eee;
     color: #666;
