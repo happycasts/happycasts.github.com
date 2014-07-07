@@ -7,7 +7,7 @@ title: Elasticsearch Setup on Ubuntu
 
 在安装 elasticsearch 之前，需要安装 Java, 高版本的 elasticsearch 至少需要 Java 7 才能运行。
 需要注意一下，官方文档上推荐使用的是 Oracle JDK，而 Ubuntu 因版权问题默认支持的是 OpenJDK
-但你自己可以手动安装 Oracle JDK，在命令中执行以下操作:
+但你自己可以手动安装 Oracle JDK，在命令行中执行以下操作:
 
 ~~~
 sudo add-apt-repository ppa:webupd8team/java
