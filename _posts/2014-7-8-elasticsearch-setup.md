@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Elastic Search ( Work In Progress )
+title: Elasticsearch Setup on Ubuntu
 ---
 
-### 在 ubuntu 1204 上安装 elasticsearch（最新版本 1.2.1）
+### 在 ubuntu 1204 上安装 elasticsearch 1.2.1
 
 在安装 elasticsearch 之前，需要安装 Java, 高版本的 elasticsearch 至少需要 Java 7 才能运行。
 需要注意一下，官方文档上推荐使用的是 Oracle JDK，而 Ubuntu 因版权问题默认支持的是 OpenJDK
@@ -35,7 +35,7 @@ sudo apt-get install openjdk-7-jre
 sudo dpkg -i elasticsearch-1.2.1.deb
 ~~~
 
-启动 | 停止 | 重新启动 elasticsearch 服务：
+启动，停止，重新启动 elasticsearch 服务：
 
 ~~~
 sudo service elasticsearch start|stop|restart
@@ -54,7 +54,7 @@ $ sudo service elasticsearch status
 * elasticsearch is running
 ~~~
 
-或者是打开浏览器，访问本地端口 `http://localhost:9200`，看到如下内容，说明 elasticsearch 已经成功运行起来了
+或者是打开浏览器，访问本地 9200 端口 `http://localhost:9200`，若看到如下内容，则说明 elasticsearch 已经成功运行起来了。
 
 ~~~
   {
