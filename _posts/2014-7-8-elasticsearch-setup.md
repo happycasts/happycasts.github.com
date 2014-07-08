@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Elasticsearch Setup on Ubuntu
+title: Elasticsearch with rails (work in process)
 ---
 
 ### 在 ubuntu 1204 上安装 elasticsearch 1.2.1
@@ -20,7 +20,7 @@ java -version
 
 以上信息来源请参考 [elasticsearch setup](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup.html)。
 
-另外，如果你想使用 OpenJDK 也是可以的，运行的安装命令是：
+另外，如果你想使用 OpenJDK 也是可以的，运行的安装命令是（本人采用的方法）：
 
 ~~~
 sudo apt-get install openjdk-7-jre
@@ -70,3 +70,73 @@ $ sudo service elasticsearch status
   "tagline" : "You Know, for Search"
 }
 ~~~
+### elasticsearch basic usage
+
+elasticsearch 安装成功之后，就要使用它了。在使用 elasticsearch 之前，最好先了解几个基本概念，例如 `index`, `type`,
+`document` 等，可以查看这里
+<http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_basic_concepts.html>
+
+### use elasticsearch with rails
+
+下面介绍一下如何在 rails 应用中使用 elasticsearch。比如说这个 rails
+应用的名字为 esdemo,
+作用是存储用户的一些信息（用户名和个人简介），现在就要搜索这些用户信息，找到满足条件的用户。
+
+首先在 Gemfile 文件中粘贴下面几行代码：
+
+~~~
+gem "elasticsearch", :git => "git://github.com/elasticsearch/elasticsearch-ruby.git"
+gem "elasticsearch-model", :git => "git://github.com/elasticsearch/elasticsearch-rails.git"
+gem "elasticsearch-rails", :git => "git://github.com/elasticsearch/elasticsearch-rails.git"
+~~~
+
+然后运行 `bundle install`, 安装新添加的 gem。
+
+接下来在 `user_controller.rb` 文件新定义一个 `search` 方法，如下：
+
+~~~
+def search
+  @users = User.search(
+    query: {
+      multi_match: {
+        query: params[:q].to_s,
+        fields: ['name', 'intro']
+      }
+    }
+  ).records
+end
+~~~
+
+通过 elasticsearch 的 `multi_match` 查询类型可以选择搜索的字段，这里只是搜索用户的名字和简介。
+
+那如何获得要查询的关键字，则需要一个搜索框, 在 `index.html.erb` 模板文件中,
+加入这些代码：
+
+~~~
+<%= form_tag search_users_path, method: 'get' do %>
+  <%= text_field_tag :q, params[:q] %>
+<% end %>
+~~~
+
+对应的 `route.rb` 中的代码是：
+
+~~~
+resources :users do
+  collection { get :search }
+end
+~~~
+
+现在搜索的核心代码已经介绍完了，但是不能使用，还需要在命令行中运行一个命令：
+
+~~~
+ bundle exec rake environment elasticsearch:import:model CLASS='User' FORCE=y
+~~~
+
+这个命令的作用是索引 users 这张表，elasticsearch 只会查找索引之后的 users
+数据，而不是 users 这张表中的数据。 打开浏览器，在地址栏中输入：
+
+~~~
+http://localhost:9200/users/user/1?pretty 
+~~~
+
+就可以看到索引之后的数据格式了，这里显示的是用户 id 为1的用户信息，这条文档存储在 users 索引中的 user 类型下。
