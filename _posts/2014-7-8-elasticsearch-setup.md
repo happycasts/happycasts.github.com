@@ -78,7 +78,7 @@ Elasticsearch 安装成功之后，就要使用它了。在使用 elasticsearch 
 `document` 等，具体的参考文档[查看这里](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_basic_concepts.html)。
 
 如果你使用过其它类型的数据库，比如说 mysql，就不难理解 elasticsearch 中的 index，type，document 这几个术语了。
-index 类似于 mysql 中的数据库，type 相当于数据库中的一张表（table），而 `document` 则可以认为是表中的一条记录。
+index 类似于 mysql 中的数据库，type 相当于数据库中的一张表（table），而 document 则可以认为是表中的一条记录。
 这样关于 index，type，document 三者之间的关系也一目了然了。一个 index 中可以有零或多个 type，
 一个 type 中可以有成千上万条 document。
 
@@ -93,7 +93,7 @@ $ curl -XPUT 'localhost:9200/users?pretty'
 }
 ~~~
 
-若命令的输出结果如上所示，则说明成功创建了 users 索引。这里 `?pretty` 参数是为了美化输入结果。
+若命令的输出结果如上所示，则说明成功创建了 users 索引。这里 `pretty` 参数是为了美化输出结果。
 数据库建好之后，就可以填充数据了。注意填充数据的时候，要指定数据将要存储在哪一个 type 下，这里指定为 user
 
 ~~~
@@ -118,8 +118,8 @@ $ curl -XPUT 'localhost:9200/users/user/1?pretty' -d '
 $ curl -XGET 'localhost:9200/users/user/1?pretty'
 ~~~
 
-Elasticsearch 支持 REST API，可以对数据进行创建，读取，删除，修改，搜索，排序等操作，功能很强大，
-[参考文档](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_exploring_your_cluster.html)。
+上述内容演示了 elsaticsearch 创建数据以及获取数据的功能，除此之外 elasticsearch 支持 REST API，还可以对数据进行删除，修改，搜索，排序等操作，功能很强大，
+详细[参考文档](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_exploring_your_cluster.html)。
 若需要某个功能，请查询官方文档。
 
 ### 在 Rails 应用中使用 Elasticsearch 
@@ -135,7 +135,7 @@ gem "elasticsearch-model", :git => "git://github.com/elasticsearch/elasticsearch
 gem "elasticsearch-rails", :git => "git://github.com/elasticsearch/elasticsearch-rails.git"
 ~~~
 
-然后运行 `bundle install`, 安装新添加的 gem。
+然后运行 `bundle install`, 安装新添加的 gem。通过这些 gem 提供的接口建立 rails 与 elasticsearch 之间的联系通道。
 
 接下来在 `user_controller.rb` 文件新定义一个 `search` 方法，如下：
 
@@ -151,8 +151,8 @@ def search
   ).records
 end
 ~~~
-
-通过 elasticsearch 的 `multi_match` 查询类型可以选择搜索的字段，这里只是搜索用户的名字和简介。
+这里就用到 elasticsearch 的搜索功能了，通过 [query language](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_introducing_the_query_language.html)
+来实现。这里的 `multi_match` [查询方式](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-queries.html)可以选择搜索的字段，实例中搜索用户的名字和简介。
 
 那如何获得要查询的关键字，则需要一个搜索框, 在 `index.html.erb` 模板文件中,
 加入这些代码：
