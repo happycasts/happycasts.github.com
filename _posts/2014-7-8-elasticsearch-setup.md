@@ -70,17 +70,62 @@ $ sudo service elasticsearch status
   "tagline" : "You Know, for Search"
 }
 ~~~
-### elasticsearch basic usage
 
-elasticsearch 安装成功之后，就要使用它了。在使用 elasticsearch 之前，最好先了解几个基本概念，例如 `index`, `type`,
-`document` 等，可以查看这里
-<http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_basic_concepts.html>
+### elasticsearch 基本使用
 
-### use elasticsearch with rails
+elasticsearch 安装成功之后，就要使用它了。在使用 elasticsearch 之前，有一点要铭记在心，ealsticsearch 有它自己的一套规范，
+它只能搜索满足这套规范的数据集（姑且称为数据库），这样就涉及到了几个基本概念，例如 `index`， `type`，
+`document` 等，具体的参考文档[查看这里](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_basic_concepts.html)。
 
-下面介绍一下如何在 rails 应用中使用 elasticsearch。比如说这个 rails
-应用的名字为 esdemo,
-作用是存储用户的一些信息（用户名和个人简介），现在就要搜索这些用户信息，找到满足条件的用户。
+如果你使用过其它类型的数据库，比如说 mysql，就不难理解 elasticsearch 中的 `index`， `type`，`document` 这几个术语了。
+`index` 类似于 mysql 中的数据库，`type` 相当于数据库中的一张表（table），而 `document` 则可以认为是表中的一条记录。
+这样关于 `index`，`type`，`document` 三者之间的关系也一目了然了。一个 index 中可以有零或多个 type，
+一个 type 中可以有成千上万条 document。
+
+概念弄明白之后，就要实际操作了，假定我们想把一些用户信息存储到 elasticsearch 的数据库中，那到底如何操作呢？
+
+首先要创建一个名字为 users 的 index，在命令行中执行：
+
+~~~
+$ curl -XPUT 'localhost:9200/users?pretty'
+{
+  "acknowledged" : true
+}
+~~~
+
+若命令的输出结果如上所示，则说明成功创建了 users 索引。这里 `?pretty` 参数是为了美化输入结果。
+数据库建好之后，就可以填充数据了。注意填充数据的时候，要指定数据将要存储在哪一个 type 下，这里指定为 user
+
+~~~
+$ curl -XPUT 'localhost:9200/users/user/1?pretty' -d '
+{
+  "name": "Tom Lee",
+  "intro": "a coder"
+}'
+{
+  "_index" : "users",
+  "_type" : "user",
+  "_id" : "1",
+  "_version" : 1,
+  "created" : true
+}
+~~~
+
+这样就在 users 索引中插入了一条用户信息，用户的 id 是1，若不指定 id 号，那 elasticsearch 会自动生成一个随机的 id 号。
+那我们怎样得到刚才写入的用户信息呢，执行命令：
+
+~~~
+$ curl -XGET 'localhost:9200/users/user/1?pretty'
+~~~
+
+elasticsearch 支持 REST API，可以对数据进行创建，读取，删除，修改，搜索，排序等操作，功能很强大，
+[参考文档](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_exploring_your_cluster.html)。
+若需要某个功能，请查询官方文档。
+
+### 在 rails 应用中使用 elasticsearch 
+
+下面介绍一下如何在 rails 应用中使用 elasticsearch，来体验 elasticsearch 的搜索功能。比如说有一个 rails
+应用的名字为 esdemo, 作用是存储用户的一些信息（用户名 name 和 个人简介 intro），现在就要搜索这些用户信息，找到满足条件的用户。
 
 首先在 Gemfile 文件中粘贴下面几行代码：
 
@@ -132,8 +177,7 @@ end
  bundle exec rake environment elasticsearch:import:model CLASS='User' FORCE=y
 ~~~
 
-这个命令的作用是索引 users 这张表，elasticsearch 只会查找索引之后的 users
-数据，而不是 users 这张表中的数据。 打开浏览器，在地址栏中输入：
+这个命令的作用是索引 users 这张表，把 users 这张表中的数据存入到 elasticsearch 的 users 索引中。 打开浏览器，在地址栏中输入：
 
 ~~~
 http://localhost:9200/users/user/1?pretty 
