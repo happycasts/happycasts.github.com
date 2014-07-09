@@ -71,15 +71,15 @@ $ sudo service elasticsearch status
 }
 ~~~
 
-### elasticsearch 基本使用
+### Elasticsearch 基本使用
 
-elasticsearch 安装成功之后，就要使用它了。在使用 elasticsearch 之前，有一点要铭记在心，ealsticsearch 有它自己的一套规范，
+Elasticsearch 安装成功之后，就要使用它了。在使用 elasticsearch 之前，有一点要铭记在心，ealsticsearch 有它自己的一套规范，
 它只能搜索满足这套规范的数据集（姑且称为数据库），这样就涉及到了几个基本概念，例如 `index`， `type`，
 `document` 等，具体的参考文档[查看这里](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_basic_concepts.html)。
 
-如果你使用过其它类型的数据库，比如说 mysql，就不难理解 elasticsearch 中的 `index`， `type`，`document` 这几个术语了。
-`index` 类似于 mysql 中的数据库，`type` 相当于数据库中的一张表（table），而 `document` 则可以认为是表中的一条记录。
-这样关于 `index`，`type`，`document` 三者之间的关系也一目了然了。一个 index 中可以有零或多个 type，
+如果你使用过其它类型的数据库，比如说 mysql，就不难理解 elasticsearch 中的 index，type，document 这几个术语了。
+index 类似于 mysql 中的数据库，type 相当于数据库中的一张表（table），而 `document` 则可以认为是表中的一条记录。
+这样关于 index，type，document 三者之间的关系也一目了然了。一个 index 中可以有零或多个 type，
 一个 type 中可以有成千上万条 document。
 
 概念弄明白之后，就要实际操作了，假定我们想把一些用户信息存储到 elasticsearch 的数据库中，那到底如何操作呢？
@@ -118,11 +118,11 @@ $ curl -XPUT 'localhost:9200/users/user/1?pretty' -d '
 $ curl -XGET 'localhost:9200/users/user/1?pretty'
 ~~~
 
-elasticsearch 支持 REST API，可以对数据进行创建，读取，删除，修改，搜索，排序等操作，功能很强大，
+Elasticsearch 支持 REST API，可以对数据进行创建，读取，删除，修改，搜索，排序等操作，功能很强大，
 [参考文档](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_exploring_your_cluster.html)。
 若需要某个功能，请查询官方文档。
 
-### 在 rails 应用中使用 elasticsearch 
+### 在 Rails 应用中使用 Elasticsearch 
 
 下面介绍一下如何在 rails 应用中使用 elasticsearch，来体验 elasticsearch 的搜索功能。比如说有一个 rails
 应用的名字为 esdemo, 作用是存储用户的一些信息（用户名 name 和 个人简介 intro），现在就要搜索这些用户信息，找到满足条件的用户。
