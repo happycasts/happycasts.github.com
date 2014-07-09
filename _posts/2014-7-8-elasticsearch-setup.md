@@ -151,8 +151,11 @@ def search
   ).records
 end
 ~~~
-这里就用到 elasticsearch 的搜索功能了，通过 [query language](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_introducing_the_query_language.html)
-来实现。这里的 `multi_match` [查询方式](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-queries.html)可以选择搜索的字段，实例中搜索用户的名字和简介。
+
+这里就用到 elasticsearch 的搜索功能了，通过 
+[query language](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_introducing_the_query_language.html)
+来实现。这里的 `multi_match` [查询方式](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-queries.html)
+可以选择搜索的字段，实例中搜索用户的名字和简介。
 
 那如何获得要查询的关键字，则需要一个搜索框, 在 `index.html.erb` 模板文件中,
 加入这些代码：
@@ -171,13 +174,21 @@ resources :users do
 end
 ~~~
 
-现在搜索的核心代码已经介绍完了，但是不能使用，还需要在命令行中运行一个命令：
+现在搜索的核心代码已经介绍完了，但是不能使用，还需要索引数据，到 `lib/tasks` 目录下
+新建一个名为 `elasticsearch.rake` 的文件，在文件中添加下面一行代码：
 
 ~~~
- bundle exec rake environment elasticsearch:import:model CLASS='User' FORCE=y
+require 'elasticsearch/rails/tasks/import'
 ~~~
 
-这个命令的作用是索引 users 这张表，把 users 这张表中的数据存入到 elasticsearch 的 users 索引中。 打开浏览器，在地址栏中输入：
+保存文件，重新启动 server，然后在命令行中执行任务：
+
+~~~
+$ bundle exec rake environment elasticsearch:import:model CLASS='User' FORCE=y
+[IMPORT] Done
+~~~
+
+这样 users 这张表中的数据就导入到 elasticsearch 的 users 索引中了。打开浏览器，在地址栏中输入：
 
 ~~~
 http://localhost:9200/users/user/1?pretty 
