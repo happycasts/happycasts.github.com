@@ -1,6 +1,6 @@
----
+  ---
 layout: post
-title: Elasticsearch with rails (work in process)
+title: Elasticsearch with rails
 ---
 
 ### 在 ubuntu 1204 上安装 elasticsearch 1.2.1
@@ -195,3 +195,146 @@ http://localhost:9200/users/user/1?pretty
 ~~~
 
 就可以看到索引之后的数据格式了，这里显示的是用户 id 为1的用户信息，这条文档存储在 users 索引中的 user 类型下。
+
+### 添加中文分词器 ik
+
+Elasticsearch 默认使用的分词器是 standard，但是对中文的支持不准确。举个例子，如果要搜索 `中文`，我们期望的结果是包含
+`中文`这个词组的匹配项，但 elasticsearch 会按单个字来匹配，出现很多无用的内容。解决这个问题的方法就是用更精确的中文分词器，
+网上流行的是 ik，[源码地址](https://github.com/medcl/elasticsearch-analysis-ik)。ik 可以做为插件安装到 elastic 中。
+
+首先要知道 elastic 的安装路径以及配置文件所在位置，在 Ubuntu 中运行命令：
+
+~~~
+dpkg -l | grep elasticsearch
+~~~
+
+这样就找到了与 elasticsearch 相关的所有文件了，[官方文档的默认配置](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup-service.html), 
+安装路径为 `/usr/share/elasticsearch`，配置文件 `elasticsearch.yml` 所在的目录 `/etc/elasticsearch`
+
+安装 ik 插件，插件名字 `elasticsearch-analysis-ik-1.2.6.jar`，
+[下载地址](https://github.com/medcl/elasticsearch-rtf/blob/master/plugins/analysis-ik/elasticsearch-analysis-ik-1.2.6.jar)
+
+~~~
+cd ~/Download
+wget https://github.com/medcl/elasticsearch-rtf/blob/master/plugins/analysis-ik/elasticsearch-analysis-ik-1.2.6.jar
+~~~
+
+ik 插件下载完毕后，只要把它复制到 `/usr/share/elasticsearch/plugins` 目录下，就可以了
+
+~~~
+sudo cp ~/Download/elasticsearch-analysis-ik-1.2.6.jar /usr/share/elasticsearch/plugins/
+~~~
+
+工作仍没完成，还得安装 ik 字典文件 ik.zip，[下载地址](http://github.com/downloads/medcl/elasticsearch-analysis-ik/ik.zip)
+
+~~~
+cd ~/Download
+wget http://github.com/downloads/medcl/elasticsearch-analysis-ik/ik.zip
+~~~
+
+解压 ik.zip，并把解压后的目录文件复制到 `/etc/elasticsearch` 下，
+
+~~~
+unzip ik.zip
+sudo cp -rf ik /etc/elasticsearch
+~~~
+
+为了让 ik 插件生效，还需要修改 elasticsearch 的配置文件，打开文件 `/etc/elasticsearch/elasticsearch.yml`，
+在文件的最后，添加以下语句：
+
+~~~
+index:
+  analysis:                   
+    analyzer:      
+      ik:
+        alias: [ik_analyzer]
+        type: org.elasticsearch.index.analysis.IkAnalyzerProvider
+      ik_max_word:
+        type: ik
+        use_smart: false
+      ik_smart:
+        type: ik
+        use_smart: true
+~~~ 
+
+保存文件，然后重新启动 elasticsearch，才能使所有配置生效。
+
+~~~
+sudo service elasticsearch restart
+~~~
+
+下面用 elastic 的 API 测试一下，ik 插件其否安装成功了。先创建一个新的 index，名字为 test
+
+~~~
+$ curl -XPUT 'http://localhost:9200/test/'
+{"acknowledged":true}
+~~~
+
+然后打开浏览器，访问下面的地址
+
+~~~
+http://localhost:9200/test/_analyze?analyzer=ik&text=中文分词&pretty
+~~~
+
+输出结果：
+
+~~~
+{
+  "tokens" : [ {
+    "token" : "中文",
+    "start_offset" : 0,
+    "end_offset" : 2,
+    "type" : "CN_WORD",
+    "position" : 1
+  }, {
+    "token" : "分词",
+    "start_offset" : 2,
+    "end_offset" : 4,
+    "type" : "CN_WORD",
+    "position" : 2
+  } ]
+}
+~~~
+
+若得到这样的结果，证明 ik 插件已经工作了。
+
+### rails 中配置 ik 分词器
+
+首先需要在 model 文件中配置数据的 mapping 方式，假定有一个 User model，那就需要在 user.rb 文件中添加这些代码：
+
+~~~
+settings index: { number_of_shards: 3 } do
+  mappings do
+    indexes :name,  type: 'string', index: "not_analyzed"
+    indexes :intro, type: 'string', analyzer: 'ik'
+  end
+end
+~~~
+
+通过 `settings` 和 `mappings` 接口来设置用户的 intro 字段采用的分词器为 ik，
+[参考文档](https://github.com/elasticsearch/elasticsearch-rails/tree/master/elasticsearch-model)。
+
+保存文件，要重新索引数据，新的设置才能生效，运行命令：
+
+~~~
+$ bundle exec rake environment elasticsearch:import:model CLASS='User' FORCE=y
+[IMPORT] Done
+~~~
+
+另外可以在 rails console 中查看某个 index 的 settings 和 mappings, 以 User model 为例：
+
+~~~
+rails c
+User.settings
+User.mappings
+~~~
+
+也可以通过 elastic 的 API 来查看，[get settings](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/indices-get-settings.html)
+和 [get mapping](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/indices-get-mapping.html)，以 users index 为例：
+
+~~~
+curl -XGET 'http://localhost:9200/users/_settings?pretty'
+curl -XGET 'http://localhost:9200/users/_mapping?pretty'
+~~~
+
+关于 elasticsearch 的基本使用就介绍这么多，更多需求请查阅文档。
