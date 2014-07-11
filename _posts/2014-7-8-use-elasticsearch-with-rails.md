@@ -208,7 +208,7 @@ Elasticsearch 默认使用的分词器是 standard，但是对中文的支持不
 dpkg -l | grep elasticsearch
 ~~~
 
-这样就找到了与 elasticsearch 相关的所有文件了，[官方文档的默认配置](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup-service.html), 
+这样就找到了与 elasticsearch 相关的所有文件了，[官方文档的默认配置](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup-service.html)，
 安装路径为 `/usr/share/elasticsearch`，配置文件 `elasticsearch.yml` 所在的目录 `/etc/elasticsearch`
 
 安装 ik 插件，插件名字 `elasticsearch-analysis-ik-1.2.6.jar`，
