@@ -41,9 +41,19 @@ preferences -> profile -> color -> preset -> import
 - 分屏后的 dim 我不想要
   - preferences -> apperence -> dimming
 
-- plugin
+- modules
   https://github.com/sorin-ionescu/prezto
   git commit -al<tab> 列出匹配项，带有说明
+
+  - zsh-syntax-highlighting
+    Requirements: zsh 4.3.17+.
+
+    - update zsh
+      http://zanshin.net/2013/09/03/how-to-use-homebrew-zsh-instead-of-max-os-x-default/
+      brew install zsh
+
+  - check README to know about this module
+
 
 -启动脚本出问题了
   - .profile .bashrc 等都不加载了，没事，都直接写到 .zshrc 中就好了
