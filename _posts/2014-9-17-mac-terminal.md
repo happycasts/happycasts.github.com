@@ -1,3 +1,10 @@
+- zsh 到底比 bash 强在哪里
+  - zsh 用起来跟 bash 基本是一样的，只是比 bash 多一些很实用的功能
+   - kill vim<tab>
+   - ls -<tab>
+  - 先给大家装上 zsh 演示完 zsh 默认自带的功能再去演示 prezto
+    - lion 以后的系统 zsh 是默认安装的
+
 - 命令行的高亮
   - laracasts 中是有高亮的
 
@@ -34,7 +41,6 @@ preferences -> profile -> color -> preset -> import
 - 分屏后的 dim 我不想要
   - preferences -> apperence -> dimming
 
-
 - plugin
   https://github.com/sorin-ionescu/prezto
   git commit -al<tab> 列出匹配项，带有说明
@@ -42,3 +48,18 @@ preferences -> profile -> color -> preset -> import
 -启动脚本出问题了
   - .profile .bashrc 等都不加载了，没事，都直接写到 .zshrc 中就好了
   - $PATH 中没有 ~/bin 也加到 .zshrc 中吧
+  - 除了 .zshrc prezto 还安装了 .zprofile 和 .zpreztorc
+    文件，各自的分工和启动顺序要搞清楚。
+    - .zshrc 应该是 zsh 一起动就会加载，里面呼叫 .zpresto/init.sh 里面呼叫了
+      .zprestorc
+   - .zprofile 比 .zshrc 还早：# Executes commands at login pre-zshrc.
+     - .zshenv 是最早被呼叫的，http://zsh.sourceforge.net/Intro/intro_3.html
+       https://github.com/sorin-ionescu/prezto/blob/master/runcoms/README.md
+       里面 source 了 .zprofile
+
+     - 系统上还有 .zlogin 和 .zlogout
+
+   - 推荐的方案，如果需要自定制，就都放到 .zshrc
+     中，因为它加载的比较晚，可以覆盖前面  .zprofile 中得内容
+     原来放在 .bashrc 中的内容也要拷贝过来
+     - .zprestorc  中自然是放 zpreztorc 自己的配置，这个没什么说的
