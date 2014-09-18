@@ -55,10 +55,9 @@ Mac 系统上自带的 zsh 比较老了，代码高亮模块需要我去升级 z
 
 首先安装一个新版本的 zsh
 
-    brew install zsh
+    $ brew install zsh
 
-可执行程序被安装在 /usr/local/bin/zsh
-
+可执行程序被安装在 /usr/local/bin/zsh 。
 
 现在需要把这个路径添加到 /etc/shells 文件中
 
@@ -71,7 +70,7 @@ Mac 系统上自带的 zsh 比较老了，代码高亮模块需要我去升级 z
 
 然后设置新 zsh 为默认就可以了
 
-   chsh -s /usr/local/bin/zsh
+    $ chsh -s /usr/local/bin/zsh
 
 弄好后
 
@@ -80,8 +79,7 @@ Mac 系统上自带的 zsh 比较老了，代码高亮模块需要我去升级 z
 
 可见新 zsh 已经启用了。
 
-
-打开 .zprestorc 文件。最后一行，加上 syntax-highlighting
+启用高亮模块。打开 .zprestorc 文件。最后一行，加上 syntax-highlighting
 
       zstyle ':prezto:load' pmodule \
       'environment' \
