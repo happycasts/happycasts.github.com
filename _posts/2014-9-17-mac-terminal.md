@@ -31,12 +31,13 @@ profile，然后勾选 Reuse previous session's directory 。
 
 设置行间距。 设置的越大，看起来越清爽，尤其在有中文的时候 
 
-- zsh 到底比 bash 强在哪里
-  - zsh 用起来跟 bash 基本是一样的，只是比 bash 多一些很实用的功能
+# 命令行配置框架 prezto
+
+prezto 使用的是 zsh 。zsh 用起来跟 bash 基本是一样的，只是比 bash 多一些很实用的功能
+
    - kill vim<tab>
    - ls -<tab>
-  - 先给大家装上 zsh 演示完 zsh 默认自带的功能再去演示 prezto
-    - lion 以后的系统 zsh 是默认安装的
+
 - modules
   git commit -al<tab> 列出匹配项，带有说明
   - check README to know about this module
