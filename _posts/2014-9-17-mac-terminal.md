@@ -25,12 +25,12 @@ profile，然后勾选 Reuse previous session's directory 。
 
 ![](http://media.happycasts.net/pic/happycasts/preference.png)
 
-安装颜色主题。
-  https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Misterioso.itermcolors
-  preferences -> profile -> color -> preset -> import
-  超级漂亮了
+安装颜色主题。来 <http://iterm2colorschemes.com/>
+选择一款自己喜欢的颜色主题吧，我自己用的是
+[Misterioso](https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Misterioso.itermcolors)
+。到 preferences -> profile -> color -> preset 然后 import 进来就好了。
 
-设置行间距。 设置的越大，看起来越清爽，尤其在有中文的时候 
+设置行间距。 到我的默认 profile 下，text -> change font，更改 charater spacing -> vitical 的值为 1.5 。我的感觉是行间距设置的越大，看起来越清爽，尤其在有中文的时候 
 
 # 命令行配置框架 prezto
 
@@ -38,6 +38,7 @@ profile，然后勾选 Reuse previous session's directory 。
 多一些很实用的功能。 和 prezto 比较类似的一个框架是 oh-my-zsh，raiilcasts 上有一个介绍视频：
 <http://railscasts.com/episodes/308-oh-my-zsh> 。
 
+![](http://media.happycasts.net/pic/happycasts/prezto.png)
 
 配置文件。使用了 zsh 之后，原来 bash 的 .profile .bashrc
 等都不加载了，没事，都直接写到 .zshrc 中就好了。 .zprestorc  中自然是放
