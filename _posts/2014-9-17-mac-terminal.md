@@ -11,7 +11,6 @@ terminal，用了一段时间感觉不太好。所以改成了用 iTerm2 。今�
 
 ![](http://media.happycasts.net/pic/happycasts/endresult.png)
 
-
 # 更好用的终端软件 iTerm2
 
 使用 Ctrl-D 来分屏操作。在这里 <http://iterm2.com/features.html> 可以看到 iterm2
@@ -35,12 +34,9 @@ profile，然后勾选 Reuse previous session's directory 。
 
 # 命令行配置框架 prezto
 
-安装过程参考这里的 README：<https://github.com/sorin-ionescu/prezto> 。
-
-prezto 使用的是 zsh 。zsh 用起来跟 bash 基本是一样的，只是比 bash 多一些很实用的功能
-
-和 prezto 比较类似的一个框架是 oh-my-zsh，raiilcasts 上有一个介绍视频：
-<http://railscasts.com/episodes/308-oh-my-zsh?view=comments>
+安装过程参考这里的 README：<https://github.com/sorin-ionescu/prezto> 。 prezto 使用的是zsh 。zsh 用起来跟 bash 基本是一样的，只是比 bash
+多一些很实用的功能。 和 prezto 比较类似的一个框架是 oh-my-zsh，raiilcasts 上有一个介绍视频：
+<http://railscasts.com/episodes/308-oh-my-zsh> 。
 
 
 配置文件。使用了 zsh 之后，原来 bash 的 .profile .bashrc
@@ -48,38 +44,13 @@ prezto 使用的是 zsh 。zsh 用起来跟 bash 基本是一样的，只是比 
 zpreztorc 自己的配置，这个没什么说的。其他的 .zshenv .zlogin .zporfile
 等等不用管。
 
-有了 prezto
-就可以通过启用它的各个模块来实现一些很帅的功能。这里我来安装一下代码高亮模块。
+有了 prezto 就可以通过启用它的各个模块来实现一些很帅的功能。这里我来安装一下代码高亮模块。
 
-Mac 系统上自带的 zsh 比较老了，代码高亮模块需要我去升级 zsh 。
+Mac 系统上自带的 zsh 比较老了，代码高亮模块需要我去升级 zsh
+。参考：<http://zanshin.net/2013/09/03/how-to-use-homebrew-zsh-instead-of-max-os-x-default/>
+。
 
-首先安装一个新版本的 zsh
-
-    $ brew install zsh
-
-可执行程序被安装在 /usr/local/bin/zsh 。
-
-现在需要把这个路径添加到 /etc/shells 文件中
-
-    /bin/bash
-    /bin/csh
-    /bin/sh
-    /bin/tcsh
-    /bin/zsh
-    /usr/local/bin/zsh
-
-然后设置新 zsh 为默认就可以了
-
-    $ chsh -s /usr/local/bin/zsh
-
-弄好后
-
-    $ echo $SHELL
-    /usr/local/bin/zsh
-
-可见新 zsh 已经启用了。
-
-启用高亮模块。打开 .zprestorc 文件。最后一行，加上 syntax-highlighting
+然后就可以启用高亮模块。打开 .zprestorc 文件。最后一行，加上 syntax-highlighting
 
       zstyle ':prezto:load' pmodule \
       'environment' \
