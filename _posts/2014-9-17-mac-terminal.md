@@ -38,7 +38,6 @@ profile，然后勾选 Reuse previous session's directory 。
 多一些很实用的功能。 和 prezto 比较类似的一个框架是 oh-my-zsh，raiilcasts 上有一个介绍视频：
 <http://railscasts.com/episodes/308-oh-my-zsh> 。
 
-![](http://media.happycasts.net/pic/happycasts/prezto.png)
 
 配置文件。使用了 zsh 之后，原来 bash 的 .profile .bashrc
 等都不加载了，没事，都直接写到 .zshrc 中就好了。 .zprestorc  中自然是放
@@ -65,6 +64,9 @@ Mac 系统上自带的 zsh 比较老了，代码高亮模块需要我去升级 z
       '...' \
       'prompt' \
       'syntax-highlighting'
+
+
+![](http://media.happycasts.net/pic/happycasts/prezto.png)
 
 这样启动一个新的 shell 试一下
 
