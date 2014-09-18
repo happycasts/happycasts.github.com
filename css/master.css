@@ -119,19 +119,14 @@ li {
   padding: 10px 10px 10px 23px;
   border-left: 7px solid #eee;
   margin: 40px -30px 30px -30px;
-  margin: 0;
-  font-family: 'Avenir Next LT W01 Bold';
-  font-weight: bold;
   font-size: 34px;
-  font-weight: 400;
   color: #444;
 }
+
 h1 {
   margin: 50px -30px 20px -30px;
   padding: 10px 30px 10px 25px;
   border-left: 5px solid #eee;
-  font-family: 'Avenir Next LT W01 Bold';
-  font-weight: bold;
   font-size: 24px;
   color: #444;
 }
