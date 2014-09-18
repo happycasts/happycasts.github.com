@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 美丽的命令行
+title: 美丽如苹果的命令行
 ---
 
 苹果的 Mac 系统自带的命令行终端，叫
@@ -8,6 +8,8 @@ terminal，用了一段时间感觉不太好。所以改成了用 iTerm2 。今�
 配置一下，让命令行变得更好看。然后再安装
 [prezto](https://github.com/sorin-ionescu/prezto)
 这个可以让命令行变得更方便好用。最终可以达成的效果是这样的，不错吧？
+
+![](http://media.happycasts.net/pic/happycasts/endresult.png)
 
 
 # 更好用的终端软件 iTerm2
@@ -34,6 +36,9 @@ profile，然后勾选 Reuse previous session's directory 。
 # 命令行配置框架 prezto
 
 prezto 使用的是 zsh 。zsh 用起来跟 bash 基本是一样的，只是比 bash 多一些很实用的功能
+
+和 prezto 比较类似的一个框架是 oh-my-zsh，raiilcasts 上有一个介绍视频：
+<http://railscasts.com/episodes/308-oh-my-zsh?view=comments>
 
    - kill vim<tab>
    - ls -<tab>
