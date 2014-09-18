@@ -38,10 +38,9 @@ profile，然后勾选 Reuse previous session's directory 。
 多一些很实用的功能。 和 prezto 比较类似的一个框架是 oh-my-zsh，raiilcasts 上有一个介绍视频：
 <http://railscasts.com/episodes/308-oh-my-zsh> 。
 
-
 配置文件。使用了 zsh 之后，原来 bash 的 .profile .bashrc
-等都不加载了，没事，都直接写到 .zshrc 中就好了。 .zprestorc  中自然是放
-zpreztorc 自己的配置，这个没什么说的。其他的 .zshenv .zlogin .zporfile
+等都不加载了，没事，都直接写到 .zshrc 中就好了。 .zprestorc  中放
+prezto 自己的配置。其他的 .zshenv .zlogin .zporfile
 等等不用管。
 
 更改主题。prezto 的主题主要就是改变命令提示符的格式。可以用 `prompt -l`
@@ -56,7 +55,6 @@ zpreztorc 自己的配置，这个没什么说的。其他的 .zshenv .zlogin .z
 Mac 系统上自带的 zsh 比较老了，代码高亮模块需要我去升级 zsh
 。参考：<http://zanshin.net/2013/09/03/how-to-use-homebrew-zsh-instead-of-max-os-x-default/>
 。
-
 然后就可以启用高亮模块。打开 .zprestorc 文件。最后一行，加上 syntax-highlighting
 
       zstyle ':prezto:load' pmodule \
@@ -64,7 +62,6 @@ Mac 系统上自带的 zsh 比较老了，代码高亮模块需要我去升级 z
       '...' \
       'prompt' \
       'syntax-highlighting'
-
 
 ![](http://media.happycasts.net/pic/happycasts/prezto.png)
 
