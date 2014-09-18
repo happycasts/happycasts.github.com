@@ -1,3 +1,5 @@
+https://github.com/sorin-ionescu/prezto
+
 - zsh 到底比 bash 强在哪里
   - zsh 用起来跟 bash 基本是一样的，只是比 bash 多一些很实用的功能
    - kill vim<tab>
@@ -5,54 +7,67 @@
   - 先给大家装上 zsh 演示完 zsh 默认自带的功能再去演示 prezto
     - lion 以后的系统 zsh 是默认安装的
 
-- 命令行的高亮
-  - laracasts 中是有高亮的
+- 第一个问题，非要使用 iterm2 吗？
+  Yes
+  http://iterm2.com/features.html
 
-# 第一个问题，非要使用 iterm2 吗？
-Yes
-http://iterm2.com/features.html
+  iterm2 中很容易在 profile 中配置，使用前面 tab 的 CWD
+  iterm2 的分屏还是比 terminal 漂亮多了
 
-http://railscasts.com/episodes/308-oh-my-zsh
+- iterm2 样式设置
+  真正要改变字体行间距这些样式，要使用
+  iTerm2 的 theme
 
-也用 Mac 自带的 terminal，可以在新的 tab 中保留当前目录。
-iterm2 中很容易在 profile 中配置
+  iterm2 使用
+  https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Misterioso.itermcolors
+  preferences -> profile -> color -> preset -> import
+  超级漂亮了
 
-iterm2 的分屏还是比 terminal 漂亮多了
+  - veritical line spacing
+    设置的越大，看起来越清爽，尤其在有中文的时候
 
-terminal 在 tab 之间切换的快捷键是 cmd+{} 而且不可更改
-iterm2 要改快捷键很方便
-
-# themes
-oh-my-zsh 的 theme 是用来控制 prompt 的，
-
-https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-
-真正要改变字体行间距这些样式，要使用
-terminal 的 theme
-
-iterm2 使用
-https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Misterioso.itermcolors
-preferences -> profile -> color -> preset -> import
-超级漂亮了
-
-- veritical line spacing
-  设置的越大，看起来越清爽，尤其在有中文的时候
-
-- 分屏后的 dim 我不想要
-  - preferences -> apperence -> dimming
+  - 分屏后的 dim 我不想要
+    - preferences -> apperence -> dimming
 
 - modules
-  https://github.com/sorin-ionescu/prezto
   git commit -al<tab> 列出匹配项，带有说明
+  - check README to know about this module
 
   - zsh-syntax-highlighting
     Requirements: zsh 4.3.17+.
 
     - update zsh
       http://zanshin.net/2013/09/03/how-to-use-homebrew-zsh-instead-of-max-os-x-default/
-      brew install zsh
+      - brew install zsh
+      - add the brew zsh to /etc/shells
 
-  - check README to know about this module
+        /bin/bash
+        /bin/csh
+        /bin/sh
+        /bin/tcsh
+        /bin/zsh
+        /usr/local/bin/zsh
+
+      - chsh -s /usr/local/bin/zsh
+      - check current shell version
+
+        ~ ❯❯❯ echo $SHELL
+        /usr/local/bin/zsh
+        ~ ❯❯❯ /usr/local/bin/zsh --version
+        zsh 5.0.6 (x86_64-apple-darwin12.5.0)
+
+    - 最后一行，加上 syntax-highlighting 这个
+
+      zstyle ':prezto:load' pmodule \
+      'environment' \
+      '...' \
+      'prompt' \
+      'syntax-highlighting'
+
+    - 就加上面一行就 OK 了，其他的内容没有必要改
+      zstyle ':prezto:module:syntax-highlighting' color 'yes' 这个用不着
+      也没有必要去 enable 其他的 highlighter，基本的完全够用
+
 
 
 -启动脚本出问题了
