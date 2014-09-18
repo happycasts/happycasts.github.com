@@ -23,6 +23,8 @@ terminal，用了一段时间感觉不太好。所以改成了用 iTerm2 。今�
 Cmd+' 呼叫出 iterm2 的 preferences 页，profile，选择当前你使用的
 profile，然后勾选 Reuse previous session's directory 。
 
+![](http://media.happycasts.net/pic/happycasts/preference.png)
+
 安装颜色主题。
   https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Misterioso.itermcolors
   preferences -> profile -> color -> preset -> import
