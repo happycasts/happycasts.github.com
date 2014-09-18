@@ -3,6 +3,8 @@ layout: post
 title: 美丽如苹果的命令行
 ---
 
+![](http://media.happycasts.net/pic/happycasts/apple.jpg)
+
 苹果的 Mac 系统自带的命令行终端，叫
 terminal，用了一段时间感觉不太好。所以改成了用 iTerm2 。今天的视频我来把 iTerm2
 配置一下，让命令行变得更好看。然后再安装
