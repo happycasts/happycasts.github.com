@@ -8,7 +8,7 @@ title: 美丽如苹果的命令行
 苹果的 Mac 系统自带的命令行终端，叫
 Terminal 。不过 [iTerm2](http://iterm2.com/) 的功能更为灵活丰富 。今天我来把 iTerm2
 配置一下，让命令行变得更好看。然后再安装
-[prezto](https://github.com/sorin-ionescu/prezto)
+[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 让命令行变得更好用。最终可以达成的效果是这样的，不错吧？
 
 ![](http://media.happycasts.net/pic/happycasts/endresult.png)
@@ -61,9 +61,7 @@ oh-my-zsh 使用的是zsh 。zsh 用起来跟 bash 基本是一样的，只是�
     $ git co<tab>
     co  -- alias for 'checkout'
     commit  -- record changes to repository
-    commit-tree  -- create new commit object
-    config  -- get and set repository or global options
-    count-objects  -- count unpacked objects and display their disk consumptio
+    ...
 
 可以看到命令补齐和基本使用说明，方便吧？
 
@@ -74,7 +72,6 @@ oh-my-zsh 使用的是zsh 。zsh 用起来跟 bash 基本是一样的，只是�
 
     # ZSH_THEME="robbyrussell"
     ZSH_THEME="cloud"
-
 
 挑选自己喜欢的主题到：<https://github.com/robbyrussell/oh-my-zsh/wiki/Themes>
 。
