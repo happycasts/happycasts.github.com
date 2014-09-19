@@ -32,13 +32,15 @@ profile，然后勾选 Reuse previous session's directory 。
 <!-- preferences -> keys -> system wide hot key to show/hide iTerm2: Cmd+Ctrl+t
 -->
 
-# iTerm2  安装颜色主题
+# iTerm2  颜色主题和字体样式
+
 来 <http://iterm2colorschemes.com/> 选择一款自己喜欢的颜色主题吧，我自己用的是
 [Misterioso](https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Misterioso.itermcolors)
-。到 preferences -> profile -> color -> preset 然后 import 进来就好了。
+。到 preferences -> profile 新建一个 profile 叫 peter，设置为 default 。到
+color -> preset 然后 import 进 Misterioso 就好了。
 
-设置行间距。 到我的默认 profile 下，text -> change font，更改 charater spacing
--> vitical 的值为 1.5
+设置字体和行间距。 到我的默认 profile 下，text -> change font，字体设置为
+menlo 14px 。更改 charater spacing -> vitical 的值为 1.5
 。我的感觉是行间距设置的越大，看起来越清爽，尤其在有中文的时候。这一点我是参考了 laracasts 的风格，看看<https://laracasts.com/series/how-to-be-awesome-in-phpstorm/episodes/2> 5:30 处。
 
 # zsh 配置框架 oh-my-zsh
