@@ -28,6 +28,10 @@ profile，然后勾选 Reuse previous session's directory 。
 
 ![](http://media.happycasts.net/pic/happycasts/preference.png)
 
+<!-- Cmd+enter to go in/out fullscreen -->
+<!-- preferences -> keys -> system wide hot key to show/hide iterm: Cmd+Ctrl+t
+-->
+
 # iTerm2 安装颜色主题
 来 <http://iterm2colorschemes.com/> 选择一款自己喜欢的颜色主题吧，我自己用的是
 [Misterioso](https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Misterioso.itermcolors)
@@ -67,8 +71,13 @@ oh-my-zsh 使用的是zsh 。zsh 用起来跟 bash 基本是一样的，只是�
     # ZSH_THEME="robbyrussell"
     ZSH_THEME="cloud"
 
+
 挑选自己喜欢的主题到：<https://github.com/robbyrussell/oh-my-zsh/wiki/Themes>
 。
+
+oh-my-zsh 每两周会自动提醒我要更新，我觉得挺讨厌的，所以 uncomment 这一行：
+
+    # DISABLE_AUTO_UPDATE="true"
 
 # 结语
 oh-my-zsh 的功能还很多，raiilcasts 上有一个 oh-my-zsh 的视频： <http://railscasts.com/episodes/308-oh-my-zsh> 。
