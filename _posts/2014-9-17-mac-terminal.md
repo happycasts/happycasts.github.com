@@ -48,7 +48,7 @@ profile，然后勾选 Reuse previous session's directory 。
 
 安装过程参考这里的 README：<https://github.com/robbyrussell/oh-my-zsh> 。 
 
-   $ curl -L http://install.ohmyz.sh | sh
+    $ curl -L http://install.ohmyz.sh | sh
 
 oh-my-zsh 使用的是zsh 。zsh 用起来跟 bash 基本是一样的，只是比 bash
 多一些很实用的功能。
