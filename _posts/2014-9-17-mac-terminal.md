@@ -29,7 +29,7 @@ profile，然后勾选 Reuse previous session's directory 。
 ![](http://media.happycasts.net/pic/happycasts/preference.png)
 
 <!-- Cmd+enter to go in/out fullscreen -->
-<!-- preferences -> keys -> system wide hot key to show/hide iterm: Cmd+Ctrl+t
+<!-- preferences -> keys -> system wide hot key to show/hide iTerm2: Cmd+Ctrl+t
 -->
 
 # iTerm2 安装颜色主题
