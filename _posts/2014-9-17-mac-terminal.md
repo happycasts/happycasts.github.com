@@ -6,14 +6,17 @@ title: 美丽如苹果的命令行
 ![](http://media.happycasts.net/pic/happycasts/apple.jpg)
 
 苹果的 Mac 系统自带的命令行终端，叫
-Terminal ，用了一段时间感觉不太好。所以改成了用 [iTerm2](http://iterm2.com/) 。今天我来把 iTerm2
+Terminal 。不过 [iTerm2](http://iterm2.com/) 的功能更为灵活丰富 。今天我来把 iTerm2
 配置一下，让命令行变得更好看。然后再安装
 [prezto](https://github.com/sorin-ionescu/prezto)
 让命令行变得更好用。最终可以达成的效果是这样的，不错吧？
 
 ![](http://media.happycasts.net/pic/happycasts/endresult.png)
 
-# iTerm2 可以弄得很漂亮
+# iTerm2 安装和基本自定制
+
+安装 iTerm2 是超级简单地，到 <http://iterm2.com/downloads.html>
+找到合适自己的版本，下载解压缩，放到 Applications 里面就可以了。
 
 使用 Cmd-D 来分屏操作。在这里 <http://iterm2.com/features.html> 可以看到 iTerm2
 提供的各种功能，我觉得我最喜欢的就是这个分屏了。
@@ -25,53 +28,36 @@ profile，然后勾选 Reuse previous session's directory 。
 
 ![](http://media.happycasts.net/pic/happycasts/preference.png)
 
-安装颜色主题。来 <http://iterm2colorschemes.com/>
-选择一款自己喜欢的颜色主题吧，我自己用的是
+# 安装颜色主题
+来 <http://iterm2colorschemes.com/> 选择一款自己喜欢的颜色主题吧，我自己用的是
 [Misterioso](https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Misterioso.itermcolors)
 。到 preferences -> profile -> color -> preset 然后 import 进来就好了。
 
-设置行间距。 到我的默认 profile 下，text -> change font，更改 charater spacing -> vitical 的值为 1.5 。我的感觉是行间距设置的越大，看起来越清爽，尤其在有中文的时候 
+设置行间距。 到我的默认 profile 下，text -> change font，更改 charater spacing
+-> vitical 的值为 1.5
+。我的感觉是行间距设置的越大，看起来越清爽，尤其在有中文的时候。这一点我是参考了 laracasts 的风格，看看<https://laracasts.com/series/how-to-be-awesome-in-phpstorm/episodes/2> 5:30 处。
 
-# zsh 配置框架 prezto
+# zsh 配置框架 oh-my-zsh
+<!-- prezto: cd ~/tab gave me shit, so I give it up -->
 
-安装过程参考这里的 README：<https://github.com/sorin-ionescu/prezto> 。 prezto 使用的是zsh 。zsh 用起来跟 bash 基本是一样的，只是比 bash
-多一些很实用的功能。和 prezto 比较类似的一个框架是 oh-my-zsh，raiilcasts 上有一个介绍视频：
-<http://railscasts.com/episodes/308-oh-my-zsh> 。
+安装过程参考这里的 README：<https://github.com/robbyrussell/oh-my-zsh> 。 
+
+   $ curl -L http://install.ohmyz.sh | sh
+
+oh-my-zsh 使用的是zsh 。zsh 用起来跟 bash 基本是一样的，只是比 bash
+多一些很实用的功能。
 
 配置文件。使用了 zsh 之后，原来 bash 的 .profile .bashrc
-等都不加载了，没事，都直接写到 .zshrc 中就好了。 .zprestorc  中放
-prezto 自己的配置。其他的 .zshenv .zlogin .zprofile
-等等不用管。
+等都不加载了，没事，都直接写到 .zshrc 中就好了。 
 
-更改主题。prezto 的主题主要就是改变命令提示符的格式。可以用 `prompt -l`
-命令来查看都有哪些可以用的 theme 。.zpreztorc 中相应的设置在这一行上：
+更改主题。oh-my-zsh 的主题就是改变命令提示符的格式。在 .zshrc
+文件中，我把默认的 robbyrussell 改成了 cloud ，
 
-    zstyle ':prezto:module:prompt' theme 'sorin'
+    # ZSH_THEME="robbyrussell"
+    ZSH_THEME="cloud"
 
-可以修改为你自己喜欢的一个主题。
-
-有了 prezto 就可以通过启用它的各个模块来实现一些很帅的功能。这里我来安装一下代码高亮模块。
-
-Mac 系统上自带的zsh 比较老了，代码高亮模块需要我去升级 zsh
-。参考：<http://zanshin.net/2013/09/03/how-to-use-homebrew-zsh-instead-of-max-os-x-default/>
+挑选自己喜欢的主题到：<https://github.com/robbyrussell/oh-my-zsh/wiki/Themes>
 。
-然后就可以启用高亮模块。打开 .zprestorc 文件。最后一行，加上 syntax-highlighting
-
-      zstyle ':prezto:load' pmodule \
-      'environment' \
-      '...' \
-      'prompt' \
-      'syntax-highlighting'
-
-![](http://media.happycasts.net/pic/happycasts/prezto.png)
-
-这样启动一个新的 shell 试一下
-
-    $ echo "hello"
-
-可以看到高亮效果。同时如果输入一个不存在的命令，字体显示为红色。如果是系统可以识别的命令，则为绿色。
-
 
 # 结语
-
-prezto 的功能还很多，各个模块各自的作用可以参考模块目录中 README 文件。
+oh-my-zsh 的功能还很多，raiilcasts 上有一个 oh-my-zsh 的视频： <http://railscasts.com/episodes/308-oh-my-zsh> 。
