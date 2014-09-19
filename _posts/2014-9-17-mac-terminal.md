@@ -28,7 +28,7 @@ profile，然后勾选 Reuse previous session's directory 。
 
 ![](http://media.happycasts.net/pic/happycasts/preference.png)
 
-# 安装颜色主题
+# iTerm2 安装颜色主题
 来 <http://iterm2colorschemes.com/> 选择一款自己喜欢的颜色主题吧，我自己用的是
 [Misterioso](https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Misterioso.itermcolors)
 。到 preferences -> profile -> color -> preset 然后 import 进来就好了。
@@ -47,11 +47,22 @@ profile，然后勾选 Reuse previous session's directory 。
 oh-my-zsh 使用的是zsh 。zsh 用起来跟 bash 基本是一样的，只是比 bash
 多一些很实用的功能。
 
-配置文件。使用了 zsh 之后，原来 bash 的 .profile .bashrc
-等都不加载了，没事，都直接写到 .zshrc 中就好了。 
+比如，如果我进入一个 git
+仓库，这时候就可以在命令提示符部分看到分支了。如果我敲
 
-更改主题。oh-my-zsh 的主题就是改变命令提示符的格式。在 .zshrc
-文件中，我把默认的 robbyrussell 改成了 cloud ，
+    $ git co<tab>
+    co  -- alias for 'checkout'
+    commit  -- record changes to repository
+    commit-tree  -- create new commit object
+    config  -- get and set repository or global options
+    count-objects  -- count unpacked objects and display their disk consumptio
+
+可以看到命令补齐和基本使用说明，方便吧？
+
+# oh-my-zsh 更改主题
+使用了 zsh 之后，原来 bash 的 .profile .bashrc
+等都不加载了，没事，各种配置都直接写到 .zshrc 中就好了。 oh-my-zsh
+的主题就是改变命令提示符的格式。在 .zshrc 文件中，我把默认的 robbyrussell 改成了 cloud ，
 
     # ZSH_THEME="robbyrussell"
     ZSH_THEME="cloud"
