@@ -32,7 +32,7 @@ profile，然后勾选 Reuse previous session's directory 。
 <!-- preferences -> keys -> system wide hot key to show/hide iTerm2: Cmd+Ctrl+t
 -->
 
-# iTerm2 安装颜色主题
+# iTerm2  安装颜色主题
 来 <http://iterm2colorschemes.com/> 选择一款自己喜欢的颜色主题吧，我自己用的是
 [Misterioso](https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Misterioso.itermcolors)
 。到 preferences -> profile -> color -> preset 然后 import 进来就好了。
@@ -43,6 +43,8 @@ profile，然后勾选 Reuse previous session's directory 。
 
 # zsh 配置框架 oh-my-zsh
 <!-- prezto: cd ~/tab gave me shit, so I give it up -->
+
+![](http://media.happycasts.net/pic/happycasts/ohmyzsh.png)
 
 安装过程参考这里的 README：<https://github.com/robbyrussell/oh-my-zsh> 。 
 
