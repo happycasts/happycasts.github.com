@@ -2,6 +2,31 @@
 layout: post
 title: Elasticsearch with rails
 ---
+[github](http://www.elasticsearch.org/case-study/github/) ，stacketoverflow 和 basecamp 都在用 Elasticsearch(es) 。在 <http://happycasts.net/episodes/72> 中我介绍过 happycasts 当时的采用的搜索方案是 sunspot 和 solr 。但是对比一下 solr 和 es 的官网，一眼看出 [solr](http://lucene.apache.org/solr/) 是非常不关心 programmer happyness 的，而 [es](http://www.elasticsearch.org/) 的文档系统就非常贴心，还有很多精彩的视频。
+
+这两天，我已经把 happycasts 切换到了 es 。今天的视频的 demo 是 [Billie 做的这个](https://github.com/billie66/esdemo) 。
+
+<!-- 对比一下 solr 和 es
+
+  solr 和 es 看起来是没法比了，理由如下
+
+ - 功能点上，比较类似 solr 也比较多，但是还是认为 es 要稍微强一点
+ - star 数量不在一共等级上
+   - https://github.com/apache/solr 最近更新是8年前！一共300多 star
+   - https://github.com/apache/lucene-solr 也不过有几百个 star
+   - https://github.com/sunspot/sunspot 2097 star
+   - https://github.com/elasticsearch/elasticsearch 8400 star
+ - 文档
+   - http://www.elasticsearch.org/case-studies/ 很可爱，有视频，文档也丰富
+   - http://lucene.apache.org/solr/solrnews.html 让我想起了甲骨文，大量文字堆叠，一点没有 programmer happyness 的概念。
+
+ - github stackoverflow basecamp 都用 es
+
+ - elk stack
+   - http://www.elasticsearch.org/overview/kibana
+
+总之，es 完胜，solr 已经不值得推荐了
+-->
 
 ### 在 ubuntu 1204 上安装 elasticsearch 1.2.1
 
@@ -18,13 +43,9 @@ java -version
 
 最后一步操作 `java -version` 可以查看所安装的 JDK 的版本是否正确。
 
-以上信息来源请参考 [elasticsearch setup](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup.html)。
+java version "1.7.0_67" 对吗？
 
-另外，如果你想使用 OpenJDK 也是可以的，运行的安装命令是（本人采用的方法）：
-
-~~~
-sudo apt-get install openjdk-7-jre
-~~~
+以上信息来源请参考 [elasticsearch setup](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup.html)。页面上说 openjdk 也可以，但是网上很多人说这个会引起一些不明显的 bug 。
 
 接下来要做的工作就是下载 elasticsearch，下载地址是 <http://www.elasticsearch.org/overview/elkdownloads/>，这里提供了
 几种不同类型的安装包，从中选择 debian 安装包 <https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.1.deb>。
@@ -94,7 +115,7 @@ $ curl -XPUT 'localhost:9200/users?pretty'
 ~~~
 
 若命令的输出结果如上所示，则说明成功创建了 users 索引。这里 `pretty` 参数是为了美化输出结果。
-数据库建好之后，就可以填充数据了。注意填充数据的时候，要指定数据将要存储在哪一个 type 下，这里指定为 user
+数据库建好之后，就可以填充数据了。注意填充数据的时候，要指定数据将要存储在哪一个 type 下，这里指定为 user ，执行
 
 ~~~
 $ curl -XPUT 'localhost:9200/users/user/1?pretty' -d '
@@ -102,6 +123,11 @@ $ curl -XPUT 'localhost:9200/users/user/1?pretty' -d '
   "name": "Tom Lee",
   "intro": "a coder"
 }'
+~~~
+
+输出如下：
+
+~~~
 {
   "_index" : "users",
   "_type" : "user",
@@ -120,9 +146,8 @@ $ curl -XGET 'localhost:9200/users/user/1?pretty'
 
 上述内容演示了 elsaticsearch 创建数据以及获取数据的功能，除此之外 elasticsearch 支持 REST API，还可以对数据进行删除，修改，搜索，排序等操作，功能很强大，
 详细[参考文档](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_exploring_your_cluster.html)。
-若需要某个功能，请查询官方文档。
 
-### 在 Rails 应用中使用 Elasticsearch 
+### 在 Rails 应用中使用 Elasticsearch
 
 下面介绍一下如何在 rails 应用中使用 elasticsearch，来体验 elasticsearch 的搜索功能。比如说有一个 rails
 应用的名字为 esdemo, 作用是存储用户的一些信息（用户名 name 和 个人简介 intro），现在就要搜索这些用户信息，找到满足条件的用户。
@@ -152,7 +177,7 @@ def search
 end
 ~~~
 
-这里就用到 elasticsearch 的搜索功能了，通过 
+这里就用到 elasticsearch 的搜索功能了，通过
 [query language](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_introducing_the_query_language.html)
 来实现。这里的 `multi_match` [查询方式](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-queries.html)
 可以选择搜索的字段，实例中搜索用户的名字和简介。
@@ -191,7 +216,7 @@ $ bundle exec rake environment elasticsearch:import:model CLASS='User' FORCE=y
 这样 users 这张表中的数据就导入到 elasticsearch 的 users 索引中了。打开浏览器，在地址栏中输入：
 
 ~~~
-http://localhost:9200/users/user/1?pretty 
+http://localhost:9200/users/user/1?pretty
 ~~~
 
 就可以看到索引之后的数据格式了，这里显示的是用户 id 为1的用户信息，这条文档存储在 users 索引中的 user 类型下。
@@ -244,8 +269,8 @@ sudo cp -rf ik /etc/elasticsearch
 
 ~~~
 index:
-  analysis:                   
-    analyzer:      
+  analysis:
+    analyzer:
       ik:
         alias: [ik_analyzer]
         type: org.elasticsearch.index.analysis.IkAnalyzerProvider
@@ -255,7 +280,7 @@ index:
       ik_smart:
         type: ik
         use_smart: true
-~~~ 
+~~~
 
 保存文件，然后重新启动 elasticsearch，才能使所有配置生效。
 

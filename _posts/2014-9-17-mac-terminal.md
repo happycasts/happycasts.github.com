@@ -48,7 +48,7 @@ menlo 14px 。更改 charater spacing -> vitical 的值为 1.5
 
 ![](http://media.happycasts.net/pic/happycasts/ohmyzsh.png)
 
-安装过程参考这里的 README：<https://github.com/robbyrussell/oh-my-zsh> 。 
+安装过程参考这里的 README：<https://github.com/robbyrussell/oh-my-zsh> 。
 
     $ curl -L http://install.ohmyz.sh | sh
 
