@@ -2,6 +2,9 @@
 layout: post
 title: Elasticsearch with rails
 ---
+
+<!-- this deprecate ep#72 -->
+
 [github](http://www.elasticsearch.org/case-study/github/) ，stacketoverflow 和 basecamp 都在用 Elasticsearch(es) 。在 <http://happycasts.net/episodes/72> 中我介绍过 happycasts 当时的采用的搜索方案是 sunspot 和 solr 。但是对比一下 solr 和 es 的官网，一眼看出 [solr](http://lucene.apache.org/solr/) 是非常不关心 programmer happyness 的，而 [es](http://www.elasticsearch.org/) 的文档系统就非常贴心，还有很多精彩的视频。
 
 这两天，我已经把 happycasts 切换到了 es 。今天的视频的 demo 是 [Billie 做的这个](https://github.com/billie66/esdemo) 。
@@ -37,18 +40,17 @@ title: Elasticsearch with rails
 ~~~
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
-sudo apt-get install oracle-java7-installer
+sudo apt-get install oracle-java8-installer
 java -version
 ~~~
 
 最后一步操作 `java -version` 可以查看所安装的 JDK 的版本是否正确。
 
-java version "1.7.0_67" 对吗？
-
 以上信息来源请参考 [elasticsearch setup](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup.html)。页面上说 openjdk 也可以，但是网上很多人说这个会引起一些不明显的 bug 。
 
 接下来要做的工作就是下载 elasticsearch，下载地址是 <http://www.elasticsearch.org/overview/elkdownloads/>，这里提供了
 几种不同类型的安装包，从中选择 debian 安装包 <https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.1.deb>。
+
 
 下载完毕之后，就需要安装了，运行命令：
 
@@ -103,6 +105,8 @@ index 类似于 mysql 中的数据库，type 相当于数据库中的一张表�
 这样关于 index，type，document 三者之间的关系也一目了然了。一个 index 中可以有零或多个 type，
 一个 type 中可以有成千上万条 document。
 
+peter: 不太明白 type : user 在这里发挥的作用
+
 概念弄明白之后，就要实际操作了，假定我们想把一些用户信息存储到 elasticsearch 的数据库中，那到底如何操作呢？
 
 首先要创建一个名字为 users 的 index，在命令行中执行：
@@ -146,6 +150,10 @@ $ curl -XGET 'localhost:9200/users/user/1?pretty'
 
 上述内容演示了 elsaticsearch 创建数据以及获取数据的功能，除此之外 elasticsearch 支持 REST API，还可以对数据进行删除，修改，搜索，排序等操作，功能很强大，
 详细[参考文档](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_exploring_your_cluster.html)。
+
+### 使用 json API 来操作 es
+
+动手操作一下，看看 elasticsearch-rails elasticsearch-model 到底干了什么
 
 ### 在 Rails 应用中使用 Elasticsearch
 
@@ -363,3 +371,7 @@ curl -XGET 'http://localhost:9200/users/_mapping?pretty'
 ~~~
 
 关于 elasticsearch 的基本使用就介绍这么多，更多需求请查阅文档。
+
+### 参考
+
+<http://railscasts.com/episodes/306-elasticsearch-part-1> 中介绍了如何在 Mac 系统上安装使用 es
