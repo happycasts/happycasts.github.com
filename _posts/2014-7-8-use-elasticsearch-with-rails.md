@@ -9,27 +9,6 @@ title: Elasticsearch with rails
 
 这两天，我已经把 happycasts 切换到了 es 。今天的视频的 demo 是 [Billie 做的这个](https://github.com/billie66/esdemo) 。
 
-<!-- 对比一下 solr 和 es
-
-  solr 和 es 看起来是没法比了，理由如下
-
- - 功能点上，比较类似 solr 也比较多，但是还是认为 es 要稍微强一点
- - star 数量不在一共等级上
-   - https://github.com/apache/solr 最近更新是8年前！一共300多 star
-   - https://github.com/apache/lucene-solr 也不过有几百个 star
-   - https://github.com/sunspot/sunspot 2097 star
-   - https://github.com/elasticsearch/elasticsearch 8400 star
- - 文档
-   - http://www.elasticsearch.org/case-studies/ 很可爱，有视频，文档也丰富
-   - http://lucene.apache.org/solr/solrnews.html 让我想起了甲骨文，大量文字堆叠，一点没有 programmer happyness 的概念。
-
- - github stackoverflow basecamp 都用 es
-
- - elk stack
-   - http://www.elasticsearch.org/overview/kibana
-
-总之，es 完胜，solr 已经不值得推荐了
--->
 
 ### 在 ubuntu 1204 上安装 elasticsearch 1.2.1
 
@@ -38,25 +17,56 @@ title: Elasticsearch with rails
 但你自己可以手动安装 Oracle JDK，在命令行中执行以下操作:
 
 ~~~
+sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
-sudo apt-get install oracle-java8-installer
+sudo apt-get install oracle-java7-installer
 java -version
 ~~~
 
+on linode 1204
+
+
+```
+sudo apt-get update
+sudo apt-get install openjdk-7-jre-headless
+```
+
+<!-- wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.3.2.deb
+在 linode 服务器上都不行
+ -->
+
+ <http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup-repositories.html>
+
+这里有添加 apt 仓库的办法。
+从安装时的信息可以看出，也是 1.3.2 的包。
+
+http://linode-esdemo:9200/ 看一下，yeah...
+
+```
+{
+  "status" : 200,
+  "name" : "Nico Minoru",
+  "version" : {
+    "number" : "1.3.2",
+    "build_hash" : "dee175dbe2f254f3f26992f5d7591939aaefd12f",
+    "build_timestamp" : "2014-08-13T14:29:30Z",
+    "build_snapshot" : false,
+    "lucene_version" : "4.9"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
+
+
 最后一步操作 `java -version` 可以查看所安装的 JDK 的版本是否正确。
 
-以上信息来源请参考 [elasticsearch setup](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup.html)。页面上说 openjdk 也可以，但是网上很多人说这个会引起一些不明显的 bug 。
+以上信息来源请参考 [elasticsearch setup](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup.html)。
 
 接下来要做的工作就是下载 elasticsearch，下载地址是 <http://www.elasticsearch.org/overview/elkdownloads/>，这里提供了
 几种不同类型的安装包，从中选择 debian 安装包 <https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.1.deb>。
 
 
-下载完毕之后，就需要安装了，运行命令：
-
-~~~
-sudo dpkg -i elasticsearch-1.2.1.deb
-~~~
 
 启动，停止，重新启动 elasticsearch 服务：
 
@@ -70,29 +80,7 @@ sudo service elasticsearch start|stop|restart
 sudo update-rc.d elasticsearch defaults 95 10
 ~~~
 
-检测一下 elasticsearch 服务是否在运行：
 
-~~~
-$ sudo service elasticsearch status
-* elasticsearch is running
-~~~
-
-或者是打开浏览器，访问本地 9200 端口 `http://localhost:9200`，若看到如下内容，则说明 elasticsearch 已经成功运行起来了。
-
-~~~
-  {
-  "status" : 200,
-  "name" : "Worm",
-  "version" : {
-    "number" : "1.2.1",
-    "build_hash" : "6c95b759f9e7ef0f8e17f77d850da43ce8a4b364",
-    "build_timestamp" : "2014-06-03T15:02:52Z",
-    "build_snapshot" : false,
-    "lucene_version" : "4.8"
-  },
-  "tagline" : "You Know, for Search"
-}
-~~~
 
 ### Elasticsearch 基本使用
 
@@ -110,13 +98,20 @@ peter: 不太明白 type : user 在这里发挥的作用
 概念弄明白之后，就要实际操作了，假定我们想把一些用户信息存储到 elasticsearch 的数据库中，那到底如何操作呢？
 
 首先要创建一个名字为 users 的 index，在命令行中执行：
+在我自己本地执行：
 
 ~~~
-$ curl -XPUT 'localhost:9200/users?pretty'
+$ curl -XPUT 'linode-esdemo:9200/users?pretty'
 {
   "acknowledged" : true
 }
 ~~~
+
+当然也可以在服务器上执行
+
+```
+$ curl -XPUT 'localhost:9200/users?pretty'
+```
 
 若命令的输出结果如上所示，则说明成功创建了 users 索引。这里 `pretty` 参数是为了美化输出结果。
 数据库建好之后，就可以填充数据了。注意填充数据的时候，要指定数据将要存储在哪一个 type 下，这里指定为 user ，执行
@@ -155,7 +150,13 @@ $ curl -XGET 'localhost:9200/users/user/1?pretty'
 
 动手操作一下，看看 elasticsearch-rails elasticsearch-model 到底干了什么
 
+http://joelabrahamsson.com/elasticsearch-101/
+
 ### 在 Rails 应用中使用 Elasticsearch
+
+https://github.com/elasticsearch/elasticsearch-rails
+
+这里有一条命令创建 es demo 程序的。
 
 下面介绍一下如何在 rails 应用中使用 elasticsearch，来体验 elasticsearch 的搜索功能。比如说有一个 rails
 应用的名字为 esdemo, 作用是存储用户的一些信息（用户名 name 和 个人简介 intro），现在就要搜索这些用户信息，找到满足条件的用户。
@@ -228,149 +229,6 @@ http://localhost:9200/users/user/1?pretty
 ~~~
 
 就可以看到索引之后的数据格式了，这里显示的是用户 id 为1的用户信息，这条文档存储在 users 索引中的 user 类型下。
-
-### 添加中文分词器 ik
-
-Elasticsearch 默认使用的分词器是 standard，但是对中文的支持不准确。举个例子，如果要搜索 `中文`，我们期望的结果是包含
-`中文`这个词组的匹配项，但 elasticsearch 会按单个字来匹配，出现很多无用的内容。解决这个问题的方法就是用更精确的中文分词器，
-网上流行的是 ik，[源码地址](https://github.com/medcl/elasticsearch-analysis-ik)。ik 可以做为插件安装到 elastic 中。
-
-首先要知道 elastic 的安装路径以及配置文件所在位置，在 Ubuntu 中运行命令：
-
-~~~
-dpkg -l | grep elasticsearch
-~~~
-
-这样就找到了与 elasticsearch 相关的所有文件了，[官方文档的默认配置](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup-service.html)，
-安装路径为 `/usr/share/elasticsearch`，配置文件 `elasticsearch.yml` 所在的目录 `/etc/elasticsearch`
-
-安装 ik 插件，插件名字 `elasticsearch-analysis-ik-1.2.6.jar`，
-[下载地址](https://github.com/medcl/elasticsearch-rtf/blob/master/plugins/analysis-ik/elasticsearch-analysis-ik-1.2.6.jar)
-
-~~~
-cd ~/Download
-wget https://github.com/medcl/elasticsearch-rtf/blob/master/plugins/analysis-ik/elasticsearch-analysis-ik-1.2.6.jar
-~~~
-
-ik 插件下载完毕后，只要把它复制到 `/usr/share/elasticsearch/plugins` 目录下，就可以了
-
-~~~
-sudo cp ~/Download/elasticsearch-analysis-ik-1.2.6.jar /usr/share/elasticsearch/plugins/
-~~~
-
-工作仍没完成，还得安装 ik 字典文件 ik.zip，[下载地址](http://github.com/downloads/medcl/elasticsearch-analysis-ik/ik.zip)
-
-~~~
-cd ~/Download
-wget http://github.com/downloads/medcl/elasticsearch-analysis-ik/ik.zip
-~~~
-
-解压 ik.zip，并把解压后的目录文件复制到 `/etc/elasticsearch` 下，
-
-~~~
-unzip ik.zip
-sudo cp -rf ik /etc/elasticsearch
-~~~
-
-为了让 ik 插件生效，还需要修改 elasticsearch 的配置文件，打开文件 `/etc/elasticsearch/elasticsearch.yml`，
-在文件的最后，添加以下语句：
-
-~~~
-index:
-  analysis:
-    analyzer:
-      ik:
-        alias: [ik_analyzer]
-        type: org.elasticsearch.index.analysis.IkAnalyzerProvider
-      ik_max_word:
-        type: ik
-        use_smart: false
-      ik_smart:
-        type: ik
-        use_smart: true
-~~~
-
-保存文件，然后重新启动 elasticsearch，才能使所有配置生效。
-
-~~~
-sudo service elasticsearch restart
-~~~
-
-下面用 elastic 的 API 测试一下，ik 插件其否安装成功了。先创建一个新的 index，名字为 test
-
-~~~
-$ curl -XPUT 'http://localhost:9200/test/'
-{"acknowledged":true}
-~~~
-
-然后打开浏览器，访问下面的地址
-
-~~~
-http://localhost:9200/test/_analyze?analyzer=ik&text=中文分词&pretty
-~~~
-
-输出结果：
-
-~~~
-{
-  "tokens" : [ {
-    "token" : "中文",
-    "start_offset" : 0,
-    "end_offset" : 2,
-    "type" : "CN_WORD",
-    "position" : 1
-  }, {
-    "token" : "分词",
-    "start_offset" : 2,
-    "end_offset" : 4,
-    "type" : "CN_WORD",
-    "position" : 2
-  } ]
-}
-~~~
-
-若得到这样的结果，证明 ik 插件已经工作了。
-
-### rails 中配置 ik 分词器
-
-首先需要在 model 文件中配置数据的 mapping 方式，假定有一个 User model，那就需要在 user.rb 文件中添加这些代码：
-
-~~~
-settings index: { number_of_shards: 3 } do
-  mappings do
-    indexes :name,  type: 'string', index: "not_analyzed"
-    indexes :intro, type: 'string', analyzer: 'ik'
-  end
-end
-~~~
-
-通过 `settings` 和 `mappings` 接口来设置用户的 intro 字段采用的分词器为 ik，
-[参考文档](https://github.com/elasticsearch/elasticsearch-rails/tree/master/elasticsearch-model)。
-
-保存文件，要重新索引数据，新的设置才能生效，运行命令：
-
-~~~
-$ bundle exec rake environment elasticsearch:import:model CLASS='User' FORCE=y
-[IMPORT] Done
-~~~
-
-另外可以在 rails console 中查看某个 index 的 settings 和 mappings, 以 User model 为例：
-
-~~~
-rails c
-User.settings
-User.mappings
-~~~
-
-也可以通过 elastic 的 API 来查看，[get settings](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/indices-get-settings.html)
-和 [get mapping](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/indices-get-mapping.html)，以 users index 为例：
-
-~~~
-curl -XGET 'http://localhost:9200/users/_settings?pretty'
-curl -XGET 'http://localhost:9200/users/_mapping?pretty'
-~~~
-
-关于 elasticsearch 的基本使用就介绍这么多，更多需求请查阅文档。
 
 ### 参考
 
