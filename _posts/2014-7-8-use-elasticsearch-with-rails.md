@@ -114,21 +114,27 @@ $ curl -XGET 'localhost:9200/users/user/1?pretty'
 
 ### 在 Rails 应用中使用 Elasticsearch
 
-现在这里有一个正在运行的简单的 rails 程序，[查看代码](https://github.com/happycasts/episode-104-demo/)。可以创建包含用户 name 和 intro 两项内容的用户条目。现在我要给这个应用加上 es 实现搜索功能。
+现在这里有一个正在运行的简单的 rails 程序，可以创建包含用户 name 和 intro 两项内容的用户条目。现在我要给这个应用加上 es 实现搜索功能。
 
-首先在 Gemfile 文件中添加[需要的 gem](https://github.com/happycasts/episode-104-demo/commit/df1dcc8973012e195532f0829add822b52b5116c)
+首先在 Gemfile 文件中添加需要的 gem 。
+
+[代码](https://github.com/happycasts/episode-104-demo/commit/df1dcc8973012e195532f0829add822b52b5116c)
 
 然后运行 `bundle install` ，就好了 。
 
 
-下一步，首页中添加一个搜索框，给 search 添加一个需要的路由，再把 css 样式弄好看一些。这些是[需要的代码](https://github.com/happycasts/episode-104-demo/commit/99043a1bbb159f575ae0a2f794768972fc89b390) 。
+下一步，首页中添加一个搜索框，给 search 添加一个需要的路由，再把 css 样式弄好看一些。
+
+[代码](https://github.com/happycasts/episode-104-demo/commit/99043a1bbb159f575ae0a2f794768972fc89b390)
 
 
 接下来就可以在 rails 使用 es 来搜索了。在 user.rb 中添加对 es 功能的导入，在 users_controller 中添加 search 方法。
 
 其中用到的 `multi_match` 可以选择搜索的字段，实例中搜索用户的名字和简介。[参考文档](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html) 。
 
-还需要添加一个  app/views/users/search.html.erb 文件，来展示最终的搜索结果。代码在[这里](https://github.com/happycasts/episode-104-demo/commit/c2814a6b0f2bf743f72cbc8b44285463870f87d6)。
+还需要添加一个  app/views/users/search.html.erb 文件，来展示最终的搜索结果。
+
+[代码](https://github.com/happycasts/episode-104-demo/commit/c2814a6b0f2bf743f72cbc8b44285463870f87d6)。
 
 
 现在搜索一下，发现新添加的数据已经可以找到了。但是如果有老数据，需要手动 index 一下。到 `lib/tasks` 目录下
