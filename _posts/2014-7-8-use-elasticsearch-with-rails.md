@@ -65,35 +65,22 @@ xxx.xxx.xxx.xxx linode-esdemo
 
 ### Elasticsearch 基本使用
 
-Elasticsearch 安装成功之后，就要使用它了。在使用 elasticsearch 之前，有一点要铭记在心，ealsticsearch 有它自己的一套规范，
-它只能搜索满足这套规范的数据集（姑且称为数据库），这样就涉及到了几个基本概念，例如 `index`， `type`，
-`document` 等，具体的参考文档[查看这里](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_basic_concepts.html)。
+几个基本概念 `index`， `type`，
+`document` 要知道，参考文档[查看这里](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_basic_concepts.html)。
 
 如果你使用过其它类型的数据库，比如说 mysql，就不难理解 elasticsearch 中的 index，type，document 这几个术语了。
 index 类似于 mysql 中的数据库，type 相当于数据库中的一张表（table），而 document 则可以认为是表中的一条记录。
 这样关于 index，type，document 三者之间的关系也一目了然了。一个 index 中可以有零或多个 type，
-一个 type 中可以有成千上万条 document。
+一个 type 中可以有成千上万条 document 。
 
+es 提供强大的 REST API，可以实现 CRUD 操作。
 
-概念弄明白之后，就要实际操作了，假定我们想把一些用户信息存储到 elasticsearch 的数据库中，那到底如何操作呢？
-
-首先要创建一个名字为 users 的 index，在命令行中执行：
-在我自己本地执行：
+要创建一个名字为 users 的 index，在我本地机器中执行：
 
 ~~~
 $ curl -XPUT 'linode-esdemo:9200/users?pretty'
-{
-  "acknowledged" : true
-}
 ~~~
 
-当然也可以在服务器上执行
-
-```
-$ curl -XPUT 'localhost:9200/users?pretty'
-```
-
-若命令的输出结果如上所示，则说明成功创建了 users 索引。这里 `pretty` 参数是为了美化输出结果。
 数据库建好之后，就可以填充数据了。注意填充数据的时候，要指定数据将要存储在哪一个 type 下，这里指定为 user ，执行
 
 ~~~
@@ -123,19 +110,11 @@ $ curl -XPUT 'localhost:9200/users/user/1?pretty' -d '
 $ curl -XGET 'localhost:9200/users/user/1?pretty'
 ~~~
 
-上述内容演示了 elsaticsearch 创建数据以及获取数据的功能，除此之外 elasticsearch 支持 REST API，还可以对数据进行删除，修改，搜索，排序等操作，功能很强大，
-详细[参考文档](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_exploring_your_cluster.html)。
-
-<http://joelabrahamsson.com/elasticsearch-101/>
+更多如何用 REST API 来操作 es 的实例，参考： <http://joelabrahamsson.com/elasticsearch-101/>
 
 ### 在 Rails 应用中使用 Elasticsearch
 
-https://github.com/elasticsearch/elasticsearch-rails
-
-这里有一条命令创建 es demo 程序的。
-
-下面介绍一下如何在 rails 应用中使用 elasticsearch，来体验 elasticsearch 的搜索功能。比如说有一个 rails
-应用的名字为 esdemo, 作用是存储用户的一些信息（用户名 name 和 个人简介 intro），现在就要搜索这些用户信息，找到满足条件的用户。
+现在这里有一个正在运行的简单的 rails 程序，[查看代码](https://github.com/happycasts/episode-104-demo/)。可以创建包含用户 name 和 intro 两项内容的用户条目。现在我要给这个应用加上 es 实现搜索功能。
 
 首先在 Gemfile 文件中粘贴下面几行代码：
 
@@ -145,7 +124,37 @@ gem "elasticsearch-model", :git => "git://github.com/elasticsearch/elasticsearch
 gem "elasticsearch-rails", :git => "git://github.com/elasticsearch/elasticsearch-rails.git"
 ~~~
 
-然后运行 `bundle install`, 安装新添加的 gem。通过这些 gem 提供的接口建立 rails 与 elasticsearch 之间的联系通道。
+然后运行 `bundle install` 。
+
+在 route.rb 中添加
+
+```
+resources :users do
+  collection { get :search }
+end
+```
+
+在 app/views/users/index.html.erb 中添加
+
+```
+<div class="nav-search">
+  <%= form_tag search_users_path, method: 'get' do %>
+  <span class="input-icon">
+    <%= text_field_tag :q, params[:q], placeholder: "Search ...", autocomplete: "off", class: "nav-search-input" %>
+    <i class="ace-icon fa fa-search nav-search-icon"></i>
+  </span>
+  <% end %>
+</div>
+```
+
+在 user.rb 中添加对 es 功能的导入
+
+```
+class User < ActiveRecord::Base
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+end
+```
 
 接下来在 `user_controller.rb` 文件新定义一个 `search` 方法，如下：
 
@@ -162,29 +171,34 @@ def search
 end
 ~~~
 
-这里就用到 elasticsearch 的搜索功能了，通过
-[query language](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_introducing_the_query_language.html)
-来实现。这里的 `multi_match` [查询方式](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-queries.html)
-可以选择搜索的字段，实例中搜索用户的名字和简介。
+这里的 `multi_match` 可以选择搜索的字段，实例中搜索用户的名字和简介。[参考文档](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html) 。
 
-那如何获得要查询的关键字，则需要一个搜索框, 在 `index.html.erb` 模板文件中,
-加入这些代码：
+添加一个  app/views/users/search.html.erb 文件
 
-~~~
-<%= form_tag search_users_path, method: 'get' do %>
-  <%= text_field_tag :q, params[:q] %>
-<% end %>
-~~~
+```
+<div class="search-result-page">
+  <table>
+    <tr>
+      <th class="name">Name</th>
+      <th class="intro">Intro</th>
+    </tr>
 
-对应的 `route.rb` 中的代码是：
+    <% @users.each do |u| %>
+      <tr class="list">
+        <td class="name"><%= u.name %></td>
+        <td class="intro"><%= u.intro %></td>
+      </tr>
+    <% end %>
+  </table>
 
-~~~
-resources :users do
-  collection { get :search }
-end
-~~~
+  <%= link_to root_path, class: "back" do %>
+    <i class="fa fa-arrow-left"> Back</i>
+  <% end %>
+</div>
+```
 
-现在搜索的核心代码已经介绍完了，但是不能使用，还需要索引数据，到 `lib/tasks` 目录下
+
+现在搜索一下，发现新添加的数据已经可以找到了。但是如果有老数据，需要手动 index 一下。到 `lib/tasks` 目录下
 新建一个名为 `elasticsearch.rake` 的文件，在文件中添加下面一行代码：
 
 ~~~
@@ -207,11 +221,45 @@ http://localhost:9200/users/user/1?pretty
 就可以看到索引之后的数据格式了，这里显示的是用户 id 为1的用户信息，这条文档存储在 users 索引中的 user 类型下。
 
 
-### 高亮
+### 搜索关键词高亮
 
-<http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-request-highlighting.html>
+参考 <http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-request-highlighting.html>
 
+需要做的代码改动是
 
-### 参考
+在 search.html.erb 中，将
 
-<http://railscasts.com/episodes/306-elasticsearch-part-1> 中介绍了如何在 Mac 系统上安装使用 es
+```
+        <td class="name"><%= u.name %></td>
+        <td class="intro"><%= u.intro %></td>
+```
+
+改为
+
+```
+        <td class="name"><%= hit.highlight.name ? (raw hit.highlight.name[0]) : record.name %></td>
+        <td class="intro"><%= hit.highlight.intro ? (raw hit.highlight.intro[0]) : record.intro %></td>
+```
+
+在 users_controller.rb 中，把 search 方法改为
+
+```
+  def search
+    @users = User.search(
+      query: {
+               multi_match: {
+                 query: params[:q].to_s,
+                 fields: ['name', 'intro']
+               }
+             },
+      highlight: {
+                   fields: {
+                     name: {},
+                     intro: {}
+                   }
+                 }
+    ).records
+  end
+```
+
+这样高亮效果就有了。
