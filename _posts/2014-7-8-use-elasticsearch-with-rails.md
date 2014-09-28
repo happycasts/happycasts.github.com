@@ -134,34 +134,25 @@ $ curl -XGET 'localhost:9200/users/user/1?pretty'
 
 还需要添加一个  app/views/users/search.html.erb 文件，来展示最终的搜索结果。
 
-[代码](https://github.com/happycasts/episode-104-demo/commit/c2814a6b0f2bf743f72cbc8b44285463870f87d6)。
+[代码](https://github.com/happycasts/episode-104-demo/commit/c2814a6b0f2bf743f72cbc8b44285463870f87d6)
 
 
 现在搜索一下，发现新添加的数据已经可以找到了。但是如果有老数据，需要手动 index 一下。到 `lib/tasks` 目录下
-新建一个名为 `elasticsearch.rake` 的文件，在文件中添加下面一行代码：
+新建一个名为 `elasticsearch.rake` 的文件。
 
-~~~
-require 'elasticsearch/rails/tasks/import'
-~~~
+[代码](https://github.com/happycasts/episode-104-demo/commit/8ca7e04e708a84dd397f813bb475a4030f9c0b0f)
 
 保存文件，重新启动 server，然后在命令行中执行任务：
 
 ~~~
 $ bundle exec rake environment elasticsearch:import:model CLASS='User' FORCE=y
-[IMPORT] Done
 ~~~
 
-这样 users 这张表中的数据就导入到 elasticsearch 的 users 索引中了。打开浏览器，在地址栏中输入：
-
-~~~
-http://localhost:9200/users/user/1?pretty
-~~~
-
-就可以看到索引之后的数据格式了，这里显示的是用户 id 为1的用户信息，这条文档存储在 users 索引中的 user 类型下。
+这样 users 这张表中的数据就导入到 elasticsearch 的 users 索引中了。
 
 
 ### 搜索关键词高亮
 
 参考 <http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-request-highlighting.html>
 
-需要做的代码改动是[这些内容](https://github.com/happycasts/episode-104-demo/commit/ca07bd77c4f88c20a38f901f70854b12a8dbaa16) 。
+[代码](https://github.com/happycasts/episode-104-demo/commit/ca07bd77c4f88c20a38f901f70854b12a8dbaa16)
