@@ -5,7 +5,7 @@ title: Elasticsearch with rails
 
 <!-- this deprecate ep#72 -->
 
-在 <http://www.elasticsearch.org/case-study/github/> 上可以看到，github，stacketoverflow 和 basecamp 都在用 Elasticsearch(后面简称 es ) 。在 <http://happycasts.net/episodes/72> 中我介绍过 happycasts 当时的采用的搜索方案是 sunspot 和 solr 。但是对比一下 solr 和 es 的官网，一眼看出 [solr](http://lucene.apache.org/solr/) 是非常不关心 programmer happyness 的，而 [es](http://www.elasticsearch.org/) 的文档系统就非常贴心，还有很多精彩的视频。这两天，我已经把 happycasts 切换到了 es 。
+在 [这里](http://www.elasticsearch.org/case-study/github/) 可以看到，github，stacketoverflow 和 basecamp 都在用 Elasticsearch （后面简称 es ） 。在 happycasts 的 [第72期](http://happycasts.net/episode/72) 中我介绍过 happycasts 当时的采用的搜索方案是 sunspot 和 solr 。但是对比一下 solr 和 es 的官网，一眼看出 [solr](http://lucene.apache.org/solr/) 是非常不关心 programmer happyness 的，而 [es](http://www.elasticsearch.org/) 的文档系统就非常贴心，还有很多精彩的视频。这两天，我已经把 happycasts 切换到了 es 。
 
 这一期的 happycasts 来介绍一下在 ubuntu 1204 服务器上安装 es ，以及如何在 Rails 项目中使用 es 。
 
@@ -21,12 +21,14 @@ sudo apt-get install openjdk-7-jre-headless
 java -version
 ~~~
 
-es 对 Java 版本的要求，见：
- <http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup.html> 中 “Java Version" 部分。
+es 对 Java 版本的要求。
 
+[参考](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup.html)
 
+安装 es 。
 
-安装 es 。下载地址是 <http://www.elasticsearch.org/overview/elkdownloads/>
+[下载地址](http://www.elasticsearch.org/overview/elkdownloads/)
+
 这里有添加 apt 仓库的办法。 咱们就使用这个方法安装。我此刻，从安装时的信息可以看出 es 的版本是1.3.2。
 
 apt-get 完成之后，启动 es 服务：
@@ -66,51 +68,14 @@ xxx.xxx.xxx.xxx linode-esdemo
 ### Elasticsearch 基本使用
 
 几个基本概念 `index`， `type`，
-`document` 要知道，参考文档[查看这里](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_basic_concepts.html)。
+`document` 要知道。
 
-如果你使用过其它类型的数据库，比如说 mysql，就不难理解 elasticsearch 中的 index，type，document 这几个术语了。
-index 类似于 mysql 中的数据库，type 相当于数据库中的一张表（table），而 document 则可以认为是表中的一条记录。
-这样关于 index，type，document 三者之间的关系也一目了然了。一个 index 中可以有零或多个 type，
-一个 type 中可以有成千上万条 document 。
+[参考](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_basic_concepts.html)。
 
 es 提供强大的 REST API，可以实现 CRUD 操作。
 
-要创建一个名字为 users 的 index，在我本地机器中执行：
+[参考](http://joelabrahamsson.com/elasticsearch-101/)
 
-~~~
-$ curl -XPUT 'linode-esdemo:9200/users?pretty'
-~~~
-
-数据库建好之后，就可以填充数据了。注意填充数据的时候，要指定数据将要存储在哪一个 type 下，这里指定为 user ，执行
-
-~~~
-$ curl -XPUT 'localhost:9200/users/user/1?pretty' -d '
-{
-  "name": "Tom Lee",
-  "intro": "a coder"
-}'
-~~~
-
-输出如下：
-
-~~~
-{
-  "_index" : "users",
-  "_type" : "user",
-  "_id" : "1",
-  "_version" : 1,
-  "created" : true
-}
-~~~
-
-这样就在 users 索引中插入了一条用户信息，用户的 id 是1，若不指定 id 号，那 elasticsearch 会自动生成一个随机的 id 号。
-那我们怎样得到刚才写入的用户信息呢，执行命令：
-
-~~~
-$ curl -XGET 'localhost:9200/users/user/1?pretty'
-~~~
-
-更多如何用 REST API 来操作 es 的实例，参考： <http://joelabrahamsson.com/elasticsearch-101/>
 
 ### 在 Rails 应用中使用 Elasticsearch
 
@@ -150,9 +115,8 @@ $ bundle exec rake environment elasticsearch:import:model CLASS='User' FORCE=y
 
 这样 users 这张表中的数据就导入到 elasticsearch 的 users 索引中了。
 
+最后，实现一下搜索关键词高亮。
 
-### 搜索关键词高亮
-
-参考 <http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-request-highlighting.html>
+[参考](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-request-highlighting.html)
 
 [代码](https://github.com/happycasts/episode-104-demo/commit/ca07bd77c4f88c20a38f901f70854b12a8dbaa16)
