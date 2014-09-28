@@ -12,6 +12,19 @@
   color: #ffc56d;
 }
 
+/* name of class */
+.highlight .nc {
+  color: #fff;
+}
+
+
+.highlight .no, .highlight .o {
+  color: #fff;
+}
+
+.highlight .kp {
+  color: #E6E0DB;
+}
 
 .highlight .nb {
   color:#CB7832;
