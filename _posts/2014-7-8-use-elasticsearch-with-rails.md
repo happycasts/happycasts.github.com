@@ -15,21 +15,21 @@ title: Elasticsearch with rails
 
 登陆到我在 linode 上新开的一个 ubuntu1204 服务器上
 
-```
+~~~
 sudo apt-get update
 sudo apt-get install openjdk-7-jre-headless
 java -version
-```
+~~~
 
 es 对 Java 版本的要求，见：
  <http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup.html> 中 “Java Version" 部分。
 
 
 
-安装 elasticsearch 。下载地址是 <http://www.elasticsearch.org/overview/elkdownloads/>
+安装 es 。下载地址是 <http://www.elasticsearch.org/overview/elkdownloads/>
 这里有添加 apt 仓库的办法。 咱们就使用这个方法安装。我此刻，从安装时的信息可以看出 es 的版本是1.3.2。
 
-apt-get 完成之后，启动 elasticsearch 服务：
+apt-get 完成之后，启动 es 服务：
 
 ~~~
 sudo service elasticsearch start
@@ -43,12 +43,13 @@ sudo update-rc.d elasticsearch defaults 95 10
 
 这样到我本地机器的 /etc/hosts 文件中，添加我的 linode ip 进来
 
-```
+~~~
 xxx.xxx.xxx.xxx linode-esdemo
-```
+~~~
 
 到浏览器，http://linode-esdemo:9200/ 看一下，显示如下信息，表示 es 已经可以工作了。
-```
+
+~~~
 {
   "status" : 200,
   "name" : "Nico Minoru",
@@ -60,8 +61,7 @@ xxx.xxx.xxx.xxx linode-esdemo
     "lucene_version" : "4.9"
   },
   "tagline" : "You Know, for Search"
-}
-```
+~~~
 
 ### Elasticsearch 基本使用
 
@@ -128,15 +128,18 @@ gem "elasticsearch-rails", :git => "git://github.com/elasticsearch/elasticsearch
 
 在 route.rb 中添加
 
-```
+
+~~~
 resources :users do
   collection { get :search }
 end
-```
+
+~~~
 
 在 app/views/users/index.html.erb 中添加
 
-```
+
+~~~
 <div class="nav-search">
   <%= form_tag search_users_path, method: 'get' do %>
   <span class="input-icon">
@@ -145,16 +148,19 @@ end
   </span>
   <% end %>
 </div>
-```
+
+~~~
 
 在 user.rb 中添加对 es 功能的导入
 
-```
+
+~~~
 class User < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 end
-```
+
+~~~
 
 接下来在 `user_controller.rb` 文件新定义一个 `search` 方法，如下：
 
@@ -175,7 +181,8 @@ end
 
 添加一个  app/views/users/search.html.erb 文件
 
-```
+
+~~~
 <div class="search-result-page">
   <table>
     <tr>
@@ -195,7 +202,8 @@ end
     <i class="fa fa-arrow-left"> Back</i>
   <% end %>
 </div>
-```
+
+~~~
 
 
 现在搜索一下，发现新添加的数据已经可以找到了。但是如果有老数据，需要手动 index 一下。到 `lib/tasks` 目录下
@@ -229,21 +237,23 @@ http://localhost:9200/users/user/1?pretty
 
 在 search.html.erb 中，将
 
-```
+
+~~~
         <td class="name"><%= u.name %></td>
         <td class="intro"><%= u.intro %></td>
-```
+
+~~~
 
 改为
 
-```
+~~~
         <td class="name"><%= hit.highlight.name ? (raw hit.highlight.name[0]) : record.name %></td>
         <td class="intro"><%= hit.highlight.intro ? (raw hit.highlight.intro[0]) : record.intro %></td>
-```
+~~~
 
 在 users_controller.rb 中，把 search 方法改为
 
-```
+~~~
   def search
     @users = User.search(
       query: {
@@ -260,6 +270,6 @@ http://localhost:9200/users/user/1?pretty
                  }
     ).records
   end
-```
+~~~
 
 这样高亮效果就有了。
