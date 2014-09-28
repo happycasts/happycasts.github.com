@@ -233,43 +233,4 @@ http://localhost:9200/users/user/1?pretty
 
 参考 <http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-request-highlighting.html>
 
-需要做的代码改动是
-
-在 search.html.erb 中，将
-
-
-~~~
-        <td class="name"><%= u.name %></td>
-        <td class="intro"><%= u.intro %></td>
-
-~~~
-
-改为
-
-~~~
-        <td class="name"><%= hit.highlight.name ? (raw hit.highlight.name[0]) : record.name %></td>
-        <td class="intro"><%= hit.highlight.intro ? (raw hit.highlight.intro[0]) : record.intro %></td>
-~~~
-
-在 users_controller.rb 中，把 search 方法改为
-
-~~~
-  def search
-    @users = User.search(
-      query: {
-               multi_match: {
-                 query: params[:q].to_s,
-                 fields: ['name', 'intro']
-               }
-             },
-      highlight: {
-                   fields: {
-                     name: {},
-                     intro: {}
-                   }
-                 }
-    ).records
-  end
-~~~
-
-这样高亮效果就有了。
+需要做的代码改动是[这些内容](https://github.com/happycasts/episode-104-demo/commit/ca07bd77c4f88c20a38f901f70854b12a8dbaa16) 。
