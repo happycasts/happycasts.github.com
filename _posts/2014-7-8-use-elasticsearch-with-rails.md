@@ -67,8 +67,7 @@ xxx.xxx.xxx.xxx linode-esdemo
 
 ### Elasticsearch 基本使用
 
-几个基本概念 `index`， `type`，
-`document` 要知道。
+几个基本概念 index ， type ， document 都必须要知道。
 
 [参考](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_basic_concepts.html)。
 
@@ -80,7 +79,6 @@ es 提供强大的 REST API，可以实现 CRUD 操作。
 ### 在 Rails 应用中使用 Elasticsearch
 
 现在这里有一个正在运行的简单的 rails 程序，可以创建包含用户 name 和 intro 两项内容的用户条目。现在我要给这个应用加上 es 实现搜索功能。
-
 首先在 Gemfile 文件中添加需要的 gem 。
 
 [代码](https://github.com/happycasts/episode-104-demo/commit/df1dcc8973012e195532f0829add822b52b5116c)
@@ -102,8 +100,8 @@ es 提供强大的 REST API，可以实现 CRUD 操作。
 [代码](https://github.com/happycasts/episode-104-demo/commit/c2814a6b0f2bf743f72cbc8b44285463870f87d6)
 
 
-现在搜索一下，发现新添加的数据已经可以找到了。但是如果有老数据，需要手动 index 一下。到 `lib/tasks` 目录下
-新建一个名为 `elasticsearch.rake` 的文件。
+现在搜索一下，发现新添加的数据已经可以找到了。但是如果有老数据，需要手动 index 一下。到 lib/tasks 目录下
+新建一个名为 elasticsearch.rake 的文件。
 
 [代码](https://github.com/happycasts/episode-104-demo/commit/8ca7e04e708a84dd397f813bb475a4030f9c0b0f)
 
