@@ -5,44 +5,49 @@ title: Elasticsearch with rails
 
 <!-- this deprecate ep#72 -->
 
-[github](http://www.elasticsearch.org/case-study/github/) ，stacketoverflow 和 basecamp 都在用 Elasticsearch(es) 。在 <http://happycasts.net/episodes/72> 中我介绍过 happycasts 当时的采用的搜索方案是 sunspot 和 solr 。但是对比一下 solr 和 es 的官网，一眼看出 [solr](http://lucene.apache.org/solr/) 是非常不关心 programmer happyness 的，而 [es](http://www.elasticsearch.org/) 的文档系统就非常贴心，还有很多精彩的视频。
+在 <http://www.elasticsearch.org/case-study/github/> 上可以看到，github，stacketoverflow 和 basecamp 都在用 Elasticsearch(后面简称 es ) 。在 <http://happycasts.net/episodes/72> 中我介绍过 happycasts 当时的采用的搜索方案是 sunspot 和 solr 。但是对比一下 solr 和 es 的官网，一眼看出 [solr](http://lucene.apache.org/solr/) 是非常不关心 programmer happyness 的，而 [es](http://www.elasticsearch.org/) 的文档系统就非常贴心，还有很多精彩的视频。这两天，我已经把 happycasts 切换到了 es 。
 
-这两天，我已经把 happycasts 切换到了 es 。今天的视频的 demo 是 [Billie 做的这个](https://github.com/billie66/esdemo) 。
+这一期的 happycasts 来介绍一下在 ubuntu 1204 服务器上安装 es ，以及如何在 Rails 项目中使用 es 。
 
+### 在 ubuntu 1204 上安装 elasticsearch
 
-### 在 ubuntu 1204 上安装 elasticsearch 1.2.1
+在安装 elasticsearch 之前，需要安装 Java 。
 
-在安装 elasticsearch 之前，需要安装 Java, 高版本的 elasticsearch 至少需要 Java 7 才能运行。
-需要注意一下，官方文档上推荐使用的是 Oracle JDK，而 Ubuntu 因版权问题默认支持的是 OpenJDK
-但你自己可以手动安装 Oracle JDK，在命令行中执行以下操作:
-
-~~~
-sudo apt-get install software-properties-common
-sudo add-apt-repository ppa:webupd8team/java
-sudo apt-get update
-sudo apt-get install oracle-java7-installer
-java -version
-~~~
-
-on linode 1204
-
+登陆到我在 linode 上新开的一个 ubuntu1204 服务器上
 
 ```
 sudo apt-get update
 sudo apt-get install openjdk-7-jre-headless
+java -version
 ```
 
-<!-- wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.3.2.deb
-在 linode 服务器上都不行
- -->
+es 对 Java 版本的要求，见：
+ <http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup.html> 中 “Java Version" 部分。
 
- <http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup-repositories.html>
 
-这里有添加 apt 仓库的办法。
-从安装时的信息可以看出，也是 1.3.2 的包。
 
-http://linode-esdemo:9200/ 看一下，yeah...
+安装 elasticsearch 。下载地址是 <http://www.elasticsearch.org/overview/elkdownloads/>
+这里有添加 apt 仓库的办法。 咱们就使用这个方法安装。我此刻，从安装时的信息可以看出 es 的版本是1.3.2。
 
+apt-get 完成之后，启动 elasticsearch 服务：
+
+~~~
+sudo service elasticsearch start
+~~~
+
+设置开机就直接启动 es 服务：
+
+~~~
+sudo update-rc.d elasticsearch defaults 95 10
+~~~
+
+这样到我本地机器的 /etc/hosts 文件中，添加我的 linode ip 进来
+
+```
+xxx.xxx.xxx.xxx linode-esdemo
+```
+
+到浏览器，http://linode-esdemo:9200/ 看一下，显示如下信息，表示 es 已经可以工作了。
 ```
 {
   "status" : 200,
@@ -58,30 +63,6 @@ http://linode-esdemo:9200/ 看一下，yeah...
 }
 ```
 
-
-最后一步操作 `java -version` 可以查看所安装的 JDK 的版本是否正确。
-
-以上信息来源请参考 [elasticsearch setup](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup.html)。
-
-接下来要做的工作就是下载 elasticsearch，下载地址是 <http://www.elasticsearch.org/overview/elkdownloads/>，这里提供了
-几种不同类型的安装包，从中选择 debian 安装包 <https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.1.deb>。
-
-
-
-启动，停止，重新启动 elasticsearch 服务：
-
-~~~
-sudo service elasticsearch start|stop|restart
-~~~
-
-你也可以设置开机就直接启动 elasticsearch 服务：
-
-~~~
-sudo update-rc.d elasticsearch defaults 95 10
-~~~
-
-
-
 ### Elasticsearch 基本使用
 
 Elasticsearch 安装成功之后，就要使用它了。在使用 elasticsearch 之前，有一点要铭记在心，ealsticsearch 有它自己的一套规范，
@@ -93,7 +74,6 @@ index 类似于 mysql 中的数据库，type 相当于数据库中的一张表�
 这样关于 index，type，document 三者之间的关系也一目了然了。一个 index 中可以有零或多个 type，
 一个 type 中可以有成千上万条 document。
 
-peter: 不太明白 type : user 在这里发挥的作用
 
 概念弄明白之后，就要实际操作了，假定我们想把一些用户信息存储到 elasticsearch 的数据库中，那到底如何操作呢？
 
@@ -146,11 +126,7 @@ $ curl -XGET 'localhost:9200/users/user/1?pretty'
 上述内容演示了 elsaticsearch 创建数据以及获取数据的功能，除此之外 elasticsearch 支持 REST API，还可以对数据进行删除，修改，搜索，排序等操作，功能很强大，
 详细[参考文档](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_exploring_your_cluster.html)。
 
-### 使用 json API 来操作 es
-
-动手操作一下，看看 elasticsearch-rails elasticsearch-model 到底干了什么
-
-http://joelabrahamsson.com/elasticsearch-101/
+<http://joelabrahamsson.com/elasticsearch-101/>
 
 ### 在 Rails 应用中使用 Elasticsearch
 
@@ -229,6 +205,12 @@ http://localhost:9200/users/user/1?pretty
 ~~~
 
 就可以看到索引之后的数据格式了，这里显示的是用户 id 为1的用户信息，这条文档存储在 users 索引中的 user 类型下。
+
+
+### 高亮
+
+<http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-request-highlighting.html>
+
 
 ### 参考
 
