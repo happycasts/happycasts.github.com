@@ -116,18 +116,13 @@ $ curl -XGET 'localhost:9200/users/user/1?pretty'
 
 现在这里有一个正在运行的简单的 rails 程序，[查看代码](https://github.com/happycasts/episode-104-demo/)。可以创建包含用户 name 和 intro 两项内容的用户条目。现在我要给这个应用加上 es 实现搜索功能。
 
-首先在 Gemfile 文件中粘贴下面几行代码：
+首先在 Gemfile 文件中添加[需要的 gem](https://github.com/happycasts/episode-104-demo/commit/df1dcc8973012e195532f0829add822b52b5116c)
 
-~~~
-gem "elasticsearch", :git => "git://github.com/elasticsearch/elasticsearch-ruby.git"
-gem "elasticsearch-model", :git => "git://github.com/elasticsearch/elasticsearch-rails.git"
-gem "elasticsearch-rails", :git => "git://github.com/elasticsearch/elasticsearch-rails.git"
-~~~
+然后运行 `bundle install` ，就好了 。
 
-然后运行 `bundle install` 。
+
 
 在 route.rb 中添加
-
 
 ~~~
 resources :users do
