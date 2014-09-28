@@ -1,3 +1,13 @@
 .highlight  pre {
-  background: #222;
+  font-family: 'Menlo', 'Courier New', 'Terminal', monospace;
+  background-color: #232323;
+  color: #E6E0DB;
+}
+
+.highlight .k {
+  color: #cb7832;
+}
+
+.highlight .nf {
+  color: #ffc56d;
 }
