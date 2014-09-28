@@ -12,10 +12,17 @@
   color: #ffc56d;
 }
 
+
 .highlight .nb {
   color:#CB7832;
 }
 
+/* 'sting' */
 .highlight .s1 {
   color: #a4c260;
+}
+
+/* comment */
+.highlight .c1 {
+  color:#BC9358; font-style: italic;
 }
