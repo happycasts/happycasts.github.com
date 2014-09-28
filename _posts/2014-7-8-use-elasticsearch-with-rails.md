@@ -3,6 +3,14 @@ layout: post
 title: Elasticsearch with rails
 ---
 
+
+
+{% highlight ruby %}
+# comments
+def foo
+  puts 'foo'
+end
+{% endhighlight %}
 <!-- this deprecate ep#72 -->
 
 在 [这里](http://www.elasticsearch.org/case-study/github/) 可以看到，github，stacketoverflow 和 basecamp 都在用 Elasticsearch （后面简称 es ） 。在 happycasts 的 [第72期](http://happycasts.net/episode/72) 中我介绍过 happycasts 当时的采用的搜索方案是 sunspot 和 solr 。但是对比一下 solr 和 es 的官网，一眼看出 [solr](http://lucene.apache.org/solr/) 是非常不关心 programmer happyness 的，而 [es](http://www.elasticsearch.org/) 的文档系统就非常贴心，还有很多精彩的视频。这两天，我已经把 happycasts 切换到了 es 。
@@ -119,9 +127,3 @@ $ bundle exec rake environment elasticsearch:import:model CLASS='User' FORCE=y
 
 [代码](https://github.com/happycasts/episode-104-demo/commit/ca07bd77c4f88c20a38f901f70854b12a8dbaa16)
 
-
-{% highlight ruby %}
-def foo
-  puts 'foo'
-end
-{% endhighlight %}
