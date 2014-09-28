@@ -6,6 +6,7 @@ title: Elasticsearch with rails
 
 
 {% highlight ruby %}
+
 class SignupForm
   # Rails 4: include ActiveModel::Model
   extend ActiveModel::Naming
