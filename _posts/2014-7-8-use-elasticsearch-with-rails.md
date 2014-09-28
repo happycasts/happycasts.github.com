@@ -118,3 +118,10 @@ $ bundle exec rake environment elasticsearch:import:model CLASS='User' FORCE=y
 [参考](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search-request-highlighting.html)
 
 [代码](https://github.com/happycasts/episode-104-demo/commit/ca07bd77c4f88c20a38f901f70854b12a8dbaa16)
+
+
+{% highlight ruby %}
+def foo
+  puts 'foo'
+end
+{% endhighlight %}
