@@ -121,84 +121,14 @@ $ curl -XGET 'localhost:9200/users/user/1?pretty'
 然后运行 `bundle install` ，就好了 。
 
 
-
-在 route.rb 中添加
-
-~~~
-resources :users do
-  collection { get :search }
-end
-
-~~~
-
-在 app/views/users/index.html.erb 中添加
+下一步，首页中添加一个搜索框，给 search 添加一个需要的路由，再把 css 样式弄好看一些。这些是[需要的代码](https://github.com/happycasts/episode-104-demo/commit/99043a1bbb159f575ae0a2f794768972fc89b390) 。
 
 
-~~~
-<div class="nav-search">
-  <%= form_tag search_users_path, method: 'get' do %>
-  <span class="input-icon">
-    <%= text_field_tag :q, params[:q], placeholder: "Search ...", autocomplete: "off", class: "nav-search-input" %>
-    <i class="ace-icon fa fa-search nav-search-icon"></i>
-  </span>
-  <% end %>
-</div>
+接下来就可以在 rails 使用 es 来搜索了。在 user.rb 中添加对 es 功能的导入，在 users_controller 中添加 search 方法。
 
-~~~
+其中用到的 `multi_match` 可以选择搜索的字段，实例中搜索用户的名字和简介。[参考文档](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html) 。
 
-在 user.rb 中添加对 es 功能的导入
-
-
-~~~
-class User < ActiveRecord::Base
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
-end
-
-~~~
-
-接下来在 `user_controller.rb` 文件新定义一个 `search` 方法，如下：
-
-~~~
-def search
-  @users = User.search(
-    query: {
-      multi_match: {
-        query: params[:q].to_s,
-        fields: ['name', 'intro']
-      }
-    }
-  ).records
-end
-~~~
-
-这里的 `multi_match` 可以选择搜索的字段，实例中搜索用户的名字和简介。[参考文档](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html) 。
-
-添加一个  app/views/users/search.html.erb 文件
-
-
-~~~
-<div class="search-result-page">
-  <table>
-    <tr>
-      <th class="name">Name</th>
-      <th class="intro">Intro</th>
-    </tr>
-
-    <% @users.each do |u| %>
-      <tr class="list">
-        <td class="name"><%= u.name %></td>
-        <td class="intro"><%= u.intro %></td>
-      </tr>
-    <% end %>
-  </table>
-
-  <%= link_to root_path, class: "back" do %>
-    <i class="fa fa-arrow-left"> Back</i>
-  <% end %>
-</div>
-
-~~~
+还需要添加一个  app/views/users/search.html.erb 文件，来展示最终的搜索结果。代码在[这里](https://github.com/happycasts/episode-104-demo/commit/c2814a6b0f2bf743f72cbc8b44285463870f87d6)。
 
 
 现在搜索一下，发现新添加的数据已经可以找到了。但是如果有老数据，需要手动 index 一下。到 `lib/tasks` 目录下
