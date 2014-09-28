@@ -174,9 +174,9 @@ h1 {
 
   pre code {
     color: rgb(119, 119, 119);
-    font: 16px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
     background: none;
     font-weight: lighter;
+    line-height 1.5;
     padding: 0;
   }
 
