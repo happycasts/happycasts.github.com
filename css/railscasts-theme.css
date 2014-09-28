@@ -26,6 +26,10 @@
   color: #E6E0DB;
 }
 
+
+.highlight .kp{
+  color: #6c9cbd;
+}
 .highlight .nb {
   color:#CB7832;
 }
