@@ -69,7 +69,7 @@ xxx.xxx.xxx.xxx linode-esdemo
 
 几个基本概念 index ， type ， document 都必须要知道。
 
-[参考](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_basic_concepts.html)。
+[参考](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_basic_concepts.html)
 
 es 提供强大的 REST API，可以实现 CRUD 操作。
 
