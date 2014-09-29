@@ -3,17 +3,13 @@ layout: post
 title: Elasticsearch with rails
 ---
 
-
 <!-- this deprecate ep#72 -->
-
-
-
 
 在 [这里](http://www.elasticsearch.org/case-study/github/) 可以看到，github，stacketoverflow 和 basecamp 都在用 Elasticsearch （后面简称 es ） 。在 happycasts 的 [第72期](http://happycasts.net/episode/72) 中我介绍过 happycasts 当时的采用的搜索方案是 sunspot 和 solr 。但是对比一下 solr 和 es 的官网，一眼看出 [solr](http://lucene.apache.org/solr/) 是非常不关心 programmer happyness 的，而 [es](http://www.elasticsearch.org/) 的文档系统就非常贴心，还有很多精彩的视频。这两天，我已经把 happycasts 切换到了 es 。
 
 这一期的 happycasts 来介绍一下在 ubuntu 1204 服务器上安装 es ，以及如何在 Rails 项目中使用 es 。
 
-### 在 ubuntu 1204 上安装 elasticsearch
+# 在 ubuntu 1204 上安装 elasticsearch
 
 在安装 elasticsearch 之前，需要安装 Java 。
 
@@ -69,7 +65,7 @@ xxx.xxx.xxx.xxx linode-esdemo
   "tagline" : "You Know, for Search"
 ~~~
 
-### Elasticsearch 基本使用
+# Elasticsearch 基本使用
 
 几个基本概念 index ， type ， document 都必须要知道。
 
@@ -80,7 +76,7 @@ es 提供强大的 REST API，可以实现 CRUD 操作。
 [参考](http://joelabrahamsson.com/elasticsearch-101/)
 
 
-### 在 Rails 应用中使用 Elasticsearch
+# 在 Rails 应用中使用 Elasticsearch
 
 现在这里有一个正在运行的简单的 rails 程序，可以创建包含用户 name 和 intro 两项内容的用户条目。现在我要给这个应用加上 es 实现搜索功能。
 首先在 Gemfile 文件中添加需要的 gem 。
@@ -112,7 +108,7 @@ es 提供强大的 REST API，可以实现 CRUD 操作。
 保存文件，重新启动 server，然后在命令行中执行任务：
 
 ~~~
-$ bundle exec rake environment elasticsearch:import:model CLASS='User' FORCE=y
+bundle exec rake environment elasticsearch:import:model CLASS='User' FORCE=y
 ~~~
 
 这样 users 这张表中的数据就导入到 elasticsearch 的 users 索引中了。

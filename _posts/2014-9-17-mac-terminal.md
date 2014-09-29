@@ -50,7 +50,7 @@ menlo 14px 。更改 charater spacing -> vitical 的值为 1.5
 
 安装过程参考这里的 README：<https://github.com/robbyrussell/oh-my-zsh> 。
 
-    $ curl -L http://install.ohmyz.sh | sh
+    curl -L http://install.ohmyz.sh | sh
 
 oh-my-zsh 使用的是zsh 。zsh 用起来跟 bash 基本是一样的，只是比 bash
 多一些很实用的功能。
@@ -58,7 +58,7 @@ oh-my-zsh 使用的是zsh 。zsh 用起来跟 bash 基本是一样的，只是�
 比如，如果我进入一个 git
 仓库，这时候就可以在命令提示符部分看到分支了。如果我敲
 
-    $ git co<tab>
+    git co<tab>
     co  -- alias for 'checkout'
     commit  -- record changes to repository
     ...
