@@ -22,9 +22,16 @@
   color: #fff;
 }
 
-.highlight .kp, .highlight .p {
+/*keep things to defualt color*/
+.highlight .kp, .highlight .p, .highlight .n{
   color: #E6E0DB;
 }
+
+.highlight .vi {
+  color: #d0cffe;
+}
+
+
 
 .highlight .ss {
   color: #6c9cbd;
