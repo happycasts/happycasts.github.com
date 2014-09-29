@@ -54,15 +54,21 @@ pre {
 
 
 /* 'sting' "sting" integer  ::: green */
-.highlight .s1, .highlight .s2, .highlight .mi {
+.highlight .s1, .highlight .s2, .highlight .s {
   color: #a4c260;
 }
 
-.highlight .sr {
+.highlight .sr, .highlight, .mi {
   color: #a4c260;
 }
 
 /* comment */
 .highlight .c1 {
   color:#BC9358; font-style: italic;
+}
+
+
+/*html tags*/
+.highligth .nt, .highlight .na{
+  color: #e7be69;
 }
