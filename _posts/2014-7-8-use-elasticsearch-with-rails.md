@@ -5,7 +5,7 @@ title: Elasticsearch with rails
 
 <!-- this deprecate ep#72 -->
 
-在 [这里](http://www.elasticsearch.org/case-study/) 可以看到，github，stacketoverflow 和 basecamp 都在用 Elasticsearch （后面简称 es ） 。在 happycasts 的 [第72期](http://happycasts.net/episode/72) 中我介绍过 happycasts 当时的采用的搜索方案是 sunspot 和 solr 。但是对比一下 solr 和 es 的官网，感觉 [solr](http://lucene.apache.org/solr/) 是不关心 programmer happyness 的，文档页面感觉很粗糙。而 [es](http://www.elasticsearch.org/) 的文档系统就非常贴心，还有很多精彩的视频。这两天，我已经把 happycasts 切换到了 es 。
+在 [这里](http://www.elasticsearch.org/case-study/) 可以看到，github，stacketoverflow 和 basecamp 都在用 Elasticsearch （后面简称 es ） 。在 happycasts 的 [第72期](http://happycasts.net/episodes/72) 中我介绍过 happycasts 当时的采用的搜索方案是 sunspot 和 solr 。但是对比一下 solr 和 es 的官网，感觉 [solr](http://lucene.apache.org/solr/) 是不关心 programmer happyness 的，文档页面感觉很粗糙。而 [es](http://www.elasticsearch.org/) 的文档系统就非常贴心，还有很多精彩的视频。这两天，我已经把 happycasts 切换到了 es 。
 
 这一期的 happycasts 演示在 ubuntu 1204 服务器上安装 es ，以及如何在 Rails 项目中使用 es 。
 
