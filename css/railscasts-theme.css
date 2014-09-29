@@ -1,5 +1,8 @@
-.highlight  pre {
-  font-family: 'Menlo', 'Courier New', 'Terminal', monospace;
+.highlight {
+  margin: 10px 0;
+}
+
+.highlight pre {
   background-color: #232323;
   color: #E6E0DB;
 }
