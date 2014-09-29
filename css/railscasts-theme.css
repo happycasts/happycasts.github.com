@@ -63,12 +63,22 @@ pre {
 }
 
 /* comment */
-.highlight .c1 {
-  color:#BC9358; font-style: italic;
+.highlight .c1, .hightligh .c {
+  color:#BC9358;
+  font-style: italic;
 }
 
+
+/*--- html ---*/
 
 /*html tags*/
 .highligtht .nt, .highlight .na{
   color: #e7be69;
+}
+
+/*--- css ---*/
+
+/* css comment */
+.hightlight .c {
+
 }
