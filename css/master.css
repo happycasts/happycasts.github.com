@@ -162,7 +162,7 @@ h1 {
   pre {
     margin: 0;
     padding: 10px;
-    overflow: hidden;
+    overflow: auto;
   }
 
   pre code {
