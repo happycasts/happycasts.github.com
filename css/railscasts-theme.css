@@ -44,8 +44,10 @@
   color:#CB7832;
 }
 
-/* 'sting' */
-.highlight .s1, .highlight .s2 {
+
+
+/* 'sting' "sting" integer */
+.highlight .s1, .highlight .s2, .highlight .mi {
   color: #a4c260;
 }
 
