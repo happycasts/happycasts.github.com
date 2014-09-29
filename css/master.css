@@ -191,7 +191,7 @@ h1 {
     font-size: 15px;
     padding: 3px 5px;
     background: #eee;
-    color: #666;
+    color: teal;
   }
 
   .content .when + p:first-of-type {
