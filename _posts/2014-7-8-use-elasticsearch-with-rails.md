@@ -56,6 +56,75 @@ end
 {% endhighlight %}
 
 
+{% highlight ruby %}
+
+class SignupForm
+  # Rails 4: include ActiveModel::Model
+  extend ActiveModel::Naming
+  include ActiveModel::Conversion
+  include ActiveModel::Validations
+
+  def persisted?
+    false
+  end
+
+  def self.model_name
+    ActiveModel::Name.new(self, nil, "User")
+  end
+
+  validates_presence_of :username
+  validate :verify_unique_username
+  validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/
+  validates_length_of :password, minimum: 6
+
+  delegate :username, :email, :password, :password_confirmation, to: :user
+  delegate :twitter_name, :github_name, :bio, to: :profile
+
+  def user
+    @user ||= User.new
+  end
+
+  def profile
+    @profile ||= user.build_profile
+  end
+
+  def submit(params)
+    user.attributes = params.slice(:username, :email, :password, :password_confirmation)
+    profile.attributes = params.slice(:twitter_name, :github_name, :bio)
+    self.subscribed = params[:subscribed]
+    if valid?
+      generate_token
+      user.save!
+      profile.save!
+      true
+    else
+      false
+    end
+  end
+
+  def subscribed
+    user.subscribed_at
+  end
+
+  def subscribed=(checkbox)
+    user.subscribed_at = Time.zone.now if checkbox == "1"
+  end
+
+  def generate_token
+    begin
+      user.token = SecureRandom.hex
+    end while User.exists?(token: user.token)
+  end
+
+  def verify_unique_username
+    if User.exists? username: username
+      errors.add :username, "has already been taken"
+    end
+  end
+end
+
+{% endhighlight %}
+
 在 [这里](http://www.elasticsearch.org/case-study/github/) 可以看到，github，stacketoverflow 和 basecamp 都在用 Elasticsearch （后面简称 es ） 。在 happycasts 的 [第72期](http://happycasts.net/episode/72) 中我介绍过 happycasts 当时的采用的搜索方案是 sunspot 和 solr 。但是对比一下 solr 和 es 的官网，一眼看出 [solr](http://lucene.apache.org/solr/) 是非常不关心 programmer happyness 的，而 [es](http://www.elasticsearch.org/) 的文档系统就非常贴心，还有很多精彩的视频。这两天，我已经把 happycasts 切换到了 es 。
 
 这一期的 happycasts 来介绍一下在 ubuntu 1204 服务器上安装 es ，以及如何在 Rails 项目中使用 es 。
