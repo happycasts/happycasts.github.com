@@ -34,9 +34,10 @@ li {
   line-height: 160%;
 }
 
-::selection {
-  background-color: #2B2B2B;
-  color: #eee;
+::selection{
+  background:#fff7a8;
+  color:#444;
+  text-shadow:none
 }
 
 .clear {
