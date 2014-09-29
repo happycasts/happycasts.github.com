@@ -22,10 +22,13 @@
   color: #fff;
 }
 
-.highlight .kp {
+.highlight .kp, .highlight .p {
   color: #E6E0DB;
 }
 
+.highlight .ss {
+  color: #6c9cbd;
+}
 
 .highlight .kp{
   color: #6c9cbd;
