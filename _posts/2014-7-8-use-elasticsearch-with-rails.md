@@ -6,51 +6,8 @@ title: Elasticsearch with rails
 
 <!-- this deprecate ep#72 -->
 
-{% highlight css %}
-
-}
-.CodeRay pre {
-  margin: 0px;
-  padding: 0px;
-}
-
-.CodeRay .an { color:#E7BE69 }                      /* html attribute */
-.CodeRay .c  { color:#BC9358; font-style: italic; } /* comment */
-.CodeRay .ch { color:#509E4F }                      /* escaped character */
-.CodeRay .cl { color:#FFF }                         /* class */
-.CodeRay .co { color:#FFF }                         /* constant */
-.CodeRay .fl { color:#A4C260 }                      /* float */
-.CodeRay .fu { color:#FFC56D }                      /* function */
-.CodeRay .gv { color:#D0CFFE }                      /* global variable */
-.CodeRay .i  { color:#A4C260 }                      /* integer */
-.CodeRay .il { background:#151515 }                 /* inline code */
-.CodeRay .iv { color:#D0CFFE }                      /* instance variable */
-.CodeRay .pp { color:#E7BE69 }                      /* doctype */
 
 
-{% endhighlight %}
-
-
-{% highlight html%}
-<h1>Raffler</h1>
-
-<div ng-controller="RaffleCtrl">
-  <form ng-submit="addEntry()">
-    <input type="text" ng-model="newEntry.name">
-    <input type="submit" value="Add">
-  </form>
-
-  <ul>
-    <li ng-repeat="entry in entries">
-      {{entry.name}}
-      <span ng-show="entry.winner" ng-class="{highlight: entry == lastWinner}" class="winner">WINNER</span>
-    </li>
-  </ul>
-
-  <button ng-click="drawWinner()">Draw Winner</button>
-</div>
-
-{% endhighlight %}
 
 在 [这里](http://www.elasticsearch.org/case-study/github/) 可以看到，github，stacketoverflow 和 basecamp 都在用 Elasticsearch （后面简称 es ） 。在 happycasts 的 [第72期](http://happycasts.net/episode/72) 中我介绍过 happycasts 当时的采用的搜索方案是 sunspot 和 solr 。但是对比一下 solr 和 es 的官网，一眼看出 [solr](http://lucene.apache.org/solr/) 是非常不关心 programmer happyness 的，而 [es](http://www.elasticsearch.org/) 的文档系统就非常贴心，还有很多精彩的视频。这两天，我已经把 happycasts 切换到了 es 。
 
