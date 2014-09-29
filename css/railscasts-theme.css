@@ -49,7 +49,6 @@ pre {
 .highlight .nb {
   color:#CB7832;
 }
-/**/
 
 /* 'sting' "sting" integer  ::: green */
 .highlight .s1, .highlight .s2, .highlight .s {
@@ -78,8 +77,4 @@ pre {
 
 .highlight .kd {
   color: #cb7832;
-}
-
-.highlight .nx {
-  color: red;
 }
