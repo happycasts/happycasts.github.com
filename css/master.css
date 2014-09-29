@@ -162,6 +162,7 @@ h1 {
   pre {
     margin: 0;
     padding: 10px;
+    overflow: hidden;
   }
 
   pre code {
@@ -169,6 +170,7 @@ h1 {
     font-weight: lighter;
     line-height: 1.5;
     padding: 0;
+    font-size: 13px;
   }
 
   code {
