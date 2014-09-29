@@ -160,16 +160,8 @@ h1 {
   }
 
   pre {
-    padding: 0.3em;
-    padding-left: 0.8em;
-    border-left: 0.5em solid #D8D8D8;
-    background: white;
-    font-family: "Courier 10 Pitch", Courier, monospace;
-    font-size: 15px;
-    line-height: 1.2;
-    margin-bottom: 1.6em;
-    max-width: 100%;
-    overflow: auto;
+    margin: 0;
+    padding: 0;
   }
 
   pre code {
