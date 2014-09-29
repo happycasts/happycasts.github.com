@@ -166,6 +166,7 @@ h1 {
   }
 
   pre code {
+    font-family： "Menlo","Courier New","Terminal",monospace;
     background: none;
     font-weight: lighter;
     line-height: 1.5;
