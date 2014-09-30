@@ -61,7 +61,69 @@ xxx.xxx.xxx.xxx linode-esdemo
 
 几个基本概念 index ， type ，document 都要知道。可以参考 [这里](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_basic_concepts.html) 。
 
-不依靠 rails 的 gem，我也可以用 es 提供强大的 REST API，来实现 CRUD 操作。[这里](http://joelabrahamsson.com/elasticsearch-101/) 有具体的操作方法，可以看看。
+
+不依靠 rails 的 gem，我也可以用 es 提供强大的 REST API，来实现 CRUD 操作。 可以在 chrome 里面安装 sense 插件，然后来跟 es 交互。注意，以下命令都一样可以使用 curl 在命令行里执行。
+
+创建 index 名为 `users` ，创建 id 为 `1` 的用户，type 为 `user`
+
+~~~
+POST /users/user/1
+{
+    "name": "peter",
+    "intro": "video maker"
+}
+~~~
+
+再来加入第二个用户的 document
+
+~~~
+POST /users/user/2
+{
+    "name": "billie",
+    "intro": "composer"
+}
+~~~
+
+查看第一个用户的信息：
+
+~~~
+GET /users/user/1
+~~~
+
+查看一个 index 中，所以的内容：
+
+~~~
+
+~~~
+
+
+也可以用 API 来进行查询：
+
+~~~
+POST _search
+{
+   "query": {
+      "query_string": {
+         "query": "peter"
+      }
+   }
+}
+~~~
+
+列出所有 index ：
+
+~~~
+GET _cat/indices?v
+~~~
+
+删除 index :
+
+~~~
+DELETE /users
+~~~
+
+
+[这里](http://joelabrahamsson.com/elasticsearch-101/) 有更多的操作方法，可以看看。
 
 
 # Rails 中使用 Elasticsearch
