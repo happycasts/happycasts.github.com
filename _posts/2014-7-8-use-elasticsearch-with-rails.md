@@ -93,7 +93,7 @@ GET /users/user/1
 查看一个 index 中，所以的内容：
 
 ~~~
-
+GET _search
 ~~~
 
 也可以用 API 来进行查询：
