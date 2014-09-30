@@ -23,7 +23,7 @@ java -version
 
 es 对 Java 版本的要求 [参考这里](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup.html) 。
 
-es 的 [下载页面](http://www.elasticsearch.org/overview/elkdownloads/) 上有添加 apt 仓库的办法。 咱们就使用这个方法安装。从安装时的信息可以看出 es 的版本是1.3.2。apt-get 完成之后，启动 es 服务：
+es 的 [下载页面](http://www.elasticsearch.org/overview/elkdownloads/) 上有添加 apt 仓库的办法。 咱们就使用这个方法安装。从安装时的信息可以看出 es 的版本是1.3.3。apt-get 完成之后，启动 es 服务：
 
 ~~~
 sudo service elasticsearch start
@@ -48,7 +48,7 @@ xxx.xxx.xxx.xxx linode-esdemo
   "status" : 200,
   "name" : "Nico Minoru",
   "version" : {
-    "number" : "1.3.2",
+    "number" : "1.3.3",
     "build_hash" : "dee175dbe2f254f3f26992f5d7591939aaefd12f",
     "build_timestamp" : "2014-08-13T14:29:30Z",
     "build_snapshot" : false,
@@ -57,12 +57,12 @@ xxx.xxx.xxx.xxx linode-esdemo
   "tagline" : "You Know, for Search"
 ~~~
 
-# Elasticsearch 基本使用
+# Elasticsearch 的 REST API
 
 几个基本概念 index ， type ，document 都要知道。可以参考 [这里](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_basic_concepts.html) 。
 
 
-不依靠 rails 的 gem，我也可以用 es 提供强大的 REST API，来实现 CRUD 操作。可以在 chrome 里面安装 sense 插件，然后来跟 es 交互。注意，以下命令都一样可以使用 curl 在命令行里执行。
+不依靠 rails 的 gem，我也可以用 es 提供强大的 REST API，来实现 CRUD 操作。可以在 chrome 里面安装 sense 插件，设置 es 的位置是 linode-esdemo:9200 ，然后来跟 es 交互。注意，以下命令都一样可以使用 curl 在命令行里执行。
 
 创建 index 名为 `users` ，创建 id 为 `1` 的用户，type 为 `user`
 
