@@ -13,7 +13,7 @@ title: Strong Parameter
 
 - github 安全漏洞: <https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation>
 
-### 什么是 mass assignment:
+# 什么是 mass assignment:
 
 如果有 mass assignment 我们可以
 
@@ -29,13 +29,13 @@ title: Strong Parameter
     user.last  = attrs[:last]
     user.email = attrs[:email]
 
-### command启动burp:
+# command启动burp:
 
 terminal 中
 
     java -jar -Xmx1024m /path/to/burp.jar
 
-### 配置burp
+# 配置burp
 
 preference -> advanced setting -> proxy
 127.0.0.1 8080 
