@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: shownote
 title: vagrant
 ---
 
