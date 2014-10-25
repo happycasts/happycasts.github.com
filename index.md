@@ -12,7 +12,7 @@ title: Happycasts
       <span>104</span><a href="104-elasticsearch">elasticsearch with rails</a>
     </li>
     <li>
-      <span>103</span><a href="103-mac-term">mac terminal</a>
+      <span>103</span><a href="103-mac-terminal">mac terminal</a>
     </li>
     <li>
       <span>102</span><a href="102-strong-parameter">strong parameter</a>
