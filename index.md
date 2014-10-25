@@ -6,6 +6,15 @@ title: Happycasts
 <section class="container content">
   <ul class="listing">
     <li>
+      <span>105</span><a href="105-vagrant.html">vagrant</a>
+    </li>
+    <li>
+      <span>104</span><a href="104-elasticsearch.html">elasticsearch with rails</a>
+    </li>
+    <li>
+      <span>103</span><a href="103-mac-terminal.html">mac terminal</a>
+    </li>
+    <li>
       <span>102</span><a href="102-strong-parameter.html">strong parameter</a>
     </li>
     <li>
