@@ -1,6 +1,6 @@
 ---
-layout: post
+layout: shownote
 title: ctags
 ---
 
-hell post
+hell shownote
