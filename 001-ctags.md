@@ -1,6 +1,6 @@
 ---
-layout: default
+layout: post
 title: ctags
 ---
 
-hell peter
+hell post
