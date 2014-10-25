@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: shownote
 title: 美丽如苹果的命令行
 ---
 

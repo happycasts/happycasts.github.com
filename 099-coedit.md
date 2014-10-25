@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: shownote
 title: 基于 socket.io 实现协作编辑功能
 ---
 
