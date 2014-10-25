@@ -1,0 +1,9 @@
+---
+layout: post
+date: 2013-3-11
+title: Rails test
+---
+- <http://railscasts.com/episodes/275-how-i-test>
+- <https://github.com/jnicklas/capybara>
+- <https://www.relishapp.com/rspec>
+
