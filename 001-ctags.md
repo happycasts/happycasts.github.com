@@ -3,5 +3,5 @@ layout: shownote
 title: ctags
 ---
 
-hell shownote
-not date no trouble
+A revised version of this episode can be found here:
+http://happycasts.net/episodes/25
