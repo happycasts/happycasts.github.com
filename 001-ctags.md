@@ -1,7 +1,6 @@
 ---
 layout: post
-title: Ctags
+title: vagrant
 ---
 
 A revised version of this episode can be found here:
-<http://happycasts.net/episodes/25>
