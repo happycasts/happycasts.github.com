@@ -1,5 +1,6 @@
 ---
-layout: default
+layout: post
+date: 2011-5-7
 title: Ctags
 ---
 
