@@ -1,9 +1,7 @@
 ---
-layout: post
-title: ctags
+layout: default
+title: Ctags
 ---
-# Update 
 
-A revised version of this episode can be found here: http://happycasts.net/episodes/25
-
-
+A revised version of this episode can be found here:
+<http://happycasts.net/episodes/25>
