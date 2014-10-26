@@ -2,7 +2,6 @@
 layout: default
 title: Happycasts
 ---
-
 <section class="container content">
   <table class="index-table">
     <tbody>
@@ -642,6 +641,7 @@ title: Happycasts
         <a href="001-ctags.html">ctags</a>
       </td>
     </tr>
+
     </tbody>
   </table>
 </section>
