@@ -7,6 +7,12 @@ title: Happycasts
   <table class="index-table">
     <tbody>
     <tr class="episode-wrap">
+      <td class="episode-index">106</td>
+      <td class="episode-title">
+        <a href="106-coder-howto.html">如何学习编程</a>
+      </td>
+    </tr>
+    <tr class="episode-wrap">
       <td class="episode-index">105</td>
       <td class="episode-title">
         <a href="105-vagrant.html">vagrant</a>
