@@ -23,7 +23,7 @@ ajax 听起来好复杂呀？其实用起来就没啥了，就是再不刷新页
 ### 把过程 ajax 化
 普通的请求，后台 log 中请求的格式是 HTML。要变 Ajax 请求，就到 _comment_box.html.erb 文件中
 
-{% highlight diff %}
+{% highlight erb %}
 - <%= form_tag "/dogs/#{dog.id}/comments", method: :post do %>
 + <%= form_tag "/dogs/#{dog.id}/comments", method: :post, remote: 'true' do %>
 {% endhighlight %}
