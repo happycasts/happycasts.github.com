@@ -6,6 +6,12 @@ title: Happycasts
   <table class="index-table">
     <tbody>
     <tr class="episode-wrap">
+      <td class="episode-index">107</td>
+      <td class="episode-title">
+        <a href="107-comment-ajax.html">Ajax 化评论提交过程</a>
+      </td>
+    </tr>
+    <tr class="episode-wrap">
       <td class="episode-index">106</td>
       <td class="episode-title">
         <a href="106-coder-howto.html">如何学习编程</a>
