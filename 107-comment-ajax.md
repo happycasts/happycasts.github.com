@@ -7,6 +7,8 @@ ajax 听起来好复杂呀？其实用起来就没啥了，就是再不刷新页
 
 本期是第66期的改良版。源码在 <https://github.com/happycasts/episode-107-demo> 。 css 样式参考了 Css-tricks.com 。
 
+![](http://media.happycasts.net/pic/happycasts/ajax_comment.png)
+
 ### 下载代码
 到 <https://github.com/happycasts/episode-107-demo> 下载代码之后，里面有一个 before 目录是咱们这集的起点，after 中是最终的效果。
 
