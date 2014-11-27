@@ -5,17 +5,20 @@ title: ajax 化评论功能
 <!-- css-tricks 样式的评论，评论一张小狗图片 -->
 ajax 听起来好复杂呀？其实用起来就没啥了，就是再不刷新页面的情况下，去服务器上加载新的内容过来。比如这里有一个照片，下面可以添加评论。没有 ajax 化的基本评论功能是这样的，你点击发布，页面会整个刷新，搞得用起来很不舒服。但是如果 ajax 化之后就是这样的效果，帅吧？这里咱们就是要来在 Rails4 应用中做出这个效果来。
 
-本期是第66期的改良版。
+本期是第66期的改良版。源码在 <https://github.com/happycasts/episode-107-demo>
 
 ### 下载代码
-到 xxx
+到 <https://github.com/happycasts/episode-107-demo> 下载代码之后，里面有一个 before 目录是咱们这集的起点，after 中是最终的效果。
 
-下载代码之后，运行
+把 before 拷贝到 ubuntu 系统之中，重命名为 dog
 
+    cd dog
+    bundle
+    vim config/database.yml 填入你自己的 mysql 数据库的密码
     rake db:setup
+    rails s
 
-我在 seed.rb 文件中已经填充了一些数据，所以首页上就可以看到小狗们的列表了。
-
+我在 seed.rb 文件中已经填充了一些数据，所以首页上就可以看到小狗们的列表了。关于我本地虚拟机的搭建可以参考 <http://happycasts.net/episodes/105>
 
 
 ### 把过程 ajax 化
@@ -31,13 +34,18 @@ _comment_box.html.erb 文件中
 打开生成的 html 发现就是多个 `data-remote: true` 那这个 ajax 请请求谁来发？ <https://github.com/rails/jquery-ujs> 帮我搞定一切，不必操心，打开 application.js 有对它的 require 。现在再来看后台，请求的格式就是 js 了。
 
 {% highlight ruby %}
-    respond_to do |format|
-      format.html
-      format.js
-    end
+- dog = Dog.find(params[:id])
+- redirect_to "/dog/#{dog.id}"
++ respond_to do |format|
++   format.html {
++     dog = Dog.find(params[:id])
++     redirect_to "/dog/#{dog.id}"
++   }
++   format.js
++ end
 {% endhighlight %}
 
-到 、、、 添加 xxx.js 文件先来添加一条测试语句
+添 app/views/dogs/create_comment.js.erb 文件先来添加一条测试语句
 
 {% highlight js %}
 console.log('I am working!');
@@ -46,8 +54,9 @@ console.log('I am working!');
 但是我真正想要的效果是添加一条评论进来。
 
 {% highlight js %}
-$("article.comment").before('<%= j render "comment", comment: @comment %>');
-$("article.comment textarea").val('');
+console.log('I am working!');
+$(".comments").append('<%= j render partial: 'comment', locals: {comment: @comment} %>');
+$(".comment-box textarea, .commenter-info input").val('');
 {% endhighlight %}
 
 <!-- 先来个没有 `j` 的，看会有什么问题 -->
