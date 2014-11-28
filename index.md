@@ -6,6 +6,12 @@ title: Happycasts
   <table class="index-table">
     <tbody>
     <tr class="episode-wrap">
+      <td class="episode-index">108</td>
+      <td class="episode-title">
+        <a href="108-learn-rails.html">如何学习 Rails ？</a>
+      </td>
+    </tr>
+    <tr class="episode-wrap">
       <td class="episode-index">107</td>
       <td class="episode-title">
         <a href="107-comment-ajax.html">Ajax 化评论提交过程</a>
