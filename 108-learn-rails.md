@@ -31,6 +31,6 @@ railstutorial.org 这是一本非常详实的介绍 Rails 的书。口吻上是�
 
 Railscasts.com 是我的救星。从最早我入手 Rails 学习 [登陆认证](http://railscasts.com/episodes/250-authentication-from-scratch-revised)，这些基础的内容开始，就感觉每次打开一个这里的视频就像找到宝贝了一样。看书绕来绕去总是不懂的内容，这里 Ryan 带着实际操作一下马上就清楚了。所以这么多年来，只要是视频覆盖到的内容，我都是先看完再说，从来的感觉都是一枪命中，不像在文字材料中那样，很容易迷路。跟 railscasts 一样过瘾的是 Jeffery Way 的视频，现在他在全职做 laracasts.com，以前他在 tutsplus 。虽然他主要是讲 php，同时我已经好几年不写 php 了，但是我也同样是花钱订阅了 laracasts.com ，很多视频还是和 Rails 道理相通的。
 
-Codeschool.com 的视频有点偏理论了，我订阅了他们大概一年，后来感觉有很多内容料不够足，所以目前没有续费。但是 railsforzombies.com 是非常棒的，还有他们的其他的一些视频也是非常好。Codeschool 也情调 learn by doing，不过他们的意思是你看完了视频一定要跟着做一下课后作业的感觉，所以他们有很强的 in browser coding 的功能。这个我是非常不喜欢的，我想我喜欢的方式是 Learn by making 了，做一些实际能用的东西出来。
+Codeschool.com 的视频有点偏理论了，我订阅了他们大概一年，后来感觉有很多内容料不够足，所以目前没有续费。但是 railsforzombies.com 是非常棒的，还有他们的其他的一些视频也是非常好。Codeschool 也强调 learn by doing，不过他们的意思是你看完了视频一定要跟着做一下课后作业的感觉，所以他们有很强的 in browser coding 的功能。这个我是非常不喜欢的，我想我喜欢的方式是 Learn by making 了，做一些实际能用的东西出来。
 
-总之，我越来越清晰的感觉到 Learn by making 这条路是最高效的。就像扎克伯格说的：我就是想给我妹妹做成一个好玩的东西，先动手，不会的再去查查资料，再来写一点... 。Learn by doing 是最高效的，但是对于初学者却也是几乎不可能的，一点基础没有，怎么可能做成东西呢？所以可以考虑报班跟老师学习，例如 http://www.gotealeaf.com/ 。退而求其次的办法是看我前面提到的视频，也不要忘了常来我的 happycasts.net 串门。看完视频，然后动手做，再有不理解的内容，看书梳理一下，这个顺序我觉得是比较好的。
+总之，我越来越清晰的感觉到 Learn by making 这条路是最高效的。就像扎克伯格说的：我就是想给我妹妹做成一个好玩的东西，先动手，不会的再去查查资料，再来写一点... 。Learn by Making 是最高效的，但是对于初学者却也是几乎不可能的，一点基础没有，怎么可能做成东西呢？所以可以考虑报班跟老师学习，例如 http://www.gotealeaf.com/ 。退而求其次的办法是看视频，不要忘了常来我的 happycasts.net 串门。看完视频，然后动手做，再有不理解的内容，看书梳理一下，这个顺序我觉得是比较好的。
