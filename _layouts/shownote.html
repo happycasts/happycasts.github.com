@@ -7,6 +7,7 @@
     {% include header.html %}
     <section class="container content">
       <div class="title">
+        http://happycasts.net/episodes/{{ page.path | slice: 0, 3 }}
         {{ page.title }}
       </div>
       {{ content }}
