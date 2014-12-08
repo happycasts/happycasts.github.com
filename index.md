@@ -5,7 +5,7 @@ title: Happycasts
 <section class="container content">
   <table class="index-table">
     <tbody>
-    <tr class="episode-wrap">
+    <tr class="episode-wrap even">
       <td class="episode-index">108</td>
       <td class="episode-title">
         <a href="108-learn-rails.html">如何学习 Rails ？</a>
@@ -17,7 +17,7 @@ title: Happycasts
         <a href="107-comment-ajax.html">Ajax 化评论提交过程</a>
       </td>
     </tr>
-    <tr class="episode-wrap">
+    <tr class="episode-wrap even">
       <td class="episode-index">106</td>
       <td class="episode-title">
         <a href="106-coder-howto.html">如何学习编程</a>
