@@ -17,12 +17,7 @@ problem with the software in his printer, he could fix the printer himself but u
 he was not allowed to get inside the black box by the manufacture.
 
 This frustration was the beginning of the free and open source movement. The essential benefits
-of open source are:
-
-- Access to the source or recipe of any given work.
-- Free remix and redistribution of any given work.
-- End to predatory vendor lock-in
-- Higher degree of cooperation
+of open source are: a) Access to the source or recipe of any given work. b) Free remix and redistribution of any given work. c) End to predatory vendor lock-in D) Higher degree of cooperation
 
 Open Source is originally a software related term. But let's take a non-technical example
 of where the open source mindset is actaully used today.
