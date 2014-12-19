@@ -6,6 +6,12 @@ title: Happycasts
   <table class="index-table">
     <tbody>
     <tr class="episode-wrap even">
+      <td class="episode-index">109</td>
+      <td class="episode-title">
+       <a href="109-open-source-lego.html">积木讲解开源文化</a>
+      </td>
+    </tr>
+    <tr class="episode-wrap">
       <td class="episode-index">108</td>
       <td class="episode-title">
         <a href="108-learn-rails.html">如何学习 Rails ？</a>
