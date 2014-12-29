@@ -5,6 +5,12 @@ title: Happycasts
 <section class="container content">
   <table class="index-table">
     <tbody>
+    <tr class="episode-wrap even">
+      <td class="episode-index">110</td>
+      <td class="episode-title">
+        <a href="110-signup.html">title: Rails4 App 中实现用户注册模块</a>
+      </td>
+    </tr>
     <tr class="episode-wrap">
       <td class="episode-index">109</td>
       <td class="episode-title">

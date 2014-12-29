@@ -1,6 +1,6 @@
 ---
 layout: shownote
-title: Rails4 App 中的用户注册模块
+title: Rails4 App 中实现用户注册模块
 ---
 
 在 [第84期](http://happycasts.net/episodes/84) 中介绍了如果手写用户的登录和注册模块。当然那时用的是 Rails3
