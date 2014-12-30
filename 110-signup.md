@@ -172,7 +172,7 @@ has_secure_password
 
 不要忘记运行 bundle 和重启服务器。这样新用户就可以成功注册了。
 
-### 登陆和退出
+### 保持登陆状态
 
 这时候可以到 chrome devtools -> resources 下查看 cookie，发现本地已经保存了 token 。所以可以用它来保持登陆状态。
 

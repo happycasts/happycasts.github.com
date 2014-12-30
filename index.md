@@ -8,7 +8,7 @@ title: Happycasts
     <tr class="episode-wrap even">
       <td class="episode-index">110</td>
       <td class="episode-title">
-        <a href="110-signup.html">title: Rails4 App 中实现用户注册模块</a>
+        <a href="110-signup.html">Rails4 App 中实现用户注册模块</a>
       </td>
     </tr>
     <tr class="episode-wrap">
