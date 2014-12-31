@@ -96,7 +96,7 @@ css 这里就不帖了，可以到 [github 仓库](https://github.com/happycasts
 users_controller.rb 中，signup 方法里填写
 
 {% highlight ruby %}
-@user = User,new
+@user = User.new
 {% endhighlight %}
 
 对应 signup.html.erb 是这些内容
