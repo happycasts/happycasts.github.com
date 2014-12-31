@@ -89,6 +89,8 @@ end
 </div>
 {% endhighlight %}
 
+css 这里就不帖了，可以到 [github 仓库](https://github.com/happycasts/episode-110-demo) 中下载。
+
 ### 添加注册功能
 
 users_controller.rb 中，signup 方法里填写
