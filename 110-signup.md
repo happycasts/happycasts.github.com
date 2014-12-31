@@ -7,7 +7,7 @@ title: Rails4 App 中实现用户注册模块
 今天这期是84期的改进版，在 Rails4 下作。而且拆成两集：本期讲注册，下一期讲验证和报错。
 
 
-本机完成结果的代码放在 [这里了](https://github.com/happycasts/episode-110-demo)。
+这一期视频完成结果的代码放在 [这里了](https://github.com/happycasts/episode-110-demo)。
 
 
 来看看 rails 版本：
