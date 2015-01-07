@@ -56,7 +56,7 @@ console.log('I am working!');
 
 {% highlight js %}
 console.log('I am working!');
-$(".comments").append('<%= j render partial: 'comment', locals: {comment: @comment} %>');
+$(".comments").append("<%= j render partial: 'comment', locals: {comment: @comment} %>");
 $(".comment-box textarea, .commenter-info input").val('');
 {% endhighlight %}
 
