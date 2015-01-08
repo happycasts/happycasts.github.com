@@ -264,3 +264,5 @@ end
 {% endhighlight %}
 
 这里，就可以登录成功了。这一集就到这里，下一集介绍表单验证和报错信息处理。
+
+_hello_ hello _hello_hello _comment_box.html _nice
