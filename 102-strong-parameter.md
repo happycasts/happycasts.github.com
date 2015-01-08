@@ -15,14 +15,15 @@ title: Strong parameter
 ### 什么是 mass assignment:
 
 如果有 mass assignment 我们可以
-~~~
+
+~~~ ruby
 attrs = {:first => "John", :last => "Doe", :email => "john.doe@example.com"}
 user = User.new(attrs)
 ~~~
 
 如果没有 mass assignment
 
-~~~
+~~~ ruby
 attrs = {:first => "John", :last => "Doe", :email => "john.doe@example.com"}
 user = User.new
 user.first = attrs[:first]
@@ -41,7 +42,7 @@ preference -> advanced setting -> proxy
 127.0.0.1 8080 
 
 
-~~~
+~~~ ruby
  private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
