@@ -8,7 +8,7 @@ title: Happycasts
     <tr class="episode-wrap">
       <td class="episode-index">111</td>
       <td class="episode-title">
-        <a href="110-sublime-rails.html">Sublime Text 辅助 Rails 开发</a>
+        <a href="111-sublime-rails.html">Sublime Text 辅助 Rails 开发</a>
       </td>
     </tr>
     <tr class="episode-wrap even">
