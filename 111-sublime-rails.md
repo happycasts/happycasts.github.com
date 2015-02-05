@@ -20,6 +20,7 @@ bg<tab>
 m0-auto<tab>
 {% endhighlight %}
 
+
 {% highlight html %}
 !<tab>
 link:css<tab>
@@ -61,4 +62,4 @@ snippet 的数量不多，那就没有必要麻烦了。
 
 ### MUST HAVE
 
-SyncedSideBar，autoreindent，SublimeERB，AdvancedNewFile 这几个包也都是非常有用的，都可以通过 package control 来进行安装。
+SyncedSideBar，autoreindent，SublimeERB，AdvancedNewFile，sass 这几个包也都是非常有用的，都可以通过 package control 来进行安装。
