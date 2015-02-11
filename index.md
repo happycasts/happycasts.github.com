@@ -5,6 +5,12 @@ title: Happycasts
 <section class="container content">
   <table class="index-table">
     <tbody>
+    <tr class="episode-wrap even">
+      <td class="episode-index">112</td>
+      <td class="episode-title">
+        <a href="111-sublime-rails.html">用开源项目串起知识点</a>
+      </td>
+    </tr>
     <tr class="episode-wrap">
       <td class="episode-index">111</td>
       <td class="episode-title">
