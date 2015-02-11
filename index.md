@@ -8,7 +8,7 @@ title: Happycasts
     <tr class="episode-wrap even">
       <td class="episode-index">112</td>
       <td class="episode-title">
-        <a href="111-sublime-rails.html">用开源项目串起知识点</a>
+        <a href="112-learn-with-projects.html">用开源项目串起知识点</a>
       </td>
     </tr>
     <tr class="episode-wrap">
