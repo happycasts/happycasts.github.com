@@ -3,23 +3,28 @@ layout: shownote
 title: Nvd3
 ---
 
-关于 Github Pages 的其他的很多事，我在 <http://happypeter.github.io/gitbeijing/pages.html> 都聊过了，所以这期视频里面就瞄准 Jekyll 的使用了。
+关于 Github Pages 的基本原理，我在 <http://happypeter.github.io/gitbeijing/pages.html> 都聊过了，所以这期视频里面就瞄准 Jekyll 的使用了。
 
-### Jekyll 的宏观特征
+### Jekyll
 
->Take a look at index.html. This file represents the homepage of the site. At the top of the file is a chunk of YAML that contains metadata about the file. This data tells Jekyll what layout to give the file, what the page’s title should be, etc. In this case, I specify that the “default” template should be used. You can find the layout files in the _layouts directory. If you open default.html you can see that the homepage is constructed by wrapping index.html with this layout.
-
-
->You’ll also notice Liquid templating code in these files. Liquid is a simple, extensible templating language that makes it easy to embed data in your templates. For my homepage I wanted to have a list of all my blog posts. Jekyll hands me a Hash containing various data about my site. A reverse chronological list of all my blog posts can be found in site.posts. Each post, in turn, contains various fields such as title and date.
-
-
-Jekyll 使用的一个小窍门是，直接用人家写好的 jekyll 网站，先跑起来，然后一点点的改。不过下面我一步步的添加功能进来，帮你清晰的看看 jekyll 的功能模块，很傻瓜的。
+Jekyll 使用的一个小窍门是，直接用人家写好的 jekyll 网站，先跑起来，然后一点点的改。
 [这里](https://github.com/jekyll/jekyll/wiki/sites) 有很多网站可以参考。
 
-首先，也是 jekyll 最大的一块就是，不写 html 了，改写 markdown，这样就先要创建 _config.yml 文件
+不过下面我一步步的添加功能进来，帮你清晰的看看 jekyll 的功能模块，很傻瓜的。
+
+到一个项目仓库，添加 gh-pages 分支，然后里面放一个 index.html 咱们的 jekyll 网站就算跑起来了。
+
+
+首先，也是 jekyll 最大的一块就是，不写 html 了，改写 markdown，可以把原有的 index.html 页面改写为 index.md 。关于后缀，参考[默认配置](http://jekyllrb.com/docs/configuration/) 
+
+    markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
+所以其他几种后缀也都是没有问题的。但是要注意的是在 index.md 中，开始正文之前，一定要加上下面这样的”头设置“ ( Front Matter )
 
 {% highlight yaml %}
-markdown: kramdown
+---
+title: 测试页面
+---
 {% endhighlight %}
 
 
@@ -51,6 +56,8 @@ http://jekyllrb.com/docs/permalinks/ 链接格式
 
 ### octopress
 octopress 可以看看：http://happycasts.net/episodes/36
+
+如果你想要给网站添加 rss 用 google analytics 监控浏览，添加 disqus 评论等很多其他常用功能，参考 <http://octopress.org/docs/> ，那么可以考虑使用 octopress 。octopress 是专门为 Jekyll 而设计的一个博客框架。
 
 
 
