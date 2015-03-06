@@ -1,5 +1,5 @@
 ---
-title: Github Pages 的 jekyll 功能详细演示
+title: Github Pages 的 jekyll 功能
 ---
 
 关于 Github Pages 的基本原理，我在 <http://happypeter.github.io/gitbeijing/pages.html> 都聊过了，所以这期视频里面就瞄准 Jekyll 的使用了。
