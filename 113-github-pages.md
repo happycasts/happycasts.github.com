@@ -66,7 +66,11 @@ footer here
 layout: default
 {% endhighlight %}
 
-这样，以后为每个页面添加 header 和 footer 就非常简单了。跟布局文件相对的就是 include 片段文件文件了，参考 [这个项目页面](https://github.com/happypeter/gitbeijing/blob/gh-pages/index.md) 中 `{% include toc.html %}` ，一看就明白是什么意思了。
+这样，以后为每个页面添加 header 和 footer 就非常简单了。跟布局文件相对的就是 include 片段文件文件了，参考 [这个项目页面](https://github.com/happypeter/gitbeijing/blob/gh-pages/index.md) 中 
+
+    {% include toc.html %}
+
+一看就明白是什么意思了。
 
 ### 配置文件设置
 每个页面中都重复添加 `layout: xxx` 也挺傻的。在 _config.yml 中添加，这样相当于每个页面都默认设置了 default.html 为 layout 文件。
