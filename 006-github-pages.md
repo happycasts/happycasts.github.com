@@ -30,4 +30,3 @@ markdown: maruku
 pygments: true
 {% endhighlight %}
 
-
