@@ -28,6 +28,39 @@ title: 测试页面
 {% endhighlight %}
 
 
+知道 jekyll 的默认设置参数是非常重要的，直接影响日常使用。好在官网的 [配置页面](http://jekyllrb.com/docs/configuration/) 上这部分内容列出的都很清楚。比如默认的 markdown 转换期是
+
+    markdown:    kramdown
+
+可以到 (kramdown 官网](http://kramdown.gettalong.org/) 查看关于 kramdown 官网的使用细节，不过初期也用不着，看看我这里怎么写，照猫画虎就成。
+
+
+
+在 _config.yml 中添加，这样相当于每个页面都默认设置了 default.html 为 layout 文件。
+
+{% highlight yaml %}
+defaults:
+  -
+    values:
+      layout: "default"
+{% endhighlight %}
+
+相应的每个页面中的 layout 这一项就不用设置了。注意，即使有了这个设置，front matter 部分也不能完全删除。可以设施空的 front matter
+
+{% highlight yaml %}
+---
+---
+{% endhighlight %}
+
+另外，个别页面如果不用这个 layout 文件，可以到 front matter 中去覆盖，例如
+
+{% highlight yaml %}
+---
+layout: post
+---
+{% endhighlight %}
+
+这样这个页面就使用 post.html 做布局文件了。
 第二步，也是超实用的，添加 layout 文件。
 
 
