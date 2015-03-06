@@ -8,7 +8,7 @@ title: Happycasts
     <tr class="episode-wrap">
       <td class="episode-index">113</td>
       <td class="episode-title">
-        <a href="112-github-pages.html">Github Pages</a>
+        <a href="113-github-pages.html">Github Pages</a>
       </td>
     </tr>
     <tr class="episode-wrap even">

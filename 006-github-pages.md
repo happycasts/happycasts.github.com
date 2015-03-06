@@ -1,5 +1,4 @@
 ---
-layout: shownote
 title: Github pages
 ---
 __Resources:__

@@ -1,5 +1,4 @@
 ---
-layout: shownote
 title: Github Pages 的 jekyll 功能详细演示
 ---
 
@@ -45,7 +44,7 @@ defaults:
       layout: "default"
 {% endhighlight %}
 
-相应的每个页面中的 layout 这一项就不用设置了。注意，即使有了这个设置，front matter 部分也不能完全删除。可以设施空的 front matter
+相应的每个页面中的 layout 这一项就不用设置了。注意，即使有了这个设置，front matter 部分也不能完全删除。没有内容要设置，也要给一个空的 front matter
 
 {% highlight yaml %}
 ---
