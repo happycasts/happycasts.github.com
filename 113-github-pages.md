@@ -43,22 +43,8 @@ title: 测试页面
 ### 布局文件和片段文件
 来添加 _layouts/default.html 文件，内容为
 
-{% highlight html %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>default</title>
-</head>
-<body>
-header here
+{% gist happypeter/4be09d49c828d3fe788c index.html%}
 
-{{ content }}
-
-footer here
-</body>
-</html>
-{% endhighlight %}
 
 然后到 index.md 页面 front matter 部分，添加
 
