@@ -83,11 +83,12 @@ sass 和 coffee 的预处理，参考 [这里](http://jekyllrb.com/docs/assets/)
 
 [自带变量](http://jekyllrb.com/docs/variables/) 也是很有用的。例如 gitbeijing 中为了给每个章节加大标题，在 book.html 中有 
 
-      <h1>{{ page.title }}</h1>
+{% gist happypeter/cc3f896eee9089622512 %}
+
 
 同时 head.html 中有
 
-    <title>{{ page.title }}</title>
+{% gist happypeter/d04d1032a41d811f7eb7 %}
 
 这样一来，只需要在头设置中有
 
