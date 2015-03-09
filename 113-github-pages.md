@@ -4,7 +4,6 @@ title: Github Pages 的 jekyll 功能
 
 关于 Github Pages 的基本原理，我在 <http://happypeter.github.io/gitbeijing/pages.html> 都聊过了，所以这期视频里面就瞄准 Jekyll 的使用了。
 
-
 Jekyll 使用的一个小窍门是，直接用人家写好的 jekyll 网站，先跑起来，然后一点点的改。
 [这里](https://github.com/jekyll/jekyll/wiki/sites) 有很多网站可以参考。 一个 jekyll 项目都会有这些内容：<http://jekyllrb.com/docs/structure/> 。不过下面我一步步的添加功能进来，帮你清晰的看看 jekyll 的功能模块，很傻瓜的。
 
