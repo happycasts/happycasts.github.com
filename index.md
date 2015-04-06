@@ -6,6 +6,12 @@ title: Happycasts
   <table class="index-table">
     <tbody>
     <tr class="episode-wrap">
+      <td class="episode-index">115</td>
+      <td class="episode-title">
+        <a href="115-getting-git-part2.html">Getting Git 演讲的第2部分</a>
+      </td>
+    </tr>
+    <tr class="episode-wrap">
       <td class="episode-index">114</td>
       <td class="episode-title">
         <a href="114-getting-git-part1.html">Getting Git 演讲的第一部分</a>
