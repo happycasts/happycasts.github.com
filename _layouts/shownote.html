@@ -11,11 +11,11 @@
       </div>
       {% assign name = page.path | split:"-" | first %}
       {% if name < '010' %}
-        <a href="http://happycasts.net/episodes/{{ name | replace_first:'00', '' }}">观看视频</a>
+        <a href="http://haoduoshipin.com/episodes/{{ name | replace_first:'00', '' }}">观看视频</a>
       {% elsif name >= '010' and name < '100' %}
-        <a href="http://happycasts.net/episodes/{{ name | replace_first:'0', '' }}">观看视频</a>
+        <a href="http://haoduoshipin.com/episodes/{{ name | replace_first:'0', '' }}">观看视频</a>
       {% else %}
-        <a href="http://happycasts.net/episodes/{{ name }}">观看视频</a>
+        <a href="http://haoduoshipin.com/episodes/{{ name }}">观看视频</a>
       {% endif %}
       {{ content }}
     </section>
