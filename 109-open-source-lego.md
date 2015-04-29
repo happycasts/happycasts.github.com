@@ -6,7 +6,7 @@ title: 积木讲解开源文化
 我是研一的时候接触到了 Linux 和开源文化，整个改变了我的职业观。所以今天翻译了 wikipedia 上的
 这个[动画](http://en.wikipedia.org/wiki/Open_source) ，和你一起分享开源的魅力。
 
-![](http://media.happycasts.net/pic/happycasts/lego.png)
+![](http://media.haoduoshipin.com/pic/happycasts/lego.png)
 
 
 Hi, I am Jonas. Do you know what open source is? Let me explain it for you.

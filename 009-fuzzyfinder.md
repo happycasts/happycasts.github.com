@@ -2,7 +2,7 @@
 layout: shownote
 title: Fuzzyfinder
 ---
-__NOTE:__ 本期视频宣布作废，改进版在[第24期](http://happycasts.net/episodes/24)
+__NOTE:__ 本期视频宣布作废，改进版在[第24期](http://haoduoshipin.com/episodes/24)
 
 __Resources:__
 

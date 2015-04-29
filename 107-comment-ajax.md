@@ -7,7 +7,7 @@ ajax 听起来好复杂呀？其实用起来就没啥了，就是再不刷新页
 
 本期是第66期的改良版。源码在 <https://github.com/happycasts/episode-107-demo> 。 css 样式参考了 Css-tricks.com 。
 
-![](http://media.happycasts.net/pic/happycasts/ajax_comment.png)
+![](http://media.haoduoshipin.com/pic/happycasts/ajax_comment.png)
 
 ### 下载代码
 到 <https://github.com/happycasts/episode-107-demo> 下载代码之后，里面有一个 before 目录是咱们这集的起点，after 中是最终的效果。
@@ -20,7 +20,7 @@ ajax 听起来好复杂呀？其实用起来就没啥了，就是再不刷新页
     rake db:setup
     rails s
 
-我在 seed.rb 文件中已经填充了一些数据，所以首页上就可以看到小狗们的列表了。关于我本地虚拟机的搭建可以参考 <http://happycasts.net/episodes/105>
+我在 seed.rb 文件中已经填充了一些数据，所以首页上就可以看到小狗们的列表了。关于我本地虚拟机的搭建可以参考 <http://haoduoshipin.com/episodes/105>
 
 ### 把过程 ajax 化
 普通的请求，后台 log 中请求的格式是 HTML。要变 Ajax 请求，就到 _comment_box.html.erb 文件中

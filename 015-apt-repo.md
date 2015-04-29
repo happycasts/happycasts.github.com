@@ -6,7 +6,7 @@ __Resources:__
 
 - <http://www.jejik.com/articles/2006/09/setting_up_and_managing_an_apt_repository_with_reprepro/>
 - <http://cn.archive.ubuntu.com/ubuntu/>
-- <http://media.happycasts.net/apt/>
+- <http://media.haoduoshipin.com/apt/>
 - <http://tech.randomness.org.uk/Setting_up_a_Signed_apt_repo.html>
 - <http://apt.baruwa.org/>
 - <https://help.launchpad.net/Packaging/PPA>
@@ -36,18 +36,18 @@ sha256sum happyhello_1.0_i386.deb
 ~~~
 
 ~~~
-scp -r * media.happycasts.net:media/apt/
+scp -r * media.haoduoshipin.com:media/apt/
 ~~~
 
 ~~~
 # peter add his own repo
-deb http://media.happycasts.net/apt/ natty main
+deb http://media.haoduoshipin.com/apt/ natty main
 ~~~
 
 ~~~
 sudo apt-get update
 cd /var/lib/apt/lists/
-vim media.happycasts.net_apt_dists_natty_main_binary-i386_Packages
+vim media.haoduoshipin.com_apt_dists_natty_main_binary-i386_Packages
 cd /var/cache/apt/ # we see pkgcache.bin here
 ~~~
 

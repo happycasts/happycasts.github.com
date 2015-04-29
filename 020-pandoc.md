@@ -6,7 +6,7 @@ __Resources:__
 
 - [为什么我们要学习 Markdown 的三个理由](http://news.cnblogs.com/n/139649/)
 - [light weight markup language](http://www.worldhello.net/gotgithub/appendix/markups.html)
-- <http://happycasts.net/episodes/19>
+- <http://haoduoshipin.com/episodes/19>
 - [demo code](https://github.com/happycasts/episode-20-demo)
 - <http://johnmacfarlane.net/pandoc/>
 

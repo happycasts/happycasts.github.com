@@ -10,13 +10,13 @@ nodejs 之上的大名鼎鼎的 socket.io，另外还使用了网页编辑器 Co
 
 先看一眼 socket.io，它是一套浏览器兼容性非常好的 web 实时通讯 js 库。
 
-![](http://media.happycasts.net/pic/happycasts/socketio.png)
+![](http://media.haoduoshipin.com/pic/happycasts/socketio.png)
 
 <http://socket.io/get-started/chat/> 介绍了如果基于 express 框架来搭建一个聊天室应用，代码非常的简约，最终的效果也是非常的惊艳，强烈建议初学者跟着弄一遍。
 
 # 初始化一个 nodejs 项目
 
-![](http://media.happycasts.net/pic/happycasts/nodejs.jpg)
+![](http://media.haoduoshipin.com/pic/happycasts/nodejs.jpg)
 
 首先要在自己的机器上安装 nodejs，这里我们就不演示了。我这里使用的是 Mac，可以使用 Homebrew 来安装。打开终端，执行
 
@@ -54,7 +54,7 @@ npm install --save socket.io
 npm install --save express
 ~~~
 
-![](http://media.happycasts.net/pic/happycasts/expressjs.png)
+![](http://media.haoduoshipin.com/pic/happycasts/expressjs.png)
 
 接下来创建 index.js 文件，先写入下面这些内容
 
@@ -113,7 +113,7 @@ app.set('view engine','jade');
 
 相应的需要安装 jade，一种类似于 Haml 的简化 html 书写的小语言
 
-![](http://media.happycasts.net/pic/happycasts/jade.png)
+![](http://media.haoduoshipin.com/pic/happycasts/jade.png)
 
 ~~~
 cd coedit/

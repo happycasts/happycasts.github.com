@@ -2,5 +2,5 @@
 layout: shownote
 title: Distribution change life
 ---
-- <http://happycasts.net/episodes/5>
+- <http://haoduoshipin.com/episodes/5>
 

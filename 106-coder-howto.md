@@ -9,7 +9,7 @@ title: 如何入门编程
 
 ### Learn by doing
 
-![](http://media.happycasts.net/pic/happycasts/zuckerberg.png)
+![](http://media.haoduoshipin.com/pic/happycasts/zuckerberg.png)
 
 <http://code.org/> 的宣传视频里，扎克伯格的一段话：
 
@@ -21,7 +21,7 @@ title: 如何入门编程
 
 像我原来是做嵌入式 Linux 开发的，用 C 写驱动程序，用 C++ 写图形界面。三四年下来，发现有问题，就是我做成的东西很难展示给别人，因为这些东西需要依赖于特定的硬件来工作。后来慢慢转向做 Web 应用就发现很爽，因为只要朋友有浏览器，你就能给他看。虚荣心能够建立成就感的，兴趣推动是做好的学习动力。落脚到一个点上：我认为 Web 开发适合编程初学者。
 
-![](http://media.happycasts.net/pic/happycasts/railway.png)
+![](http://media.haoduoshipin.com/pic/happycasts/railway.png)
 
 入门的语言要尽量接近人类思维的，例如 ruby。不推荐入门学 C，像我自己那会儿，现在回头看来是个大错误，还是要尽快能够实现自己的想法，防止很大的挫败感。另外 web 开发内容多，知识面很广，新手容易迷路。类似于 Rails 这样的编程框架，就是老手们的经验总结出来的，可以给你个轨道。有人说 Rails 很复杂不适合新手学，我不同意，因为没有框架给出指引，走的弯路会更多。
 
@@ -29,7 +29,7 @@ title: 如何入门编程
 
 还是回到视频。编程不是科学，是手艺。画画写字最早的阶段是临摹。于是当年我自己就开始弄了。但是发现知名的代码项目都太难，根本看不懂。后来看到一些优秀的操作视频，却发现很容易看懂。因为视频可以让代码的复杂度在时间轴上铺开，一步一步引入新的功能。而不是让你一下子面对所有复杂逻辑。另外视频中我也可以看到代码是如何构思的，操作的时候采用了那些快捷键，等到我跟着人家把代码跑起来了，再去看文档，原理也就很容易打通了。
 
-![](http://media.happycasts.net/pic/happycasts/coding_tools.png)
+![](http://media.haoduoshipin.com/pic/happycasts/coding_tools.png)
 
 另外看老手怎么来使用各种工具也非常重要。怎么来敲命令，用代码编辑器，知道如何使用 google 和 stackoverflow 查资料，用 github 控制项目历史并且有效和他人合作。这些技能是课本是不讲的，但是却是优秀的开发者所必备的。这些内容，用视频的形式来分享是再合适不过的了。
 

@@ -3,7 +3,7 @@ layout: shownote
 title: Mysql backup
 ---
 ~~~
-ssh peter@happycasts.net ‘ cd happycasts_production; \
+ssh peter@haoduoshipin.com ‘ cd happycasts_production; \
                            mysqldump --extended-insert=FALSE --complete-insert=TRUE -uroot -pMYPASSWORD happycasts_production>happycasts_production.sql; \
                            git commit -a -m"i";\
                            git push

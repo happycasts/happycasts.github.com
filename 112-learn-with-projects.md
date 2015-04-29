@@ -21,7 +21,7 @@ title: 用开源项目串起知识点
 
 ### github 是新的学习基地
 
-![](http://media.happycasts.net/pic/happycasts/github-icon.png)
+![](http://media.haoduoshipin.com/pic/happycasts/github-icon.png)
 
 今天主要讨论一下具体手段，看看用那些工具和资源来进行，以开源项目为糖葫芦竹签的，新型的互联网上的学习。
 

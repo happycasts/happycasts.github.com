@@ -2,7 +2,7 @@
 layout: shownote
 title: Rails setup
 ---
-__NOTE__ 本期是[第38期](http://happycasts.net/episodes/38)的改进版。
+__NOTE__ 本期是[第38期](http://haoduoshipin.com/episodes/38)的改进版。
 
 __Resources__
 

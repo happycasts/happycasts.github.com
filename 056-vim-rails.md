@@ -4,7 +4,7 @@ title: Vim rails
 ---
 - <https://github.com/happypeter/peter-vim>
 - <http://railscasts-china.com/episodes/rails-with-vim>
-- [ack](http://happycasts.net/episodes/26)
-- [fuzzyfinder](http://happycasts.net/episodes/24)
-- [snipmate](http://happycasts.net/episodes/2)
+- [ack](http://haoduoshipin.com/episodes/26)
+- [fuzzyfinder](http://haoduoshipin.com/episodes/24)
+- [snipmate](http://haoduoshipin.com/episodes/2)
 

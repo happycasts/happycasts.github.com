@@ -7,7 +7,7 @@ title: Javascript start
 
 ### 1. 相关工具
 
-[chrome-devtools](http://happycasts.net/episodes/40)
+[chrome-devtools](http://haoduoshipin.com/episodes/40)
 
 ### 1. 可以先学 jQuery
 

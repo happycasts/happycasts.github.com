@@ -3,7 +3,7 @@ layout: shownote
 title: 美丽如苹果的命令行
 ---
 
-![](http://media.happycasts.net/pic/happycasts/apple.jpg)
+![](http://media.haoduoshipin.com/pic/happycasts/apple.jpg)
 
 苹果的 Mac 系统自带的命令行终端，叫
 Terminal 。不过 [iTerm2](http://iterm2.com/) 的功能更为灵活丰富 。今天我来把 iTerm2
@@ -11,7 +11,7 @@ Terminal 。不过 [iTerm2](http://iterm2.com/) 的功能更为灵活丰富 。�
 [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 让命令行变得更好用。最终可以达成的效果是这样的，不错吧？
 
-![](http://media.happycasts.net/pic/happycasts/endresult.png)
+![](http://media.haoduoshipin.com/pic/happycasts/endresult.png)
 
 # iTerm2 安装和基本自定制
 
@@ -26,7 +26,7 @@ Terminal 。不过 [iTerm2](http://iterm2.com/) 的功能更为灵活丰富 。�
 Cmd+' 呼叫出 iTerm2 的 preferences 页，profile，选择当前我的默认
 profile，然后勾选 Reuse previous session's directory 。
 
-![](http://media.happycasts.net/pic/happycasts/preference.png)
+![](http://media.haoduoshipin.com/pic/happycasts/preference.png)
 
 <!-- Cmd+enter to go in/out fullscreen -->
 <!-- preferences -> keys -> system wide hot key to show/hide iTerm2: Cmd+Ctrl+t
@@ -46,7 +46,7 @@ menlo 14px 。更改 charater spacing -> vitical 的值为 1.5
 # zsh 配置框架 oh-my-zsh
 <!-- prezto: cd ~/tab gave me shit, so I give it up -->
 
-![](http://media.happycasts.net/pic/happycasts/ohmyzsh.png)
+![](http://media.haoduoshipin.com/pic/happycasts/ohmyzsh.png)
 
 安装过程参考这里的 README：<https://github.com/robbyrussell/oh-my-zsh> 。
 

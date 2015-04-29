@@ -29,7 +29,7 @@ Architecture: i386
 Maintainer: Peter Wang <happypeter1983@gmail.com>
 Installed-Size: 8
 Depends: hello
-Homepage: http://www.happycasts.net
+Homepage: http://www.haoduoshipin.com
 Description: happypeter's helloWorld
   the best software ever made!
   Everything is cool

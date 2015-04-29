@@ -10,7 +10,7 @@ title: Web start
 
 安装视频：
 
-- <http://happycasts.net/episodes/11>
+- <http://haoduoshipin.com/episodes/11>
 
 ### 2. 什么是 Unix ？
 
@@ -18,5 +18,5 @@ title: Web start
 
 ### 3. vim 的参考视频
 
-- <http://happycasts.net/episodes?tag_id=1>
+- <http://haoduoshipin.com/episodes?tag_id=1>
 

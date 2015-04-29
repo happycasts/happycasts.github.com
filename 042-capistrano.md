@@ -19,5 +19,5 @@ check this [gist](https://gist.github.com/3977557)
 
 ### 3. For more info, check Ep38
 
-- <http://happycasts.net/episodes/38>
+- <http://haoduoshipin.com/episodes/38>
 

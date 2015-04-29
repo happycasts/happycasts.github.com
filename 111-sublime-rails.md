@@ -4,7 +4,7 @@ title: Sublime Text 辅助 Rails 开发
 ---
 
 
-早在 [85期](http://happycasts.net/episodes/85) 的时候，我介绍了 sublime 的基本使用，这一期里做一下扩展，说说具体在开发 Rails 程序的时候会用到的一些技巧。其实大部分内容都是不局限于 Rails 的，应该是 Web 开发领域的同学们都通用的。
+早在 [85期](http://haoduoshipin.com/episodes/85) 的时候，我介绍了 sublime 的基本使用，这一期里做一下扩展，说说具体在开发 Rails 程序的时候会用到的一些技巧。其实大部分内容都是不局限于 Rails 的，应该是 Web 开发领域的同学们都通用的。
 
 我主要就讲两个技巧，一个 emmet ，另一个是 snippets 的管理。然后再来展示一些必备的，但是比较简单的其他技巧。
 

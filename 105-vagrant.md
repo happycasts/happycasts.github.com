@@ -5,7 +5,7 @@ title: Vagrant
 
 今天的话题是关于搭建开发环境的，我用的是 Mac 机器，很多朋友都是直接在 Mac 上搭建程序运行环境，所以需要安装不同版本的 ruby apache nginx... 再搞一个新项目，又要安装不少工具。Hey，我这个机器也要用来看片上网做图片和干其他很多事情的，总之系统上的东西越来越多，让人很不放心。并且，服务器上跑的也不是 Mac 是 Linux 呀，两个环境不一样，也是麻烦不断。
 
-![](http://media.happycasts.net/pic/happycasts/vagrant.png)
+![](http://media.haoduoshipin.com/pic/happycasts/vagrant.png)
 
 我应该是很早就知道 vagrant 了，当时有朋友跟我说这个东东可以提供自定制的虚拟机。当时我就想，靠，我在 Mac 上安装 virtualbox 虚拟机，里面安装 ubuntu Linux 系统不是一样吗？我还有一个搭建开发环境的脚本，都运行了一万遍了，已经很熟悉了。干嘛还要多学一个 vagrant 脱裤子放屁多费一道手续呢？直到几个月前，我在 laracasts 上面看到我比较服的一个人 Jeffery Way 也用 vagrant，所以才又下定决心好好试用一下 vagrant，一试用不要紧，相见恨晚啊。不是光瞎折腾，真是能提高工作效率。
 所以今天录个 happycasts 视频，给你展示 vagrant 有哪几个点会让我相见恨晚。
@@ -140,7 +140,7 @@ SCRIPT
 接下来就可以写要执行的脚本了。
 
     sudo apt-get install -y wget
-    wget http://happycasts.net
+    wget http://haoduoshipin.com
 
 如果把这个 project 放到一个全新的系统中，首次执行 `vagrant up` 当虚拟机系统安装完毕之后这些脚本也会自动执行。
 
