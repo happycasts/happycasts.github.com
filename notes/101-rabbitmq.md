@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Rabbitmq
----
 本期视频依旧是由最英俊的李宗晟同学为大家奉献，大家有问题可以在这里留言，或者发邮件到 lizongshenglzs@gmail.com 和他讨论。
 
 - download: <http://www.rabbitmq.com/download.html>
@@ -65,4 +61,3 @@ class House < ActiveRecord::Base
   end
 end
 ~~~
-

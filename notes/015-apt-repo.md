@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Apt repo
----
 __Resources:__
 
 - <http://www.jejik.com/articles/2006/09/setting_up_and_managing_an_apt_repository_with_reprepro/>
@@ -50,4 +46,3 @@ cd /var/lib/apt/lists/
 vim media.haoduoshipin.com_apt_dists_natty_main_binary-i386_Packages
 cd /var/cache/apt/ # we see pkgcache.bin here
 ~~~
-

@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Html5 video
----
 - <http://diveintohtml5.info/detect.html>
 - <http://www.html5rocks.com/en/tutorials/video/basics/>
 
@@ -11,4 +7,3 @@ title: Html5 video
    
 ### 2. 视频格式转换器
 <http://www.mirovideoconverter.com/>
-

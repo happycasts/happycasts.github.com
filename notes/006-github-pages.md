@@ -1,13 +1,10 @@
----
-title: Github pages
----
 __Resources:__
 
 - [github pages](http://pages.github.com/)
 - [Tom's blog](http://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html)
 - [markdown](http://daringfireball.net/projects/markdown/)
 
-{% highlight console %}
+```console
 mkdir lovelypeter.github.com
 cd lovelypeter.github.com
 git init
@@ -19,13 +16,12 @@ git add .
 git ci
 git push -u origin master
 ...
-{% endhighlight %}
+```
 
 _config.yml 中写
 
-{% highlight yaml %}
+```yaml
 markdown: maruku
 # 2014-06-08 UPDATE: maruku 已经作废了，现在可以用 kramdown
 pygments: true
-{% endhighlight %}
-
+```

@@ -1,11 +1,6 @@
----
-layout: shownote
-title: Redirection
----
 __Resources:__
 
 - [The Linux Command Line](http://linuxcommand.org/tlcl.php)
-
 
 ~~~
 cat file1 file2 >file3
@@ -35,4 +30,3 @@ done
 ~~~
 ls /bin|grep ed
 ~~~
-

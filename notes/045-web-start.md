@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Web start
----
 - <http://railsgirls.com/beijing>
 
 ### 1. ubuntu 的下载地址
@@ -19,4 +15,3 @@ title: Web start
 ### 3. vim 的参考视频
 
 - <http://haoduoshipin.com/episodes?tag_id=1>
-

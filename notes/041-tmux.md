@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Tmux
----
 备注：本期视频的基本内容由 [@Ming](http://blog.yunnuy.com/) 提供。
 
 - <http://en.wikipedia.org/wiki/Tmux>
@@ -34,4 +30,3 @@ bind + resize-pane -U 10
 # this is the default in tmux already
 bind : command-prompt
 ~~~
-

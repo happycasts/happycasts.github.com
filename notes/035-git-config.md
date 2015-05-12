@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Git config
----
 ###1.  配置文件的位置
 
 `~/.gitconfig` 是最常用的。对应的配置命令要加 `--global` 选项。
@@ -34,4 +30,3 @@ git commit --author="Ben <ben@ben.com>" -a -m"ben's msg"
 [merge]
     tool = meld
 ~~~
-

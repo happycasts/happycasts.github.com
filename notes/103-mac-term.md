@@ -1,8 +1,3 @@
----
-layout: shownote
-title: 美丽如苹果的命令行
----
-
 ![](http://media.haoduoshipin.com/pic/happycasts/apple.jpg)
 
 苹果的 Mac 系统自带的命令行终端，叫

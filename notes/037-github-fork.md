@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Github fork
----
 - <https://help.github.com/articles/fork-a-repo> 
 - <https://help.github.com/articles/using-pull-requests> 
 
@@ -31,4 +27,3 @@ git branch -D add_sth
 ~~~
 git push orign :add_sth
 ~~~
-

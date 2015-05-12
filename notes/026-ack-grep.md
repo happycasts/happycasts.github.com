@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Ack grep
----
 __Resources:__
 
 - [Ack](http://betterthangrep.com/) 
@@ -23,4 +19,3 @@ ack --nojs hello
 :Ack -a hello
 :Ack -Q "*h"
 ~~~
-

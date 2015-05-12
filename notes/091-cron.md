@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Cron
----
 - <http://en.wikipedia.org/wiki/Cron>
 - <http://railscasts.com/episodes/164-cron-in-ruby>
 
@@ -22,4 +18,3 @@ crontab -e
 ~~~
 crontab -l
 ~~~
-

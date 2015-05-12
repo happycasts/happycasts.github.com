@@ -1,9 +1,4 @@
----
-layout: shownote
-title: Sendmail
----
 - <http://railscasts.com/episodes/61-sending-email-revised>
-
 
 ~~~
 sudo su
@@ -19,4 +14,3 @@ Subject: Test Sendmail
 From: Peter Wang <peter@haoqicat.com>
 .
 ~~~
-

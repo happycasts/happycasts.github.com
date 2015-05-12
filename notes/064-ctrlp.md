@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Ctrlp
----
 __Notes:__ 本期是[第24期](http://haoduoshipin.com/episodes/24)的改进版。内容受到 [hpyhacking](https://github.com/hpyhacking) 的指导。
 
 __Resources:__
@@ -18,4 +14,3 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(log|jpg|png|jpeg)$',
   \ }
 ~~~
-

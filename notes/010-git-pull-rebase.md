@@ -1,11 +1,6 @@
----
-layout: shownote
-title: Git pull rebase
----
 __Resources:__
 
 - [github](http://www.github.com)
-
 
 ~~~
 [user]
@@ -34,4 +29,3 @@ git fetch origin
 git rebase origin/master
 
 ~~~
-

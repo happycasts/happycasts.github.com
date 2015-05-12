@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Vim multifiles
----
 __Resources:__
 
 - [One Vim...Just One](http://vimeo.com/4446112) 
@@ -27,4 +23,3 @@ set hidden "in order to switch between buffers with unsaved change
 map <s-tab> :bp<cr>
 map <tab> :bn<cr>
 ~~~
-

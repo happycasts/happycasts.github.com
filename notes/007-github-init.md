@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Github init
----
 __Resources:__
 
 - [help](http://help.github.com/)
@@ -32,4 +28,3 @@ cat ~/.gitconfig
 mv .ssh ssh.bak
 ssh-keygen 
 ~~~
-

@@ -1,8 +1,3 @@
----
-layout: shownote
-title: Rails signup
----
-
 - [Code](https://github.com/happycasts/episode-84-demo)
 
 ~~~
@@ -17,14 +12,12 @@ rails new baby -d mysql
     end
 ~~~
 
-
 ~~~
 rake db:create;rake db:migrate
 rails g model user name:string email:string password_digest:string token:string
 rake db:migrate
 rails g controller users welcome signup login
 ~~~
-
 
 ~~~
 Signup::Application.routes.draw do
@@ -143,4 +136,3 @@ end
   <% end %>
 </div>
 ~~~
-

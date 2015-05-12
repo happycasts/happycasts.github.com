@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Small commits please
----
 - 给大家展示一下我的 .gitconfig 文件
 
 ~~~
@@ -41,4 +37,3 @@ git checkout filename
 ~~~
 git rebase -i HEAD~~~
 ~~~
-

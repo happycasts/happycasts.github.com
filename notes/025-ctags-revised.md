@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Ctags revised
----
 __Resources:__ 
 
 - [ctags](http://ctags.sourceforge.net/)
@@ -27,4 +23,3 @@ ctags -R --exclude=*.js . ~/.rvm/gems/ruby-1.9.2-p290/gems/
 ~~~
 set ignorecase
 ~~~
-

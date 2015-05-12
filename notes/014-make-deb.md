@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Make deb
----
 __Resources:__
 
 - <http://users.telenet.be/mydotcom/howto/linux/package.htm>
@@ -67,5 +63,3 @@ sudo apt-get purge happyhello
 ls /etc/|grep happy
 sudo apt-get remove happyhello
 ~~~
-
-

@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Rails setup
----
 __Resources:__
 
 - <http://rubyonrails.org/>
@@ -81,4 +77,3 @@ sudo vim /etc/hosts
 # /etc/hosts
 127.0.0.1 www.yourhost.com
 ~~~
-

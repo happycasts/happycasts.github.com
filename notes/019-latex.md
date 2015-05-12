@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Latex
----
 ### install
 
 ~~~
@@ -158,4 +154,3 @@ int main()
 
 \end{document}
 ~~~
-

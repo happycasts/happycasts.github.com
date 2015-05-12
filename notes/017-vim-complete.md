@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Vim complete
----
 ~~~
 vim --version|head -n 1
 lsb_release -a
@@ -62,4 +58,3 @@ filetype plugin on
 ia xdate  <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 ia myname <c-r>%<cr>
 ~~~
-

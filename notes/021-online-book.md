@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Online book
----
 __Resources:__
 
 - [episode-21-demo](https://github.com/happycasts/episode-21-demo)
@@ -10,7 +6,6 @@ __Resources:__
   markdown](http://johnmacfarlane.net/pandoc/demo/example9/pandocs-markdown.html)
 - [Github's Markdown](http://github.github.com/github-flavored-markdown/)
 - [Github pages](http://help.github.com/pages/)
-
 
 ~~~
 git clone git@github.com:happycasts/episode-21-demo.git
@@ -128,5 +123,3 @@ do
    rm $file.tmp
 done
 ~~~
-
-

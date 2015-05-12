@@ -1,7 +1,3 @@
----
-layout: shownote
-title: ajax 化评论功能
----
 <!-- css-tricks 样式的评论，评论一张小狗图片 -->
 ajax 听起来好复杂呀？其实用起来就没啥了，就是再不刷新页面的情况下，去服务器上加载新的内容过来。比如这里有一个照片，下面可以添加评论。没有 ajax 化的基本评论功能是这样的，你点击发布，页面会整个刷新，搞得用起来很不舒服。但是如果 ajax 化之后，就会有更为平滑的用户体验了，帅吧？这里咱们就是要来在 Rails4 应用中做出这个效果来。
 
@@ -25,16 +21,16 @@ ajax 听起来好复杂呀？其实用起来就没啥了，就是再不刷新页
 ### 把过程 ajax 化
 普通的请求，后台 log 中请求的格式是 HTML。要变 Ajax 请求，就到 _comment_box.html.erb 文件中
 
-{% highlight erb %}
+```erb
 - <%= form_tag "/dogs/#{dog.id}/comments", method: :post do %>
 + <%= form_tag "/dogs/#{dog.id}/comments", method: :post, remote: 'true' do %>
-{% endhighlight %}
+```
 
 打开生成的 html 发现就是多个 `data-remote: true` 。 那 ajax 请请求谁来发？ <https://github.com/rails/jquery-ujs> 帮我搞定一切，不必操心，打开 application.js 有对它的 require 。现在再来看后台，请求的格式就是 js 了。
 
 对应的，要到 dogs_controller.rb 中
 
-{% highlight ruby %}
+```ruby
 - dog = Dog.find(params[:id])
 - redirect_to "/dog/#{dog.id}"
 + respond_to do |format|
@@ -44,21 +40,21 @@ ajax 听起来好复杂呀？其实用起来就没啥了，就是再不刷新页
 +   }
 +   format.js
 + end
-{% endhighlight %}
+```
 
 添加 app/views/dogs/create_comment.js.erb 文件。先来添加一条测试语句
 
-{% highlight js %}
+```js
 console.log('I am working!');
-{% endhighlight %}
+```
 
 但是我真正想要的效果是添加一条评论进来。
 
-{% highlight js %}
+```js
 console.log('I am working!');
 $(".comments").append("<%= j render partial: 'comment', locals: {comment: @comment} %>");
 $(".comment-box textarea, .commenter-info input").val('');
-{% endhighlight %}
+```
 
 这样，提交过程就 ajax 化了。
 

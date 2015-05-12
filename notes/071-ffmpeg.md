@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Ffmpeg
----
 - <http://www.ffmpeg.org/>
 - <http://askubuntu.com/questions/148554/installingffmpeg-libx264-and-libavfilter>
 
@@ -42,4 +38,3 @@ make
 sudo checkinstall --pkgname=ffmpeg --pkgversion="5:$(date +%Y%m%d%H%M)-git" --backup=no \
 --deldoc=yes --fstrans=no --default
 ~~~
-

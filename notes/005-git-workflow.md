@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Git workflow
----
 ~~~
 [user]
     name = Peter Wang
@@ -39,5 +35,3 @@ git checkout master
 git branch -D tmp
 git checkout fe544a -b tmp
 ~~~
-
-

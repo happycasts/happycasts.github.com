@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Git init
----
 ~~~
 sudo apt-get install git
 ~~~
@@ -11,7 +7,6 @@ git init
 ls -a
 git status
 ~~~
-
 
 ~~~
 git add README
@@ -34,7 +29,6 @@ git commit -a
 git diff
 ~~~
 
-
 ~~~
 git config --global core.editor vim
 git commit -a -v 
@@ -50,4 +44,3 @@ git config --global alias.ci "commit -a -v"
 [alias]
     ci = commit -a -v
 ~~~
-

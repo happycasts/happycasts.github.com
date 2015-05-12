@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Make screencast
----
 - <https://github.com/happypeter/happycasts/wiki>
 - <https://tutsplus.com/course/professional-screencasting-for-the-rest-of-us/>
 

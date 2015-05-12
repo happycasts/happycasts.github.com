@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Fuzzyfinder revised
----
 __NOTE:__ 本期是[第9期](http://haoduoshipin.com/episodes/9)的改进版，但是本期也宣布作废，改进版在[第64期](http://haoduoshipin.com/episodes/64)
 
 __Resources:__
@@ -30,4 +26,3 @@ let g:fuf_coveragefile_prompt = '=>'
 ~~~
 h fuf-search-patterns@en
 ~~~
-

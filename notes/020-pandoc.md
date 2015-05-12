@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Pandoc
----
 __Resources:__
 
 - [为什么我们要学习 Markdown 的三个理由](http://news.cnblogs.com/n/139649/)
@@ -9,7 +5,6 @@ __Resources:__
 - <http://haoduoshipin.com/episodes/19>
 - [demo code](https://github.com/happycasts/episode-20-demo)
 - <http://johnmacfarlane.net/pandoc/>
-
 
 ~~~
 sudo apt-get install pandoc
@@ -54,7 +49,6 @@ mv book.pdf ..
 rm book.* *.tex &>/dev/null
 ~~~
 
-
 ### Step2: change title level
 ~~~
 ...
@@ -98,8 +92,6 @@ sed -i 's/^\\subsubsection{/\\subsection{/g'  book.tex
 sed -i 's/\\begin{verbatim}/{\\footnotesize \\begin{quote}\\begin{verbatim}/g' book.tex
 sed -i 's/\\end{verbatim}/\\end{verbatim}\\end{quote}}/g' book.tex
 
-
-
 xelatex book.tex
 xelatex book.tex
 
@@ -107,4 +99,3 @@ mv book.pdf ..
 rm book.* *.tex &>/dev/null
 
 ~~~
-

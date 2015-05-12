@@ -1,14 +1,9 @@
----
-layout: shownote
-title: Strong parameter
----
 - strong parameter :
   <https://github.com/rails/strong_parameters>
 
 - burp:
   <http://portswigger.net/burp/>
   <http://portswigger.net/burp/help/suite_gettingstarted.html>
-
 
 - github安全漏洞: <https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation>
 
@@ -41,7 +36,6 @@ java -jar -Xmx1024m /path/to/burp.jar
 preference -> advanced setting -> proxy
 127.0.0.1 8080 
 
-
 ~~~ ruby
  private
     # Use callbacks to share common setup or constraints between actions.
@@ -53,4 +47,3 @@ preference -> advanced setting -> proxy
       params.require(:user).permit(:first, :last)
     end
 ~~~
-

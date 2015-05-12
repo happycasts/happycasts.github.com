@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Take note
----
 __Resources:__
 
 - <http://github.github.com/github-flavored-markdown/>
@@ -10,4 +6,3 @@ __Resources:__
 ~~~
 happypgrep dpkg
 ~~~
-

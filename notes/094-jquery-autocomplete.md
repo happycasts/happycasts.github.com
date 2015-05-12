@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Jquery autocomplete
----
 - <https://github.com/crowdint/rails3-jquery-autocomplete>
 
 ~~~
@@ -32,4 +28,3 @@ title: Jquery autocomplete
   font-weight: normal;
 }
 ~~~
-

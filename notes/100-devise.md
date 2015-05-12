@@ -1,12 +1,7 @@
----
-layout: shownote
-title: Devise
----
 本期视频由李宗晟同学为大家倾情奉献，大家可以通过他的邮箱 <lizongshenglzs@gmail.com> 联系到他。谢谢宗晟的辛勤劳动！
 
 - <https://github.com/plataformatec/devise>
 - <http://www.railstutorial.org/>
-
 
 ~~~
 $rails new airbnb
@@ -19,22 +14,18 @@ $rake db:create db:migrate
 gem 'devise'
 ~~~
 
-
 ~~~
 $rails g devise:install
 ~~~
-
 
 ~~~
 config.action_mailer.default_url_options = { host: 'localhost:3000' } into 
 ~~~
 
-
 ~~~
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 ~~~
-
 
 ~~~
 $rails generate devise User 
@@ -56,7 +47,6 @@ before_action :authenticate_user!
 <% end %>
 ~~~
 
-
 ~~~
 config.action_mailer.perform_deliveries = true 
 config.action_mailer.raise_delivery_errors = true 
@@ -70,4 +60,3 @@ config.action_mailer.delivery_method = :smtp
     authentication:       'plain',
     enable_starttls_auto: true  }
 ~~~
-

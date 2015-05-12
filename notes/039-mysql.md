@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Mysql
----
 - <http://thenewboston.org/list.php?cat=49>
 
 ### 1. 查看我们指定的信息
@@ -21,7 +17,6 @@ WHERE id=3
 SELECT *
 FROM users
 WHERE id<3
-
 
 SELECT *
 FROM users
@@ -79,4 +74,3 @@ DELETE FROM users WHERE id=12
 mysqldump -uroot -p111111 forum>forum.sql
 mysql -uroot -p111111 forum<forum.sql
 ~~~
-

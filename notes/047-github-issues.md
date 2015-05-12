@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Github issues
----
 - <https://github.com/blog/411-github-issue-tracker>
 - <https://github.com/blog/831-issues-2-0-the-next-generation>
 - <http://v.youku.com/v_show/id_XMzgzMjI1ODcy.html>
@@ -20,4 +16,3 @@ title: Github issues
 - 一个 bug
 - 一个新功能
 - 一个...
-

@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Software install
----
 ### 1. Makefile 的一个小教程
 - <http://www.opussoftware.com/tutorial/TutMakefile.htm> 
 
@@ -26,4 +22,3 @@ Why? 参考：
 - apt-get 直接从仓库里下载编译好的二进制来安装。
 - homebrew 和 rubygems 
 一般下载源码，在本地编译，这就要求本地的编译环境要完好。
-

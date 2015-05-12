@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Git diff
----
 ### 1. 系统自带 diff
 
 作用：查看两个比较类似的东西的差异，这两个东西可以分别是单个文件，也可以是目录（包含多个文件）
@@ -25,7 +21,6 @@ diff -Nurp dir1 dir2
 - <https://github.s3.amazonaws.com/media/progit.en.pdf>
 - <http://labs.kernelconcepts.de/downloads/books/Pro%20Git%20-%20Scott%20Chacon.pdf>
 
-
 - **Git dir(repository)** 对应 *.git/*
 - **Staging area** 也叫 **index**， 对应 *.git/index*
 - **Working Tree** 对应项目目录下除了 *.git/* 之外的内容
@@ -47,4 +42,3 @@ diff -Nurp dir1 dir2
 
 - `git diff one_branch_name another_branch_name`
    对比两个分支之间的差异
-

@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Chrome devtools
----
 - <http://discover-devtools.codeschool.com>
 - <https://developers.google.com/chrome-developer-tools/docs/>
 
@@ -17,4 +13,3 @@ monitorEvents($$('a')[0]) //so so cool
 monitorEvents($$('textarea')[0], 'key') //ignore "mouse" events, only log key events
 monitorEvents($0, 'mouse') //ignore "key" events 
 ~~~
-

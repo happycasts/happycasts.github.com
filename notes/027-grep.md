@@ -1,12 +1,7 @@
----
-layout: shownote
-title: Grep
----
 __Resources:__
 
 - <http://en.wikipedia.org/wiki/Grep>
 - [happygrep](http://happypeter.github.com/happygrep/)
-
 
 ~~~
 :e happy.txt
@@ -44,4 +39,3 @@ sed -i 's/hello/log/g' log.txt
 ~~~
 tail -f log/development.log|grep --context=3 SELECT
 ~~~
-

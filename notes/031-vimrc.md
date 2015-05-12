@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Vimrc
----
 ### 1. `.vimrc` 基本介绍
 
 ~~~
@@ -60,4 +56,3 @@ autocmd BufWritePost ~/my_proj/* !ctags -f ~/my_proj/tags ~/my_proj/*
 ~~~
 :h usr_05.txt
 ~~~
-

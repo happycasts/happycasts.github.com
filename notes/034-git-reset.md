@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Git reset
----
 ### 1. 基本概念
 
 <http://git-scm.com/2011/07/11/reset.html>
@@ -40,4 +36,3 @@ git commit -a -c ORIG_HEAD
 ### 4. 实战演练: implement a new feature
 
 <http://blog.hashrocket.com/posts/feature-development-with-git-branching>
-

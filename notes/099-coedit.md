@@ -1,12 +1,6 @@
----
-layout: shownote
-title: 基于 socket.io 实现协作编辑功能
----
-
 今天要跟大家一起实现的功能很厉害，是一款协作编辑的实时性应用。我们同时打开两个浏览器，这样如果我在一个浏览器中去输入文本，会看到另外一个浏览器页面上也实时的显示这样的修改。当然，如果我们把这个应用部署到服务器上，那么一个人去编辑，互联网上其他打开这个页面的人就都可以实时看到修改内容了，并且可以参与进来一起进行编辑。很多用过
 google docs 的人对这个功能可能似曾相识。今天这期节目，咱们就一起动手来实现这个功能，主要用到了跑在
 nodejs 之上的大名鼎鼎的 socket.io，另外还使用了网页编辑器 Codemirror 。
-
 
 先看一眼 socket.io，它是一套浏览器兼容性非常好的 web 实时通讯 js 库。
 
@@ -46,7 +40,6 @@ npm install --save socket.io
 中，这样以后部署项目时就很方便了。同时如果你用 git，一般的做法是不把 `node_modules`
 中的内容 commit 到源码仓库中，所以需要把 `node_modules` 添加到 .gitignore 文件。
 
-
 服务器我们用 nodejs 当下最流行的框架 express 来搭建，所以首先安装
 [express](http://expressjs.com/) 。
 
@@ -58,7 +51,7 @@ npm install --save express
 
 接下来创建 index.js 文件，先写入下面这些内容
 
-{% highlight javascript %}
+```javascript
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
@@ -71,7 +64,7 @@ server.listen(port, function(){
 app.get('/', function(req, res){
   res.send('<h1>Hello world</h1>');
 });
-{% endhighlight %}
+```
 
 接下来，全局安装 nodemon
 
@@ -81,16 +74,14 @@ npm install -g nodemon
 
 然后 `nodemon index.js` 启动我们的应用，这样就可以用浏览器打开 `localhost:3000` 看到我们搭建好的这个网站了。
 
-
 # 配置 socket.io
 
 socket.io 其实可以分为两部分，一部分是 socket.io
 服务器，另一部分是客户端，我们先来写服务器代码。
 
-
 添加这些内容到 index.js 就好了
 
-{% highlight javascript %}
+```javascript
 var io = require('socket.io')(server);
 
 io.on('connection', function(socket){
@@ -99,17 +90,15 @@ io.on('connection', function(socket){
     console.log("user left");
   });
 });
-{% endhighlight %}
-
+```
 
 在添加客户端代码之前，我们有一些准备工作要做。首先需要添加页面模板进来。 index.js
 添加这两行
 
-{% highlight javascript %}
+```javascript
 app.set('views','./views/pages');
 app.set('view engine','jade');
-{% endhighlight %}
-
+```
 
 相应的需要安装 jade，一种类似于 Haml 的简化 html 书写的小语言
 
@@ -122,19 +111,17 @@ npm install --save jade
 
 然后，更改原有的 `/` 路由代码
 
-{% highlight javascript %}
+```javascript
 app.get('/',function(req,res){
   res.render('index',{
       title: 'coedit'
     });
 });
-{% endhighlight %}
-
-
+```
 
 添加 views/pages/index.jade 文件，其中内容：
 
-{% highlight jade %}
+```jade
 doctype
 head
   meta(charset="utf-8")
@@ -146,11 +133,9 @@ body
   h1 Socket.io is Here
   script.
     var socket = io("localhost:3000");
-{% endhighlight %}
-
+```
 
 这样，所谓的 socket.io 的客户端部分就搭建好了。每次打开这个页面，我们到 `nodemon index.js` 运行的终端，就可以看到 `user connected` 的这样的 log 信息，关闭页面，会看到 `user left`，这就表明，服务器和浏览器之间的这条实时通讯的高速公路已经开通了。
-
 
 # 使用 socket.io 传递数据
 
@@ -158,29 +143,26 @@ body
 
 服务器端代码：
 
-{% highlight javascript %}
+```javascript
 var body = "type in text";
 socket.emit('refresh', {body: body});
-{% endhighlight %}
-
+```
 
 浏览器端，也就是 index.jade 中要添加的响应代码是
 
-{% highlight javascript %}
+```javascript
 socket.on('refresh', function(data){
   $('h1').text(data.body);
 });
-{% endhighlight %}
+```
 
 这里的模式是明显的，用 `emit` 发出一个事件，另一端用 `on` 来相应。从浏览器向服务器发送信息也是相同的，不过在做这部分的演示之前，我们先来安装 Codemirror.
-
 
 # 浏览器中的编辑器 Codemirror
 
 需要在 index.jade 中的 `head` 标签下，添加如下的内容
 
-
-{% highlight jade %}
+```jade
 // codemirror begin
 link(rel='stylesheet', href='http://codemirror.net/lib/codemirror.css')
 link(rel='stylesheet', href='http://codemirror.net/theme/ambiance.css')
@@ -188,12 +170,11 @@ script(src='http://codemirror.net/lib/codemirror.js')
 script(src='http://codemirror.net/addon/mode/overlay.js')
 script(src='http://codemirror.net/mode/markdown/markdown.js')
 //  codemirror end
-{% endhighlight %}
-
+```
 
 接下来 `body` 标签下添加
 
-{% highlight jade %}
+```jade
 textarea#textbox
 
 script.
@@ -202,8 +183,7 @@ script.
     lineNumbers: true,
     theme: "ambiance"
   });
-{% endhighlight %}
-
+```
 
 上面的代码把页面上的编辑器设置为 markdown
 模式。打开浏览器页面，我们操作一下，发现可以对 markdown
@@ -218,25 +198,24 @@ script.
 
 下面我们来捕捉文本修改的事件，来添加这些代码
 
-{% highlight jade %}
+```jade
 script.
   editor.on('change', function(i, op){
     socket.emit('change', op);
   });
-{% endhighlight %}
+```
 
 然后，`socket.emit('change', op);` 可以把这些内容发送到服务器上，那么在
 index.js 中，我们添加如下代码来接收这些数据：
 
-{% highlight javascript %}
+```javascript
 socket.on('change', function(op){
   console.log(op);
   if (op.origin == '+input' || op.origin == 'paste' || op.origin == '+delete') {
     socket.broadcast.emit('change', op);
   };
 });
-{% endhighlight %}
-
+```
 
 做一下实验，如果我们在浏览器中做一下修改，那么 `console.log(op)`
 就可以帮我们打印出 `op` 的具体内容
@@ -254,13 +233,12 @@ socket.on('change', function(op){
 的这些修改信息，就需要对页面做相应的更新，这样才能看到我的修改，具体代码就是要在
 index.jade 中添加
 
-{% highlight jade %}
+```jade
 socket.on('change', function(data){
   console.log(data);
   editor.replaceRange(data.text, data.from, data.to);
 });
-{% endhighlight %}
-
+```
 
 协同编辑功能就完成了。
 

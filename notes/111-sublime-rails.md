@@ -1,9 +1,3 @@
----
-layout: shownote
-title: Sublime Text 辅助 Rails 开发
----
-
-
 早在 [85期](http://haoduoshipin.com/episodes/85) 的时候，我介绍了 sublime 的基本使用，这一期里做一下扩展，说说具体在开发 Rails 程序的时候会用到的一些技巧。其实大部分内容都是不局限于 Rails 的，应该是 Web 开发领域的同学们都通用的。
 
 我主要就讲两个技巧，一个 emmet ，另一个是 snippets 的管理。然后再来展示一些必备的，但是比较简单的其他技巧。
@@ -15,7 +9,7 @@ title: Sublime Text 辅助 Rails 开发
 
 在 html 文件中，可以执行
 
-{% highlight html %}
+```html
 !<tab>
 link:css<tab>
 .side<tab>
@@ -23,15 +17,15 @@ link:css<tab>
 a<tab>
 #header<tab>
 ul>li*5<tab>
-{% endhighlight %}
+```
 
 在 css 文件中，有下面的缩写形式
 
-{% highlight css %}
+```css
 p20<tab>
 bg<tab>
 m0-auto<tab>
-{% endhighlight %}
+```
 
 基本上就是你敲一个缩写形式，然后 tab 一下，就出来了最终想要的内容。
 
@@ -61,6 +55,5 @@ m0-auto<tab>
 ### MUST HAVE
 
 SyncedSideBar，autorein  dent，SublimeERB，AdvancedNewFile，sass 这几个包也都是非常有用的，都可以通过 package control 来进行安装。
-
 
 总结一下，原则上我追求比较简单的编辑器设置，因为多了就影响编程了，脑子都用在想快捷键上了，蠢！但是非常必要的时候我也会添加一些配置进来，列位可以到  [happypeter/sublime-config](https://github.com/happypeter/sublime-config) 仓库中去查看。

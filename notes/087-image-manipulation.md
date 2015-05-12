@@ -1,8 +1,3 @@
----
-layout: shownote
-title: Image manipulation
----
-
 ### 安装工具
 
 - <http://www.imagemagick.org/script/index.php>
@@ -13,7 +8,6 @@ sudo apt-get install gimp graphicsmagick-libmagick-dev-compat libmagickwand-dev
 ~~~
 
 ### 变黑白
-
 
 ~~~
 convert  cat.jpg  -quantize GRAY -colors 256  grey.jpg
@@ -33,4 +27,3 @@ convert input.jpg -resize 50% output.jpg
 convert input.jpg -resize '150x150' -gravity center -crop '100x100+0-4' output.jpg
 # Gimp -> Ctrl-A -> Ctrl-X -> Ctrl-N -> Ctrl-V -> Layer -> Scale Layer
 ~~~
-

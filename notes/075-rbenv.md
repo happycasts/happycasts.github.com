@@ -1,7 +1,2 @@
----
-layout: shownote
-title: Rbenv
----
 - <https://github.com/sstephenson/rbenv>
 - <https://gist.github.com/happypeter/5187692>
-

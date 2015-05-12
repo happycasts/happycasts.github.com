@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Git rebase
----
 __Resources:__
 
 - <http://www.worldhello.net/gotgithub/04-work-with-others/020-shared-repo.html#id5>
@@ -30,4 +26,3 @@ git checkout -b dev
 git pull --rebase
 git rebase -i master
 ~~~
-

@@ -1,9 +1,4 @@
----
-layout: shownote
-title: Apache
----
 - <http://httpd.apache.org/>
-
 
 ### 1. 配置文件样例
 
@@ -17,4 +12,3 @@ title: Apache
    DocumentRoot /home/peter/sites/billie
 </VirtualHost>
 ~~~
-

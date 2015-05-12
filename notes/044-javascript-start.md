@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Javascript start
----
 - <http://jqueryair.com/>
 - <https://developer.mozilla.org/en-US/docs/JavaScript/Reference>
 
@@ -12,4 +8,3 @@ title: Javascript start
 ### 1. 可以先学 jQuery
 
 - <http://jquery.com/>
-

@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Bash script part1
----
 __Resources:__
 
 - <http://en.wikipedia.org/wiki/Shebang_(Unix)>
@@ -51,4 +47,3 @@ do
     fi
 done
 ~~~
-

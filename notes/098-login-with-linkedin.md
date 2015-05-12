@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Login with linkedin
----
 参考资料：
 
 * http://railscasts.com/episodes/360-facebook-authentication
@@ -15,7 +11,6 @@ title: Login with linkedin
 项目源码:
 
 * https://github.com/happycasts/episode-98-demo
-
 
 ~~~
 gem 'omniauth-linkedin-oauth2'
@@ -88,4 +83,3 @@ def current_user
 end
 helper_method :current_use
 ~~~
-

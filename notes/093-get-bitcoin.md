@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Get bitcoin
----
 - 目前最为流行的钱包应用
    - <http://blockchain.info/>
 
@@ -13,4 +9,3 @@ title: Get bitcoin
 
 - bitaddress.org
   - <https://www.bitaddress.org/>
-

@@ -1,11 +1,5 @@
----
-layout: shownote
-title: Rails setup
----
-
 - <http://railscasts.com/?tag_id=21>
 - [rbenv installer](https://github.com/fesplugas/rbenv-installer)
-
 
 ### 1. 装包
 
@@ -92,4 +86,3 @@ listen "/tmp/unicorn.happycasts.sock"
 worker_processes 2
 timeout 30
 ~~~
-

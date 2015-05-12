@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Resque
----
 - [code on Github](https://github.com/happycasts/episode-89-demo)
 - <https://github.com/resque/resque>
 - <https://github.com/zapnap/resque_mailer>
@@ -62,7 +58,6 @@ kill -9 `cat tmp/pids/resque.pid`
 rake resque:work QUEUE='*' PIDFILE='tmp/pids/resque.pid' BACKGROUND=yes
 ~~~
 
-
 ### 添加 resque-web
 
 ~~~
@@ -76,4 +71,3 @@ ResqueDemo::Application.routes.draw do
 ResqueWeb::Engine.eager_load!
 mount ResqueWeb::Engine => "/resque_web"
 ~~~
-

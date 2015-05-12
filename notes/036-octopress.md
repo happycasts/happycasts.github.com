@@ -1,8 +1,3 @@
----
-layout: shownote
-title: Octopress
----
-
 - <http://octopress.org/docs/>
 - <https://github.com/happycasts/happycasts.github.com>
 - Update: 2014-6-9 上面的这个 repo 我又改用 jekyll，octopress 感觉还是麻烦
@@ -38,4 +33,3 @@ rake new_page["about.markdown"]
 
 - <https://github.com/imathis/octopress/wiki/List-Of-Octopress-Themes>
 - <https://github.com/imathis/octopress/wiki/Octopress-Sites>
-

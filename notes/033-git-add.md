@@ -1,7 +1,3 @@
----
-layout: shownote
-title: Git add
----
 ### 1. 基本概念
 
 作用：将 working tree 中的修改添加到 index 之中。
@@ -32,4 +28,3 @@ git rm --cached file
 ~~~
 git reset file
 ~~~
-

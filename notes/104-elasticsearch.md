@@ -1,8 +1,3 @@
----
-layout: shownote
-title: Elasticsearch with rails
----
-
 <!-- this deprecate ep#72 -->
 
 在 [这里](http://www.elasticsearch.org/case-study/) 可以看到，github，stacketoverflow 和 basecamp 都在用 Elasticsearch （后面简称 es ） 。在 happycasts 的 [第72期](http://haoduoshipin.com/episodes/72) 中我介绍过 happycasts 当时的采用的搜索方案是 sunspot 和 solr 。但是对比一下 solr 和 es 的官网，感觉 [solr](http://lucene.apache.org/solr/) 是不关心 programmer happyness 的，文档页面感觉很粗糙。而 [es](http://www.elasticsearch.org/) 的文档系统就非常贴心，还有很多精彩的视频。这两天，我已经把 happycasts 切换到了 es 。
@@ -60,7 +55,6 @@ xxx.xxx.xxx.xxx linode-esdemo
 # Elasticsearch 的 REST API
 
 几个基本概念 index ， type ，document 都要知道。可以参考 [这里](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_basic_concepts.html) 。
-
 
 不依靠 rails 的 gem，我也可以用 es 提供强大的 REST API，来实现 CRUD 操作。可以在 chrome 里面安装 sense 插件，设置 es 的位置是 linode-esdemo:9200 ，然后来跟 es 交互。注意，以下命令都一样可以使用 curl 在命令行里执行。
 
@@ -123,7 +117,6 @@ DELETE /users
 
 [这里](http://joelabrahamsson.com/elasticsearch-101/) 有更多的操作方法，可以看看。
 
-
 # Rails 中使用 Elasticsearch
 
 现在这里有一个正在运行的简单的 rails 程序，可以创建包含用户 name 和 intro 两项内容的用户条目。现在我要给这个应用加上 es 实现搜索功能。
@@ -165,4 +158,3 @@ bundle exec rake environment elasticsearch:import:model CLASS='User' FORCE=y
 # 结语
 
 这样 es 配合 rails 就可以提供出基本的搜索工能了。实际使用中可能还需要添加更多的功能，例如添加 [中文分词支持](https://github.com/billie66/esdemo/wiki/ik) ，后面我可能会出专门的视频介绍。谢谢！
-

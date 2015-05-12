@@ -1,8 +1,3 @@
----
-layout: shownote
-title: Vagrant
----
-
 今天的话题是关于搭建开发环境的，我用的是 Mac 机器，很多朋友都是直接在 Mac 上搭建程序运行环境，所以需要安装不同版本的 ruby apache nginx... 再搞一个新项目，又要安装不少工具。Hey，我这个机器也要用来看片上网做图片和干其他很多事情的，总之系统上的东西越来越多，让人很不放心。并且，服务器上跑的也不是 Mac 是 Linux 呀，两个环境不一样，也是麻烦不断。
 
 ![](http://media.haoduoshipin.com/pic/happycasts/vagrant.png)
@@ -33,11 +28,11 @@ title: Vagrant
 ### 基本配置
 就拿修改内存为例子。打开 Vagrantfile 添加
 
-{% highlight ruby %}
+```ruby
 config.vm.provider "virtualbox" do |v|
   v.memory = 2048
 end
-{% endhighlight %}
+```
 
 这样运行 `vagrant reload` 就修改成功了。
 
@@ -58,9 +53,9 @@ end
 
 设置 IP 。添加
 
-{% highlight ruby %}
+```ruby
 config.vm.network :private_network, ip: "192.168.33.21"
-{% endhighlight %}
+```
 这样，就可以到 /etc/hosts 文件下面填写
 
     192.168.33.21 myproject
@@ -76,13 +71,12 @@ config.vm.network :private_network, ip: "192.168.33.21"
 
 填入下面内容：
 
-{% highlight apache %}
+```apache
 <VirtualHost *:80>
   ServerName myproject.dev
   DocumentRoot /vagrant/
 </VirtualHost>
-{% endhighlight %}
-
+```
 
 在 sites-enable 下面创建符号链接并且加载新配置
 
@@ -97,13 +91,13 @@ config.vm.network :private_network, ip: "192.168.33.21"
 
 原因是在虚拟机里面 /etc/apache2/apache2.conf 里面有这样的设置：
 
-{% highlight apache %}
+```apache
 <Directory />
   Options FollowSymLinks
   AllowOverride None
   Require all denied
 </Directory>
-{% endhighlight %}
+```
 
 除了 `/var/www` 等特殊声明的目录外，其他位置的访问一律 'denied' 。可以这样来解决：
 
@@ -123,19 +117,19 @@ config.vm.network :private_network, ip: "192.168.33.21"
 
 打开 Vagrantfile 文件，在 do-end 块内部添加
 
-{% highlight ruby %}
+```ruby
 config.vm.provision "shell", inline: $script, privileged: false
-{% endhighlight %}
+```
 
 `privileaged: false` 保证脚本是以普通用户身份执行，去掉后脚本执行者为 root 。
 
 在文件开始位置添加
 
-{% highlight ruby %}
+```ruby
 $script = <<SCRIPT
     echo "start inline script here"
 SCRIPT
-{% endhighlight %}
+```
 
 接下来就可以写要执行的脚本了。
 
@@ -158,8 +152,3 @@ SCRIPT
 这样就可以成功安装 ubuntu 14.04 并且整个的开发运行环境也都配置好了，到浏览器中输入 Vagrantfile 给定的 ip 地址，就可以看到项目已经跑起来了，怎么样，方便吧。
 
 好，更多内容可以参考[Vagrant Doc](https://docs.vagrantup.com/v2/) 。谢谢收看，下周再见啦！
-
-
-
-
-
